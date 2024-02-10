@@ -2,6 +2,7 @@ const { Schema, model } = require('mongoose');
 
 //import schema from VetUser.js
 const vetUserSchema = require('./VetUser');
+const adminSchema = required('./Admin');
 
 const prescriptionSchema = new Schema(
   {
@@ -39,8 +40,11 @@ const prescriptionSchema = new Schema(
     prescriber: {
       type: Schema.Types.ObjectId,
       ref: 'VetUser'
-    }
-    
+    },
+    administration_details: {
+      type: Schema.Types.ObjectId,
+      ref: 'Admin'
+    },
   },
   // set this to use virtual below
   {
