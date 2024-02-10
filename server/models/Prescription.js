@@ -41,10 +41,18 @@ const prescriptionSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'VetUser'
     },
-    administration_details: {
-      type: Schema.Types.ObjectId,
-      ref: 'Admin'
+    number_of_dosages: {
+      type: Number,
+      required: true,
     },
+    time_of_dosages: {
+        type: String,
+        required: true,
+    },
+    dosages_checked: {
+        type: Boolean,
+        default: false,
+    }
   },
   // set this to use virtual below
   {

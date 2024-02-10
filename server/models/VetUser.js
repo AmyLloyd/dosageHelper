@@ -19,8 +19,11 @@ const vetUserSchema = new Schema(
             type: String,
             required: true,
         },
-        clients: [clientUserSchema],
-
+        //Change to ref double check
+        clients: [{
+            type: Schema.Types.ObjectId,
+            ref: 'ClientUser'
+          }],
     },
     {
         toJSON: {
