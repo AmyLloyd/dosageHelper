@@ -32,9 +32,9 @@ Prescription
 |
 -- type
 |
--- number_of_administrations
+-- prescriber_id = vetUser.id (only one)
 |
--- prescriber = vetUser.id (only one)
+-- administration_id = administration.id
 
 
 
