@@ -1,4 +1,5 @@
 const { Schema, model } = required('mongoose');
+const bcrypt = require('bcrypt');
 
 const clientUserSchema = require('./ClientUser');
 
@@ -7,7 +8,8 @@ const vetUserSchema = new Schema(
         username: {
             type: String,
             required: true,
-            trim: true
+            trim: true,
+            unique: true,
         },
         email: {
             type: String,
@@ -18,6 +20,7 @@ const vetUserSchema = new Schema(
         password: {
             type: String,
             required: true,
+            minLength: 5,
         },
         //Change to ref double check
         clients: [{
@@ -31,6 +34,21 @@ const vetUserSchema = new Schema(
         },
     }
 );
+
+//set up pre-save middleware to create password
+vetUserSchema.pre('save', async function (next) {
+    if(this.isNew || this.isModified('password')) {
+        const saltRounds = 10;
+        this.password = await bcrypt.hash(this.password, saltRounds);
+    }
+
+    next();
+});
+
+//compare the incoming password with the hashed password
+vetUserSchema.methods.isCorrectPassword = async function (password) {
+    return bcrypt.compare(password, this.password);
+};
 
 const VetUser = model('VetUser', vetUserSchema);
 

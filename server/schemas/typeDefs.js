@@ -12,4 +12,10 @@ const typeDefs = `
         email: String!
         clients: [ClientUser]
     }
+
+    type Auth {
+        token: ID!
+        user: User
+    }
+    
     `
