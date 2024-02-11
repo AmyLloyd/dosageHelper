@@ -1,9 +1,7 @@
-const { Schema, model } = required('mongoose');
+const { Schema, model } = require('mongoose');
 const bcrypt = require('bcrypt');
 
-const clientUserSchema = require('./ClientUser');
-
-const vetUserSchema = new Schema(
+const vetSchema = new Schema(
     {
         username: {
             type: String,
@@ -25,7 +23,7 @@ const vetUserSchema = new Schema(
         //Change to ref double check
         clients: [{
             type: Schema.Types.ObjectId,
-            ref: 'ClientUser'
+            ref: 'Client'
           }],
     },
     {
@@ -36,7 +34,7 @@ const vetUserSchema = new Schema(
 );
 
 //set up pre-save middleware to create password
-vetUserSchema.pre('save', async function (next) {
+vetSchema.pre('save', async function (next) {
     if(this.isNew || this.isModified('password')) {
         const saltRounds = 10;
         this.password = await bcrypt.hash(this.password, saltRounds);
@@ -46,10 +44,10 @@ vetUserSchema.pre('save', async function (next) {
 });
 
 //compare the incoming password with the hashed password
-vetUserSchema.methods.isCorrectPassword = async function (password) {
+vetSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
 
-const VetUser = model('VetUser', vetUserSchema);
+const Vet = model('Vet', vetSchema);
 
-module.exports = VetUser;
+module.exports = Vet;

@@ -1,8 +1,6 @@
 const { Schema, model } = require('mongoose');
 
-const petPatientSchema = require('./PetPatient');
-
-const clientUserSchema = new Schema(
+const clientSchema = new Schema(
     {
         username: {
             type: String,
@@ -19,7 +17,10 @@ const clientUserSchema = new Schema(
             type: String,
             required: true,
         },
-        pets: [petPatientSchema],
+        pets: [{
+            type:Schema.Types.ObjectId,
+            ref:'petPatient'
+        }],
     },
     {
         toJSON: {
@@ -28,6 +29,6 @@ const clientUserSchema = new Schema(
     }
 );
 
-const ClientUser = model('ClientUser', clientUserSchema);
+const Client = model('Client', clientSchema);
 
-module.exports = ClientUser;
+module.exports = Client;

@@ -1,6 +1,6 @@
 const Prescription = require('./Prescription');
-const ClientUser = require('./ClientUser');
+const Client = require('./Client');
 const PetPatient = require('./PetPatient.js');
-const VetUser = require('./VetUser');
+const Vet = require('./Vet');
 
-module.exports = { Prescription, PetPatient, VetUser, ClientUser };
+module.exports = { Prescription, PetPatient, Vet, Client };

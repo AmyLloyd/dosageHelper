@@ -1,8 +1,7 @@
 const { Schema, model } = require('mongoose');
 
-//import schema from VetUser.js
-const vetUserSchema = require('./VetUser');
-const adminSchema = required('./Admin');
+//import schema from Vet.js
+const vetSchema = require('./Vet');
 
 const prescriptionSchema = new Schema(
   {
@@ -39,7 +38,7 @@ const prescriptionSchema = new Schema(
     },
     prescriber: {
       type: Schema.Types.ObjectId,
-      ref: 'VetUser'
+      ref: 'Vet'
     },
     number_of_dosages: {
       type: Number,
@@ -62,6 +61,6 @@ const prescriptionSchema = new Schema(
   }
 );
 
-const Class = model('Prescription', prescriptionSchema);
+const Prescription = model('Prescription', prescriptionSchema);
 
 module.exports = Prescription;

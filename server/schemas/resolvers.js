@@ -1,10 +1,10 @@
-const { ClientUser, VetUser, PetPatient, Prescription, Admin } = require('../models');
+const { Client, Vet, PetPatient, Prescription } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    clientuser: async () => {
-      return ClientUser.find({});
+    client: async () => {
+      return Client.find({});
     },
     petPatient: async () => {
         return PetPatient.find({});
@@ -12,33 +12,33 @@ const resolvers = {
 
   },
   Mutation: {
-    createClientUser: async (parent, args) => {
-      const clientUser = await ClientUser.create(args);
-      return clientUser;
+    createClient: async (parent, args) => {
+      const client = await Client.create(args);
+      return client;
     },
     createPetPatient: async (parent, args) => {
         const petPatient = await PetPatient.create(args);
         return petPatient;
     },
-    addVetUser: async (parent, { name, email, password }) => {
-      const vetUser = await VetUser.create({ name, email, password });
+    addVet: async (parent, { name, email, password }) => {
+      const vetUser = await Vet.create({ name, email, password });
       const token = signToken(profile);
       return { token, profile };
     },
     login: async (parent, {email, password }) => {
-      const vetUser = await UserActivation.findOne({ email });
+      const vet = await UserActivation.findOne({ email });
 
       if(!vetUser) {
         throw AuthenticationError;
       }
 
-      const correctPw = await vetUser.isCorrectPassword(password);
+      const correctPw = await vet.isCorrectPassword(password);
 
       if(!correctPw) {
         throw AuthenticationError;
       }
 
-      const token = signToken(vetUser);
+      const token = signToken(vet);
 
       return { token, user };
     },
