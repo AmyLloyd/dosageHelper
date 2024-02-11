@@ -3,32 +3,29 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
   Query: {
-    client: async () => {
-      return Client.find({});
+    clients: async () => {
+      return await Client.find({}).populate('pets')
     },
-    petPatient: async () => {
-        return PetPatient.find({});
-    }
 
   },
   Mutation: {
-    createClient: async (parent, args) => {
-      const client = await Client.create(args);
+    createClient: async (parent, {username, email, password, pets}) => {
+      const client = await Client.create({username, email, password, pets});
       return client;
     },
-    createPetPatient: async (parent, args) => {
-        const petPatient = await PetPatient.create(args);
+    createPetPatient: async (parent, {name, }) => {
+        const petPatient = await PetPatient.create();
         return petPatient;
     },
     addVet: async (parent, { name, email, password }) => {
-      const vetUser = await Vet.create({ name, email, password });
+      const vet = await Vet.create({ name, email, password });
       const token = signToken(profile);
-      return { token, profile };
+      return { token, vet };
     },
     login: async (parent, {email, password }) => {
       const vet = await UserActivation.findOne({ email });
 
-      if(!vetUser) {
+      if(!vet) {
         throw AuthenticationError;
       }
 
@@ -40,7 +37,7 @@ const resolvers = {
 
       const token = signToken(vet);
 
-      return { token, user };
+      return { token, vet };
     },
 
   },

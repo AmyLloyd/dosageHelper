@@ -15,18 +15,44 @@ const typeDefs = `
         clients: [Client]
     }
 
+    type Prescription {
+        _id: ID!
+        date: String
+        drug_name: String
+        drug_strength: String
+        drug_type: String
+        dosage: String
+        instructions: String
+        quantity: Int
+        course_length: Int
+        prescriber: [Vet]
+        number_of_dosages: Int
+        time_of_dosages: String
+        dosages_checked: Boolean
+    }
+
+    type PetPatient {
+        _id: ID!
+        name: String!
+        pet_type: String
+        condition_description: String
+        prescriptions: [Prescription]
+    }
+
+
+
     type Auth {
         token: ID!
-        //Is this right? or is it vet: Vet or user: User
-        user: Vet
+
+        vet: Vet
     }
 
     type Query {
         vets: [Vet]
-        vet(username: String!): User
+        vet(username: String!): Vet
         clients: [Client]
         client(username: String!): Client
-        //this could need to be user - vet/client
+
         me: Vet
     }
     
