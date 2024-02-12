@@ -15,6 +15,12 @@ const resolvers = {
       } 
       throw AuthenticationError;
     },
+    clients: async () => {
+      return Client.find({}).populate('pets')
+    },
+    client: async (parent, args) => {
+      return await Client.findById(args.id).populate('pets')
+    }
   },
 
   Mutation: {
@@ -22,6 +28,11 @@ const resolvers = {
       const vet = await Vet.create({ username, email, password });
       const token = signToken(vet);
       return { token, vet };
+    },
+    addClient: async (parent, { username, email, password }) => {
+      const client = await Client.create({ username, email, password });
+      const token = signToken(client);
+      return { token, client };
     },
     login: async (parent, {email, password }) => {
       const vet = await Vet.findOne({ email });
