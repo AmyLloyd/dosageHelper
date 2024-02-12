@@ -4,14 +4,25 @@ const { signToken, AuthenticationError } = require('../utils/auth');
 const resolvers = {
   Query: {
     vets: async () => {
-      return await Vet.find({}).populate('clients')
+      return Vet.find({}).populate('clients')
     },
-    vet: async => {
-      return await Vet.findOne({})
-    }
-
+    vet: async (parent, { email })=> {
+      return Vet.findOne({ email }).populate('clients');
+    },
+    me: async (parent, args, context) => {
+      if (context.vet) {
+        return Vet.findOne({ _id: context.vet._id }).populate('clients');
+      } 
+      throw AuthenticationError;
+    },
   },
+
   Mutation: {
+    addVet: async (parent, { username, email, password }) => {
+      const vet = await Vet.create({ username, email, password });
+      const token = signToken(vet);
+      return { token, vet };
+    },
     login: async (parent, {email, password }) => {
       const vet = await Vet.findOne({ email });
 

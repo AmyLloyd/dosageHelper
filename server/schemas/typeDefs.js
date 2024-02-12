@@ -51,6 +51,7 @@ const typeDefs = `
     }
     
     type Mutation {
+        addVet(username: String!, email: String!, password: String!): Vet
         login(email: String!, password:String!): Auth
     }
 
