@@ -6,8 +6,8 @@ const resolvers = {
     vets: async () => {
       return Vet.find({}).populate('clients')
     },
-    vet: async (parent, { email })=> {
-      return Vet.findOne({ email }).populate('clients');
+    vet: async (parent, args)=> {
+      return await Vet.findById(args.id).populate('clients');
     },
     me: async (parent, args, context) => {
       if (context.vet) {

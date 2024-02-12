@@ -46,7 +46,7 @@ const typeDefs = `
 
     type Query {
         vets: [Vet]
-        vet(username: String!): Vet
+        vet(_id: String!): Vet
         me: Vet
     }
     
