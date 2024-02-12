@@ -39,29 +39,28 @@ const typeDefs = `
         prescriptions: [Prescription]
     }
 
-
-
     type Auth {
         token: ID!
-
         vet: Vet
     }
 
     type Query {
         vets: [Vet]
         vet(username: String!): Vet
-        clients: [Client]
-        client(username: String!): Client
-
         me: Vet
     }
     
     type Mutation {
-        addVet(username: String!, email:String!, password: String!): Auth 
         login(email: String!, password:String!): Auth
-        addClient(username: String!, email:String!, password: String!): Auth
-        addPetPatient(name: String!, pet_type: String!, condition_description: String!, perscriptions: [Prescription]): PetPatient 
     }
+
 `;
 
 module.exports = typeDefs;
+
+// #type Mutation {
+//     addVet(username: String!, email:String!, password: String!): Auth 
+//     login(email: String!, password:String!): Auth
+// //     addClient(username: String!, email:String!, password: String!): Auth
+// //     addPetPatient(name: String!, pet_type: String!, condition_description: String!, prescriptions: ): PetPatient 
+// }
