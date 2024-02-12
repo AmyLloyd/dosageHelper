@@ -1,10 +1,14 @@
 clientUser
 |
---id
+--id 
 |
---name
+--name 
 |
 --email
+|
+-- password
+|
+-- petPatient_id = (petPatient.id) (can be multiple)
 
 
 
@@ -22,15 +26,15 @@ Prescription
 |
 -- instructions
 |
--- prescriber
-|
 -- quantity
 |
 --course_length
 |
 -- type
 |
--- number_of_administrations
+-- prescriber_id = vetUser.id (only one)
+|
+-- administration_id = administration.id
 
 
 
@@ -41,6 +45,12 @@ VetUser
 -- name
 | 
 -- email
+|
+-- password
+|
+-- client_id = (ClientUser.id)
+|
+-- patient.id = (petPatient.id)
 
 
 
@@ -48,6 +58,9 @@ petPatient
 |
 -- id
 |
---type
+-- type
 |
 -- condition_description
+|
+-- prescription_id = (prescription.id)
+
