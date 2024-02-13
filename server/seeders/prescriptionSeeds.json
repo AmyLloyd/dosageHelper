@@ -46,21 +46,6 @@
     },
     {
         "date":"now()",
-        "drug_name":"jelamectin",
-        "drug_strength":"60mg",
-        "drug_type":"needle",
-        "dose_frequency":2,
-        "instructions":"Inject 30 mL into muscle every 2 days for 3 weeks",
-        "quantity":11,
-        "course_length":21,
-        "prescriber":3,
-      
-        "time_of_dosages":["pm"],
-        "dosage_checked":"now()",
-        "dosage_notes":"Administered at clinic"
-    },
-    {
-        "date":"now()",
         "drug_name":"melamectin",
         "drug_strength":"60mg",
         "drug_type":"liquid",

@@ -48,16 +48,21 @@ const typeDefs = `
     #cannot include me: Client
     type Query {
         vets: [Vet]
-        vet(_id: String!): Vet
+        vet(_id: ID!): Vet
         me: Vet
         clients: [Client]
-        client(_id: String!): Client  
+        client(_id: ID!): Client
+
+        patients: [Patient]
+        patient(_id: ID!): Patient
+        prescriptions: [Prescription]
+        prescription(_id: ID!): Prescription
     }
     
     type Mutation {
         addVet(username: String!, email: String!, password: String!): Vet
         login(email: String!, password:String!): Auth
-        addClient(_id: String!, username: String!, email: String!, password: String!): Client
+        addClient(_id: ID!, username: String!, email: String!, password: String!): Client
     }
 
 `;
