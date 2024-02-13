@@ -17,18 +17,18 @@ const typeDefs = `
 
     type Prescription {
         _id: ID!
-        date: String
-        drug_name: String
-        drug_strength: String
-        drug_type: String
-        dose_frequency: Int
+        date: Date!
+        drug_name: String!
+        drug_strength: String!
+        drug_type: String!
+        dose_frequency: Int!
         instructions: String
-        quantity: Int
-        course_length: Int
-        prescriber: [Vet]
-        number_of_dosages: Int
-        time_of_dosages: String
-        dosage_checked: String
+        quantity: Int!
+        course_length: Int!
+        prescriber: Vet!
+        number_of_dosages: Int!
+        time_of_dosages: [String]!
+        dosage_checked: Date
         dosage_notes: String
     }
 
@@ -45,7 +45,6 @@ const typeDefs = `
         vet: Vet
     }
 
-    #cannot include me: Client
     type Query {
         vets: [Vet]
         vet(_id: ID!): Vet
