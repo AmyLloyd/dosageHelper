@@ -1,4 +1,4 @@
-const { Client, Vet, PetPatient, Prescription } = require('../models');
+const { Client, Vet, Patient, Prescription } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
 
 const resolvers = {
@@ -16,10 +16,22 @@ const resolvers = {
       throw AuthenticationError;
     },
     clients: async () => {
-      return Client.find({}).populate('pets')
+      return Client.find({}).populate('patients')
     },
     client: async (parent, args) => {
-      return await Client.findById(args.id).populate('pets')
+      return await Client.findById(args.id).populate('patients')
+    },
+    patients: async () => {
+      return Patient.find({}).populate('prescriptions')
+    },
+    patient: async () => {
+      return Patient.findById(args.id).populate('prescriptions')
+    },
+    prescriptions: async() => {
+      return Prescription.find({}).populate('prescriber')
+    },
+    prescription: async() => {
+      return Prescription.findByID(args.id).populate('prescriber')
     }
   },
 
@@ -55,18 +67,3 @@ const resolvers = {
 };
 
 module.exports = resolvers;
-
-
-  //   addClient: async (parent, {username, email, password, pets}) => {
-  //     const client = await Client.create({username, email, password, pets});
-  //     return client;
-  //   },
-  //   addPetPatient: async (parent, {name, pet_type, condition_description, prescriptions }) => {
-  //       const petPatient = await PetPatient.create({name, pet_type, condition_description, prescriptions });
-  //       return petPatient;
-  //   },
-  //   addVet: async (parent, { name, email, password, clients }) => {
-  //     const vet = await Vet.create({ name, email, password, clients });
-  //     const token = signToken(vet);
-  //     return { token, vet };
-  //   },

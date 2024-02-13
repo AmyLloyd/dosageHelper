@@ -4,7 +4,7 @@ const typeDefs = `
         username: String!
         email: String!
         password: String!
-        pets: [PetPatient]!
+        patients: [Patient]
     } 
 
     type Vet {
@@ -31,10 +31,10 @@ const typeDefs = `
         dosages_checked: Boolean
     }
 
-    type PetPatient {
+    type Patient {
         _id: ID!
         name: String!
-        pet_type: String
+        animal_type: String
         condition_description: String
         prescriptions: [Prescription]
     }
@@ -54,7 +54,7 @@ const typeDefs = `
     }
     
     type Mutation {
-        addVet(_id: String!, username: String!, email: String!, password: String!): Vet
+        addVet(username: String!, email: String!, password: String!): Vet
         login(email: String!, password:String!): Auth
         addClient(_id: String!, username: String!, email: String!, password: String!): Client
     }
