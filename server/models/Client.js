@@ -17,9 +17,9 @@ const clientSchema = new Schema(
             type: String,
             required: true,
         },
-        pets: [{
+        patients: [{
             type:Schema.Types.ObjectId,
-            ref:'petPatient'
+            ref:'patient'
         }],
     },
     {

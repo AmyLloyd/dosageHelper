@@ -4,7 +4,7 @@ const typeDefs = `
         username: String!
         email: String!
         password: String!
-        pets: [PetPatient]!
+        patients: [Patient]
     } 
 
     type Vet {
@@ -21,20 +21,21 @@ const typeDefs = `
         drug_name: String
         drug_strength: String
         drug_type: String
-        dosage: String
+        dose_frequency: Int
         instructions: String
         quantity: Int
         course_length: Int
         prescriber: [Vet]
         number_of_dosages: Int
         time_of_dosages: String
-        dosages_checked: Boolean
+        dosage_checked: String
+        dosage_notes: String
     }
 
-    type PetPatient {
+    type Patient {
         _id: ID!
         name: String!
-        pet_type: String
+        animal_type: String
         condition_description: String
         prescriptions: [Prescription]
     }
@@ -44,14 +45,19 @@ const typeDefs = `
         vet: Vet
     }
 
+    #cannot include me: Client
     type Query {
         vets: [Vet]
-        vet(username: String!): Vet
+        vet(_id: String!): Vet
         me: Vet
+        clients: [Client]
+        client(_id: String!): Client  
     }
     
     type Mutation {
+        addVet(username: String!, email: String!, password: String!): Vet
         login(email: String!, password:String!): Auth
+        addClient(_id: String!, username: String!, email: String!, password: String!): Client
     }
 
 `;

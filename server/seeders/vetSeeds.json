@@ -1,0 +1,25 @@
+[
+    {
+        "username": "AdelaideVet",
+        "email": "advet@gmail.com",
+        "password": "advet123"
+    },
+    {
+        "username": "WaikerieVet",
+        "email": "waikvet@gmail.com",
+        "password": "waikvet123"
+
+    },
+    {
+        "username": "CedunaVet",
+        "email": "cedvet@gmail.com ",
+        "password": "cedvet123"
+
+    },
+    {
+        "username": "MarreeVet",
+        "email": "marvet@gmail.com",
+        "password": "marvet123"
+
+    }
+]

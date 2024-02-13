@@ -20,8 +20,8 @@ const prescriptionSchema = new Schema(
     drug_type: {
       type: String,
     },
-    dosage: {
-      type: String,
+    dose_frequency: {
+      type: Number,
       required: true,
     },
     instructions: {
@@ -48,9 +48,9 @@ const prescriptionSchema = new Schema(
         type: String,
         required: true,
     },
-    dosages_checked: {
-        type: Boolean,
-        default: false,
+    dosage_checked: {
+        type: Date,
+        default: null,
     }
   },
   // set this to use virtual below

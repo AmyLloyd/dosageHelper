@@ -1,12 +1,12 @@
 const { Schema, model } = require('mongoose');
 
-const petPatientSchema = new Schema(
+const patientSchema = new Schema(
     {
         name: {
             type: String,
             required: false,
         },
-        pet_type: {
+        animal_type: {
             type: String,
         },
         condition_description: {
@@ -21,6 +21,6 @@ const petPatientSchema = new Schema(
     }
 );
 
-const PetPatient = model('PetPatient', petPatientSchema);
+const Patient = model('Patient', patientSchema);
 
-module.exports = PetPatient;
+module.exports = Patient;
