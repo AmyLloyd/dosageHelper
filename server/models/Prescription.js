@@ -23,6 +23,7 @@ const prescriptionSchema = new Schema(
     dose_frequency: {
       type: Number,
       required: true,
+      min: [1, 'Value must be greater than 0'],
     },
     instructions: {
       type: String,
@@ -31,10 +32,12 @@ const prescriptionSchema = new Schema(
     quantity: {
       type: Number,
       required: true,
+      min: [1, 'Value must be greater than 0'],
     },
     course_length: {
       type: Number,
       required: true,
+      min: [1, 'Value must be greater than 0'],
     },
     prescriber: {
       type: Schema.Types.ObjectId,
@@ -43,15 +46,20 @@ const prescriptionSchema = new Schema(
     number_of_dosages: {
       type: Number,
       required: true,
+      min: [1, 'Value must be greater than 0'],
     },
-    time_of_dosages: {
+    time_of_dosages: [{
         type: String,
         required: true,
-    },
+    }],
     dosage_checked: {
         type: Date,
-        default: null,
-    }
+        default: Date.now
+    },
+    dosage_notes: [{
+      type: String,
+      default: null,
+    }]
   },
   // set this to use virtual below
   {
