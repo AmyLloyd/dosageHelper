@@ -21,6 +21,12 @@ const resolvers = {
     client: async (parent, args) => {
       return await Client.findById(args.id).populate('patients')
     },
+    //crossover with vet ?
+    me: async (parent, args, context) => {
+      if(context.client) {
+        return Client.findOne({ _id: context.client._id }).populate('patients')
+      }
+    },
     patients: async () => {
       return Patient.find({}).populate('prescriptions')
     },

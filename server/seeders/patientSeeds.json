@@ -1,0 +1,47 @@
+[
+    {
+        "name": "Rosie",
+        "animal_type": "",
+        "condition_description": "infection"
+    },
+    {
+        "name": "Spark",
+        "animal_type": "dog",
+        "condition_description": "de-sexing"
+    },
+    {
+        "name": "Helmut",
+        "animal_type": "Turtle",
+        "condition_description": "foot disease"
+    },
+    {
+        "name": "Ginger",
+        "animal_type": "cat",
+        "condition_description": "fleas"
+    },
+    {
+        "name": "Stripe",
+        "animal_type": "dog",
+        "condition_description": "skin condition"
+    },
+    {
+        "name": "Thunderbolt",
+        "animal_type": "horse",
+        "condition_description": "obsesity"
+    },
+    {
+        "name": "Gladys",
+        "animal_type": "hen",
+        "condition_description": "egg-bound"
+    },
+    {
+        "name": "Coach",
+        "animal_type": "dalmation",
+        "condition_description": "mites"
+    },
+    {
+        "name": "Neddly",
+        "animal_type": "parrot",
+        "condition_description": "abrasion to face and broken leg after being hit by a car."
+    }
+]
