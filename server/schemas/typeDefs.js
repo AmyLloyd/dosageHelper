@@ -21,14 +21,15 @@ const typeDefs = `
         drug_name: String
         drug_strength: String
         drug_type: String
-        dosage: String
+        dose_frequency: Int
         instructions: String
         quantity: Int
         course_length: Int
         prescriber: [Vet]
         number_of_dosages: Int
         time_of_dosages: String
-        dosages_checked: Boolean
+        dosage_checked: String
+        dosage_notes: String
     }
 
     type Patient {

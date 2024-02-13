@@ -21,7 +21,7 @@ const prescriptionSchema = new Schema(
       type: String,
     },
     dose_frequency: {
-      type: String,
+      type: Number,
       required: true,
     },
     instructions: {
@@ -49,7 +49,7 @@ const prescriptionSchema = new Schema(
         required: true,
     },
     dosage_checked: {
-        type: Date.now(),
+        type: Date,
         default: null,
     }
   },

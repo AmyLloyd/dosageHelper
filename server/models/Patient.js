@@ -21,6 +21,6 @@ const patientSchema = new Schema(
     }
 );
 
-const PetPatient = model('Patient', patientSchema);
+const Patient = model('Patient', patientSchema);
 
 module.exports = Patient;
