@@ -1,13 +1,15 @@
 const { Schema, model } = require('mongoose');
+const dateFormat = require('../utils/dateFormat');
 
 //import schema from Vet.js
 const vetSchema = require('./Vet');
 
 const prescriptionSchema = new Schema(
   {
-    date: {
+    created_at: {
       type: Date,
       default: Date.now,
+      get: (timestamp) => dateFormat(timestamp),
       required: true,
     },
     drug_name: {
@@ -45,15 +47,16 @@ const prescriptionSchema = new Schema(
     },
     number_of_dosages: {
       type: Number,
-      required: true,
+      required: false,
       min: [1, 'Value must be greater than 0'],
     },
     time_of_dosages: [{
         type: String,
         required: true,
     }],
-    dosage_checked: {
+    dosage_checked_at: {
         type: Date,
+        get: (timestamp) => dateFormat(timestamp),
         default: Date.now
     },
     dosage_notes: [{

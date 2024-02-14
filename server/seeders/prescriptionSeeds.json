@@ -1,6 +1,6 @@
 [
     {
-        "date":"Date.now",
+   
         "drug_name":"selamectin",
         "drug_strength":"60mg",
         "drug_type":"tablet",
@@ -8,14 +8,14 @@
         "instructions":"Take 2, 3 times every day for 1 week.",
         "quantity":42,
         "course_length":7,
-        "prescriber":1,
+        "prescriber":"65cc52e9a3940223d6c1f1bf",
         "number_of_dosages":3,
         "time_of_dosages":["am", "noon", "pm"], 
-        "dosage_checked": "Date.now",
+ 
         "dosage_notes":"No water or food 1 hour before."
     },
     {
-        "date":"Date.now",
+
         "drug_name":"delamectin",
         "drug_strength":"60mg",
         "drug_type":"",
@@ -23,14 +23,14 @@
         "instructions":"Take 1 every day for a week",
         "quantity":7,
         "course_length":7,
-        "prescriber":1,
+        "prescriber":"65cc52e9a3940223d6c1f1bf",
         "number_of_dosages":1,
         "time_of_dosages":["pm"],
-        "dosage_checked":"Date.now",
+  
         "dosage_notes":"3/4 tablet"
     },
     {
-        "date":"Date.now",
+
         "drug_name":"belamectin",
         "drug_strength":"60mg",
         "drug_type":"suppository",
@@ -38,14 +38,14 @@
         "instructions":"Apply 1 every 7 days for 3 weeks",
         "quantity":3,
         "course_length":21,
-        "prescriber":3,
+        "prescriber":"65cc52e9a3940223d6c1f1be",
         "number_of_dosages":"",
         "time_of_dosages":["am"],
-        "dosage_checked":"Date.now",
+ 
         "dosage_notes":"Good luck!"
     },
     {
-        "date":"Date.now",
+
         "drug_name":"melamectin",
         "drug_strength":"60mg",
         "drug_type":"liquid",
@@ -53,14 +53,14 @@
         "instructions":"Apply 1 drop, once every day for 10 days",
         "quantity":10,
         "course_length":10,
-        "prescriber":2,
+        "prescriber":"65cc52e9a3940223d6c1f1c1",
         "number_of_dosages":3,
         "time_of_dosages":["am"],
-        "dosage_checked":"Date.now",
+
         "dosage_notes":"Wash with washie wash one hour before applying."
     },
     {
-        "date": "Date.now",
+
         "drug_name": "washie wash",
         "drug_strength": "60mg",
         "drug_type":"liquid",
@@ -68,11 +68,10 @@
         "instructions":"Insert 0.5mL into each ear, once per day",
         "quantity": 10,
         "course_length": 10,
-        "prescriber":2,
+        "prescriber":"65cc52e9a3940223d6c1f1c1",
         "number_of_dosages": 1,
         "time_of_dosages": ["am"],
-        "dosage_checked": "Date.now",
+  
         "dosage_notes": "Use wash one hour before ear drops."
-
     }
 ]
