@@ -17,7 +17,7 @@ const typeDefs = `
 
     type Prescription {
         _id: ID!
-        date: Date!
+        created_at: String!
         drug_name: String!
         drug_strength: String!
         drug_type: String!
@@ -25,10 +25,10 @@ const typeDefs = `
         instructions: String
         quantity: Int!
         course_length: Int!
-        prescriber: Vet!
+        prescriber: Vet
         number_of_dosages: Int!
         time_of_dosages: [String]!
-        dosage_checked: Date
+        dosage_checked_at: String
         dosage_notes: String
     }
 
