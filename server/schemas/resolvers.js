@@ -30,14 +30,14 @@ const resolvers = {
     patients: async () => {
       return Patient.find({}).populate('prescriptions')
     },
-    patient: async () => {
+    patient: async (parent, args) => {
       return Patient.findById(args.id).populate('prescriptions')
     },
     prescriptions: async() => {
       return Prescription.find({}).populate('prescriber')
     },
-    prescription: async() => {
-      return Prescription.findByID(args.id).populate('prescriber')
+    prescription: async(parent, args) => {
+      return Prescription.findById(args.id).populate('prescriber')
     }
   },
 
@@ -51,6 +51,9 @@ const resolvers = {
       const client = await Client.create({ username, email, password });
       const token = signToken(client);
       return { token, client };
+    },
+    updateVet: async (parent, { id, username }) => {
+      return await Vet.findOneAndUpdate({ id: id }, { username },{new: true });    
     },
     login: async (parent, {email, password }) => {
       const vet = await Vet.findOne({ email });

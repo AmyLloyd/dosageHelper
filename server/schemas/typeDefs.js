@@ -47,21 +47,22 @@ const typeDefs = `
 
     type Query {
         vets: [Vet]
-        vet(_id: ID!): Vet
+        vet(id: ID!): Vet
         me: Vet
         clients: [Client]
-        client(_id: ID!): Client
+        client(id: ID!): Client
 
         patients: [Patient]
-        patient(_id: ID!): Patient
+        patient(id: ID!): Patient
         prescriptions: [Prescription]
-        prescription(_id: ID!): Prescription
+        prescription(id: ID!): Prescription
     }
     
     type Mutation {
         addVet(username: String!, email: String!, password: String!): Vet
-        login(email: String!, password:String!): Auth
+        login(email: String!, password: String!): Auth
         addClient(_id: ID!, username: String!, email: String!, password: String!): Client
+        updateVet(_id: ID!, username: String!): Vet
     }
 
 `;
