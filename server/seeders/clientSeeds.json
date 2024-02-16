@@ -2,41 +2,50 @@
     {
         "username": "Fred",
         "email": "fred@gmail.com",
-        "password": "fred123"
+        "password": "fred123",
+        "vetId": "65cfbe2b05d307bf0837715d"
     },
     {
         "username": "Ted",
         "email": "ted@gmail.com",
-        "password": "ted123"
+        "password": "ted123",
+        "vetId": "65cfbe2b05d307bf0837715c"
+        
     },
     {
         "username": "Jed",
         "email": "jed@gmail.com",
-        "password": "jed123"
+        "password": "jed123",
+        "vetId": "65cfbe2b05d307bf0837715e"
     },
     {
         "username": "Ned",
         "email": "ned@gmail.com",
-        "password": "ned123"
+        "password": "ned123",
+        "vetId": "65cfbe2b05d307bf0837715e"
     },
     {
         "username": "Soph",
         "email": "soph@gmail.com",
-        "password": "soph123"
+        "password": "soph123",
+        "vetId": "65cfbe2b05d307bf0837715f"
     },
     {
         "username": "Meg",
         "email": "meg@gmail.com",
-        "password": "meg123"
+        "password": "meg123",
+        "vetId": "65cfbe2b05d307bf0837715f"
     },
     {
         "username": "Ji",
         "email": "ji@gmail.com",
-        "password": "ji123"
+        "password": "ji123",
+        "vetId": "65cfbe2b05d307bf0837715f"
     },
     {
         "username": "Ki",
         "email": "ki@gmail.com",
-        "password": "ki123"
+        "password": "ki123",
+        "vetId": "65cfbe2b05d307bf0837715c"
     }
 ]

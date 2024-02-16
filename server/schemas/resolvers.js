@@ -14,11 +14,7 @@ const resolvers = {
     vet: async (parent, args)=> {
       return await Vet.findById(args.id).populate('clients');
     },
-    Vet: {
-      clients: (vet) => {
-        return getClientsByVetId(vet.clientId)
-      }
-    },
+
     me: async (parent, args, context) => {
       if (context.vet) {
         return Vet.findOne({ _id: context.vet._id }).populate('clients');
@@ -31,11 +27,7 @@ const resolvers = {
     client: async (parent, args) => {
       return await Client.findById(args.id).populate('patients')
     },
-    Client: {
-      vet: (client) => {
-        return getVetById(client.vetId);
-      }
-    },
+
     //crossover with vet ?
     // me: async (parent, args, context) => {
     //   if(context.client) {
@@ -67,6 +59,15 @@ const resolvers = {
       const vet = await Vet.create({ username, email, password });
       const token = signToken(vet);
       return { token, vet };
+    },
+    addClientToVet: async (_, { vetId, username, email, password }) => {
+      const client = await Client.create({ username, email, password });
+      const vet = await Vet.findOneAndUpdate(
+        {_id: vetId},
+        { $addToSet: { clients: client._id }},
+        { new: true });
+      return Vet.findById({vetId}).populate({path: 'tags'})
+      
     },
 
 

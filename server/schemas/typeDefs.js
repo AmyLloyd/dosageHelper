@@ -6,6 +6,7 @@ const typeDefs = `
         password: String!
         patients: [Patient]
         vet: Vet
+        vetId: [ID!]
     } 
 
     type Vet {
@@ -59,13 +60,10 @@ const typeDefs = `
 
     type Query {
         vets: [Vet]
-        Vet(id: ID!): Vet
-
-        
+        vet(id: ID!): Vet
         me: Vet
         clients: [Client]
         client(id: ID!): Client
-
         patients: [Patient]
         patient(id: ID!): Patient
         prescriptions: [Prescription]
@@ -81,7 +79,7 @@ const typeDefs = `
         addPatient(patient: PatientInput!): Patient
         updateVet(_id: ID!, username: String!): Vet
         login(email: String!, password: String!): Auth
-        createClient(username: String!, email: String!, password: String! vet: String!): Client
+        addClientToVet(vetId: ID!, username: String!, email: String!, password: String!): Client
     
     }
 
