@@ -2,7 +2,8 @@
     {
         "username": "AdelaideVet",
         "email": "advet@gmail.com",
-        "password": "advet123"
+        "password": "advet123",
+        "clients": []
     },
     {
         "username": "WaikerieVet",
