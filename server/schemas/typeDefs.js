@@ -5,6 +5,7 @@ const typeDefs = `
         email: String!
         password: String!
         patients: [Patient]
+        vet: Vet
     } 
 
     type Vet {
@@ -18,9 +19,7 @@ const typeDefs = `
     type Prescription {
         _id: ID!
         created_at: String!
-        drug_name: String!
-        drug_strength: String!
-        drug_type: String!
+        drug: Drug!
         dose_frequency: Int!
         instructions: String
         quantity: Int!
@@ -32,12 +31,25 @@ const typeDefs = `
         dosage_notes: String
     }
 
+    type Drug {
+        _id: ID!
+        name: String!
+        strength: String!
+        type: String!
+    }
+
     type Patient {
         _id: ID!
         name: String!
         animal_type: String
         condition_description: String
         prescriptions: [Prescription]
+    }
+
+    input PatientInput {
+        name: String
+        animal_type: String!
+        condition_description: String
     }
 
     type Auth {
@@ -47,7 +59,9 @@ const typeDefs = `
 
     type Query {
         vets: [Vet]
-        vet(id: ID!): Vet
+        Vet(id: ID!): Vet
+
+        
         me: Vet
         clients: [Client]
         client(id: ID!): Client
@@ -56,22 +70,21 @@ const typeDefs = `
         patient(id: ID!): Patient
         prescriptions: [Prescription]
         prescription(id: ID!): Prescription
+        drugs: [Drug]
+        drug(id: ID!): Drug
+
     }
     
     type Mutation {
         addVet(username: String!, email: String!, password: String!): Vet
-        login(email: String!, password: String!): Auth
-        addClient(_id: ID!, username: String!, email: String!, password: String!): Client
+        addClientToVet(vetId: ID!, username: String!, email: String!, password: String!): Client
+        addPatient(patient: PatientInput!): Patient
         updateVet(_id: ID!, username: String!): Vet
+        login(email: String!, password: String!): Auth
+        createClient(username: String!, email: String!, password: String! vet: String!): Client
+    
     }
 
 `;
 
 module.exports = typeDefs;
-
-// #type Mutation {
-//     addVet(username: String!, email:String!, password: String!): Auth 
-//     login(email: String!, password:String!): Auth
-// //     addClient(username: String!, email:String!, password: String!): Auth
-// //     addPetPatient(name: String!, pet_type: String!, condition_description: String!, prescriptions: ): PetPatient 
-// }

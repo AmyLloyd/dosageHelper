@@ -1,6 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-
 const clientSchema = new Schema(
     {
         username: {
@@ -18,10 +17,17 @@ const clientSchema = new Schema(
             type: String,
             required: true,
         },
-        patients: [{
-            type:Schema.Types.ObjectId,
-            ref:'Patient'
-        }],
+        vetId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Vet',
+            required: true,
+        },
+        patients: [
+            {
+            type: Schema.Types.ObjectId,
+            ref: 'Patient'
+            }
+        ]
     },
     {
         toJSON: {

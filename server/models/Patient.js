@@ -1,8 +1,5 @@
 const { Schema, model } = require('mongoose');
 
-
-
-
 const patientSchema = new Schema(
     {
         name: {
@@ -11,6 +8,7 @@ const patientSchema = new Schema(
         },
         animal_type: {
             type: String,
+            required: true,
         },
         condition_description: {
             type: String,

@@ -1,0 +1,38 @@
+[
+    {
+        "name":"Drug #1",
+        "strength":"10mg",
+        "type":"ointment"
+    },
+    {
+        "name":"Drug #2",
+        "strength":"10mL",
+        "type":"liquid"
+    },
+    {
+        "name":"Drug #3",
+        "strength":"10%",
+        "type":"liquid"
+    },
+    {
+        "name":"Drug #4",
+        "strength":"10mg",
+        "type":"tablet"
+    },
+    {
+
+        "name":"Drug #5",
+        "strength":"10mg",
+        "type":"liquid"
+    },
+    {
+        "name":"Drug ",
+        "strength":"10mg",
+        "type":"suppository"
+    },
+    {
+        "name":"Washie-wash",
+        "strength":"10%",
+        "type":"liquid"
+    }
+]
