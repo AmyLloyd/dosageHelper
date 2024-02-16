@@ -1,10 +1,15 @@
-const { Client, Vet, Patient, Prescription } = require('../models');
+const { Client, Vet, Patient, Prescription, Drug } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+
+const db = require('../config/connection');
 
 const resolvers = {
   Query: {
     vets: async () => {
-      return Vet.find({}).populate('clients')
+      return await Vet.find({}).populate('clients').populate({
+        path:'clients',
+        populate: 'vet'
+      });
     },
     vet: async (parent, args)=> {
       return await Vet.findById(args.id).populate('clients');
@@ -34,10 +39,16 @@ const resolvers = {
       return Patient.findById(args.id).populate('prescriptions')
     },
     prescriptions: async() => {
-      return Prescription.find({}).populate('prescriber')
+      return Prescription.find({}).populate('prescriber', 'drug')
     },
     prescription: async(parent, args) => {
-      return Prescription.findById(args.id).populate('prescriber')
+      return Prescription.findById(args.id).populate('prescriber', 'drug')
+    },
+    drugs: async() => {
+      return Drug.find({})
+    },
+    drug: async(parent, args) => {
+      return Drug.findById(args.id)
     }
   },
 
@@ -47,11 +58,29 @@ const resolvers = {
       const token = signToken(vet);
       return { token, vet };
     },
-    addClient: async (parent, { username, email, password }) => {
-      const client = await Client.create({ username, email, password });
-      const token = signToken(client);
-      return { token, client };
+    addClientToVet: async (parent, { vetId, username, email, password }) => {
+      Vet.findOneAndUpdate(
+        {_id: vetId},
+        {
+          $addToSet: { patients: { username, email, password }},
+        },
+        {
+          new: true,
+          runValidators: true,
+        }
+      );
     },
+    
+    addPatient(_, args) {
+      let patient = {
+        ...args.patient,
+        id: Math.floor(Math.random() * 10000).toString()
+      }
+      Patient.push(patient)
+
+      return patient
+    },
+
     updateVet: async (parent, { id, username }) => {
       return await Vet.findOneAndUpdate({ id: id }, { username },{new: true });    
     },

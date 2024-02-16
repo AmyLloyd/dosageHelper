@@ -12,15 +12,9 @@ const prescriptionSchema = new Schema(
       get: (timestamp) => dateFormat(timestamp),
       required: true,
     },
-    drug_name: {
-      type: String,
-      required: true,
-    },
-    drug_strength: {
-      type: String,
-    },
-    drug_type: {
-      type: String,
+    drug: {
+      type: Schema.Types.ObjectId,
+      ref: 'Drug'
     },
     dose_frequency: {
       type: Number,

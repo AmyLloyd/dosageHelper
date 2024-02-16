@@ -1,9 +1,5 @@
 [
     {
-   
-        "drug_name":"selamectin",
-        "drug_strength":"60mg",
-        "drug_type":"tablet",
         "dose_frequency": 1,
         "instructions":"Take 2, 3 times every day for 1 week.",
         "quantity":42,
@@ -11,14 +7,9 @@
         "prescriber":"65cc52e9a3940223d6c1f1bf",
         "number_of_dosages":3,
         "time_of_dosages":["am", "noon", "pm"], 
- 
         "dosage_notes":"No water or food 1 hour before."
     },
     {
-
-        "drug_name":"delamectin",
-        "drug_strength":"60mg",
-        "drug_type":"",
         "dose_frequency":1,
         "instructions":"Take 1 every day for a week",
         "quantity":7,
@@ -30,10 +21,6 @@
         "dosage_notes":"3/4 tablet"
     },
     {
-
-        "drug_name":"belamectin",
-        "drug_strength":"60mg",
-        "drug_type":"suppository",
         "dose_frequency":2,
         "instructions":"Apply 1 every 7 days for 3 weeks",
         "quantity":3,
@@ -45,10 +32,6 @@
         "dosage_notes":"Good luck!"
     },
     {
-
-        "drug_name":"melamectin",
-        "drug_strength":"60mg",
-        "drug_type":"liquid",
         "dose_frequency":2,
         "instructions":"Apply 1 drop, once every day for 10 days",
         "quantity":10,
@@ -60,10 +43,6 @@
         "dosage_notes":"Wash with washie wash one hour before applying."
     },
     {
-
-        "drug_name": "washie wash",
-        "drug_strength": "60mg",
-        "drug_type":"liquid",
         "dose_frequency":1,
         "instructions":"Insert 0.5mL into each ear, once per day",
         "quantity": 10,
@@ -71,7 +50,6 @@
         "prescriber":"65cc52e9a3940223d6c1f1c1",
         "number_of_dosages": 1,
         "time_of_dosages": ["am"],
-  
         "dosage_notes": "Use wash one hour before ear drops."
     }
 ]

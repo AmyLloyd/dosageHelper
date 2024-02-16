@@ -1,7 +1,7 @@
 [
     {
         "name": "Rosie",
-        "animal_type": "",
+        "animal_type": "duck",
         "condition_description": "infection"
     },
     {
