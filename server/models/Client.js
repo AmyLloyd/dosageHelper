@@ -17,6 +17,11 @@ const clientSchema = new Schema(
             type: String,
             required: true,
         },
+        vetId: {
+            type: Schema.Types.ObjectId,
+            ref: 'Vet',
+            required: true,
+        },
         patients: [
             {
             type: Schema.Types.ObjectId,
