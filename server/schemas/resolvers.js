@@ -17,10 +17,12 @@ const resolvers = {
         return getClientsByVetId(vet.clientId)
       }
     },
+
     me: async (parent, args, context) => {
-      if (context.vet) {
-        return Vet.findOne({ _id: context.vet._id }).populate('clients');
-      } 
+      if (context.user) {
+        console.log(context.user, "context.user");
+        return Vet.findOne({ _id: context.user._id });
+      }
       throw AuthenticationError;
     },
     clients: async () => {
@@ -29,10 +31,8 @@ const resolvers = {
     client: async (parent, args) => {
       return await Client.findById(args.id).populate('patients')
     },
-    Client: {
-      vet: (client) => {
-        return getVetById(client.vetId);
-      }
+    clientsByVet: async (parent, args, context) => {
+        return await Vet.findOne({_id: context.user._id}).populate('clients');
     },
     //crossover with vet ?
     // me: async (parent, args, context) => {

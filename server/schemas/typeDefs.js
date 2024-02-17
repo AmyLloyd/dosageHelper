@@ -5,7 +5,6 @@ const typeDefs = `
         email: String!
         password: String!
         patients: [Patient]
-        vet: Vet
     } 
 
     type Vet {
@@ -72,6 +71,7 @@ const typeDefs = `
         clients: [Client]
         client(id: ID!): Client
         Client(vetId: ID!): Vet
+        clientsByVet: [Vet]
 
         patients: [Patient]
         patient(id: ID!): Patient
