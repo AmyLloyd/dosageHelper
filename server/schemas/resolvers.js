@@ -1,15 +1,13 @@
 const { Client, Vet, Patient, Prescription, Drug } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const { signTokenClient, AuthenticationErrorClient } = require('../utils/authClient');
 
 const db = require('../config/connection');
 
 const resolvers = {
   Query: {
     vets: async () => {
-      return await Vet.find({}).populate('clients').populate({
-        path:'clients',
-        populate: 'vet'
-      });
+      return await Vet.find({}).populate('clients');
     },
     vet: async (parent, args)=> {
       return await Vet.findById(args.id).populate('clients');
@@ -69,8 +67,31 @@ const resolvers = {
       return { token, vet };
     },
 
+    addClientToVet: async (parent, {username, email, password}, context) => {
+      console.log("user", context.user);
 
-    login: async (parent, {email, password }) => {
+      if(context.user ) {
+        const client = await Client.create({ username, email, password });
+        console.log(client);
+        console.log("user", context.user);
+
+        const vet = await Vet.findOneAndUpdate(
+          {_id:context.user._id},
+          { $push: {clients:client._id}}
+          )
+        const token = signTokenClient(client);
+        return { token, client };
+      }
+    },
+
+    addPatientToVet: async (parent, {name, animal_type, condition_description, prescriptions}) => {
+      const client = await Client.findOneAndUpdate({ id, patients});
+      const token = signToken(vet);
+      const patient = Patient.create({ name, animal_type, condition_description, prescriptions })
+      return { token, patient};
+    },
+
+    loginVet: async (parent, {email, password }) => {
       const vet = await Vet.findOne({ email });
 
       if(!vet) {
@@ -86,6 +107,23 @@ const resolvers = {
       const token = signToken(vet);
 
       return { token, vet };
+    },
+    loginClient: async (parent, {email, password }) => {
+      const client = await Client.findOne({ email });
+
+      if(!client) {
+        throw AuthenticationErrorClient;
+      }
+
+      const correctPw = await client.isCorrectPassword(password);
+
+      if(!correctPw) {
+        throw AuthenticationErrorClient;
+      }
+
+      const token = signTokenClient(client);
+
+      return { token, client };
     },
   },
 };
