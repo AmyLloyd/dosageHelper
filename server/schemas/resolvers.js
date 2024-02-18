@@ -10,13 +10,6 @@ const resolvers = {
     vet: async (parent, args)=> {
       return await Vet.findById(args.id).populate('clients');
     },
-
-    // Vet: {
-    //   clients: (vet) => {
-    //     return getClientsByVetId(vet.clientId)
-    //   }
-    // },
-
     me: async (parent, args, context) => {
       if (context.user) {
         console.log(context.user, "context.user");
@@ -26,32 +19,19 @@ const resolvers = {
     },
     myClients: async (parent, args, context) => {
       if(context.user) {
-        console.log(context.user, "context.user");
         return Vet.findOne({ _id: context.user._id }).populate('clients');
-    },
-    clients: async () => {
-      return Client.find({}).populate('patients')
+      }
+      return  AuthenticationError
     },
     client: async (parent, args) => {
       return await Client.findById(args.id).populate('patients')
     },
-<<<<<<< HEAD
-    myClients: async (parent, args, context) => {
-      if(context.user) {
-        return Vet.findOne({ _id: context.user._id }).populate('clients');
-      }
-      return  AuthenticationError
-=======
     clientsByVet: async (parent, args, context) => {
         return await Vet.findOne({_id: context.user._id}).populate('clients');
->>>>>>> 1572295d8dfe2768822eddbfefd0965f17161a6f
     },
-    //crossover with vet ?
-    // me: async (parent, args, context) => {
-    //   if(context.client) {
-    //     return Client.findOne({ _id: context.client._id }).populate('patients')
-    //   }
-    // },
+    clients: async () => {
+      return await Client.find({}).populate('patients')
+    },
     patients: async () => {
       return Patient.find({}).populate('prescriptions')
     },
@@ -78,18 +58,7 @@ const resolvers = {
       const token = signToken(vet);
       return { token, vet };
     },
-    addClientToVet: async (_, { vetId, username, email, password }) => {
-      const client = await Client.create({ username, email, password });
-      const vet = await Vet.findOneAndUpdate(
-        {_id: vetId},
-        { $addToSet: { clients: client._id }},
-        { new: true });
-      return Vet.findById({vetId}).populate({path: 'tags'})
-      
-    },
-
     addClientToVet: async (parent, {username, email, password}, context) => {
-  
       if(context.user ) {
         const client = await Client.create({ username, email, password });
         const vet = await Vet.findOneAndUpdate(
@@ -100,34 +69,30 @@ const resolvers = {
         return { token, client };
       }
       throw AuthenticationErrorClient;
-
+      ('You need to be logged in!');
     },
-
-<<<<<<< HEAD
-    addPatientToClient: async (parent, {name, animal_type, condition_description}) => {
+    // addPatientToClient: async (parent, {$_id}, {name, animal_type, condition_description}, context) => {
+    //   if(context.user) {
+    //     const patient = await Patient.create({ name, animal_type, condition_description });
+    //     const client = await Client.findOneAndUpdate(
+    //       {_id: args._id},
+    //       { $push: {patients: patient._id}}
+    //       )
+    //     const token = signTokenClient(client);
+    //     return { token, patient };
+    //   }
+    // },
+    addPatientToClient: async (parent, args, context) => {
       if(context.user) {
-        const patient = await Patient.create({ name, animal_type, condition_description })
+        const patient = await Patient.create(args.name, args.animalType, args.conditionDescription);
         const client = await Client.findOneAndUpdate(
-          {_id:params.client._id},
-          { $push: {patients:patient._id}}
-          )
-        const token = signTokenClient(vet);
-        return { token, patient };
+          {_id: args.client._id},
+          { $push: { patients: patient._id }}
+        )
+        const token = signToken(client);
+        return {token, patient};
       }
     },
-    
-=======
-    // addPatientToVet: async (parent, { name, animal_type, condition_description}, context ) => {
-    //   console.log(context.user, "context.user");
-    //   console.log(context.user.client._id);
-    //   const patient = Patient.create({ name, animal_type, condition_description })
-    //   const client = await Client.findOneAndUpdate({ _id:context.user.client._id}, { $push: {patients:patient._id}}
-    //   )
-    //   const token = signTokenClient(patient);
-    //   return { token, patient }
-    // },
-
->>>>>>> 1572295d8dfe2768822eddbfefd0965f17161a6f
     loginVet: async (parent, {email, password }) => {
       const vet = await Vet.findOne({ email });
 
@@ -162,7 +127,7 @@ const resolvers = {
 
     //   return { token, client };
     // },
-  },
+  }
 };
 
 module.exports = resolvers;
