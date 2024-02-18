@@ -5,9 +5,7 @@ const typeDefs = `
         email: String!
         password: String!
         patients: [Patient]
-        vet: Vet
-        vetId: [ID!]
-    } 
+   } 
 
     type Vet {
         _id: ID!
@@ -58,12 +56,22 @@ const typeDefs = `
         vet: Vet
     }
 
+    type AuthClient {
+        token: ID!
+        client: Client
+    }
+
     type Query {
         vets: [Vet]
         vet(id: ID!): Vet
+
         me: Vet
+        myClients: Vet
         clients: [Client]
         client(id: ID!): Client
+       
+        clientsByVet: [Vet]
+
         patients: [Patient]
         patient(id: ID!): Patient
         prescriptions: [Prescription]
@@ -74,12 +82,19 @@ const typeDefs = `
     }
     
     type Mutation {
-        addVet(username: String!, email: String!, password: String!): Vet
-        addClientToVet(vetId: ID!, username: String!, email: String!, password: String!): Client
+        signUpVet(username: String!, email: String!, password: String!): Auth
+
         addPatient(patient: PatientInput!): Patient
         updateVet(_id: ID!, username: String!): Vet
+
+        loginVet(email: String!, password: String!): Auth
+        createClient(username: String!, email: String!, password: String! vet: String!): Client
+        loginClient(email: String!, username: String!, password: String!): Auth
+        addPatientToVet(name: String!, animal_type: String!, condition_description: String!): Auth
+        addClientToVet( username: String!, email: String!, password: String!): AuthClient
+
         login(email: String!, password: String!): Auth
-        addClientToVet(vetId: ID!, username: String!, email: String!, password: String!): Client
+
     
     }
 
