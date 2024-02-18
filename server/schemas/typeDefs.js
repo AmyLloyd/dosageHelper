@@ -56,6 +56,11 @@ const typeDefs = `
         vet: Vet
     }
 
+    type AuthClient {
+        token: ID!
+        client: Client
+    }
+
     type Query {
         vets: [Vet]
         vet(id: ID!): Vet
@@ -88,8 +93,6 @@ const typeDefs = `
         loginClient(email: String!, username: String!, password: String!): Auth
         addPatientToVet(name: String!, animal_type: String!, condition_description: String!): Auth
         addClientToVet( username: String!, email: String!, password: String!): AuthClient
-       
-        
 
     
     }

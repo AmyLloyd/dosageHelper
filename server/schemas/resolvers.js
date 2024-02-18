@@ -1,5 +1,6 @@
 const { Client, Vet, Patient, Prescription, Drug } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
+const {signTokenClient, AuthenticationErrorClient } = require('../utils/authClient');
 
 const resolvers = {
   Query: {
@@ -82,17 +83,19 @@ const resolvers = {
         const token = signTokenClient(client);
         return { token, client };
       }
+      throw AuthenticationErrorClient;
+
     },
 
-    addPatientToVet: async (parent, { name, animal_type, condition_description}, context ) => {
-      console.log(context.user, "context.user");
-      console.log(context.user.client._id);
-      const patient = Patient.create({ name, animal_type, condition_description })
-      const client = await Client.findOneAndUpdate({ _id:context.user.client._id}, { $push: {patients:patient._id}}
-      )
-      const token = signTokenClient(patient);
-      return { token, patient }
-    },
+    // addPatientToVet: async (parent, { name, animal_type, condition_description}, context ) => {
+    //   console.log(context.user, "context.user");
+    //   console.log(context.user.client._id);
+    //   const patient = Patient.create({ name, animal_type, condition_description })
+    //   const client = await Client.findOneAndUpdate({ _id:context.user.client._id}, { $push: {patients:patient._id}}
+    //   )
+    //   const token = signTokenClient(patient);
+    //   return { token, patient }
+    // },
 
     loginVet: async (parent, {email, password }) => {
       const vet = await Vet.findOne({ email });
