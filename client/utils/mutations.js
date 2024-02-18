@@ -23,3 +23,14 @@
 //     }
 //   }
 
+// mutation addClientToVet($username: String!, $email: String!, $password: String!) {
+//     addClientToVet(username: $username, email: $email, password: $password) {
+//       token 
+//       client {
+//         _id
+//         username
+//         email
+//         password
+//       }
+//     }
+//   }

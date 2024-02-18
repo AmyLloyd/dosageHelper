@@ -72,18 +72,14 @@ const resolvers = {
     },
 
     addClientToVet: async (parent, {username, email, password}, context) => {
-      console.log("user", context.user);
-
+  
       if(context.user ) {
         const client = await Client.create({ username, email, password });
-        console.log(client);
-        console.log("user", context.user);
-
         const vet = await Vet.findOneAndUpdate(
           {_id:context.user._id},
           { $push: {clients:client._id}}
           )
-        const token = signToken(client);
+        const token = signTokenClient(client);
         return { token, client };
       }
     },

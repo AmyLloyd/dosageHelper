@@ -80,14 +80,14 @@ const typeDefs = `
     
     type Mutation {
         signUpVet(username: String!, email: String!, password: String!): Auth
-        addClientToVet( username: String!, email: String!, password: String!): Auth
+
         addPatient(patient: PatientInput!): Patient
         updateVet(_id: ID!, username: String!): Vet
         loginVet(email: String!, password: String!): Auth
         createClient(username: String!, email: String!, password: String! vet: String!): Client
         loginClient(email: String!, username: String!, password: String!): Auth
         addPatientToVet(name: String!, animal_type: String!, condition_description: String!): Auth
-
+        addClientToVet( username: String!, email: String!, password: String!): AuthClient
        
         
 
