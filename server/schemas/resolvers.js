@@ -10,6 +10,7 @@ const resolvers = {
     vet: async (parent, args)=> {
       return await Vet.findById(args.id).populate('clients');
     },
+
     // Vet: {
     //   clients: (vet) => {
     //     return getClientsByVetId(vet.clientId)
@@ -27,8 +28,6 @@ const resolvers = {
       if(context.user) {
         console.log(context.user, "context.user");
         return Vet.findOne({ _id: context.user._id }).populate('clients');
-      }
-      throw AuthenticationError;
     },
     clients: async () => {
       return Client.find({}).populate('patients')
@@ -70,6 +69,15 @@ const resolvers = {
       const vet = await Vet.create({ username, email, password });
       const token = signToken(vet);
       return { token, vet };
+    },
+    addClientToVet: async (_, { vetId, username, email, password }) => {
+      const client = await Client.create({ username, email, password });
+      const vet = await Vet.findOneAndUpdate(
+        {_id: vetId},
+        { $addToSet: { clients: client._id }},
+        { new: true });
+      return Vet.findById({vetId}).populate({path: 'tags'})
+      
     },
 
     addClientToVet: async (parent, {username, email, password}, context) => {
