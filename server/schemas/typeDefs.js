@@ -53,6 +53,7 @@ const typeDefs = `
     type Auth {
         token: ID!
         vet: Vet
+        client: Client
     }
 
     type AuthClient {
@@ -81,14 +82,13 @@ const typeDefs = `
     type Mutation {
         signUpVet(username: String!, email: String!, password: String!): Auth
         addPatient(patient: PatientInput!): Patient
-        updateVet(_id: ID!, username: String!): Vet
+        updateVet(username: String, email: String, password: String): Vet
         loginVet(email: String!, password: String!): Auth
         createClient(username: String!, email: String!, password: String! vet: String!): Client
-        loginClient(email: String!, username: String!, password: String!): Auth
+        loginClient(email: String!, password: String!): Auth
         addPatientToVet(name: String!, animal_type: String!, condition_description: String!, client_id: ID!): Auth
-        addClientToVet( username: String!, email: String!, password: String!): AuthClient
-        addPatientToClient(name: String!, animal_type: String!, condition_description: String!, client_id: ID!): AuthClient
-        login(email: String!, password: String!): Auth
+        addClientToVet( username: String!, email: String!, password: String!): Client
+        addPatientToClient(name: String!, animal_type: String!, condition_description: String!): Patient
     }
 
 `;
