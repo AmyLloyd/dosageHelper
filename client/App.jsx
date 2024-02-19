@@ -1,18 +1,18 @@
 import { Outlet } from 'react-router-dom';
-// import {
-//   ApolloClient,
-//   InMemoryCache,
-//   ApolloProvider,
-//   createHttpLink,
-// } from '@apollo/client';
-// import { setContext } from '@apollo/client/link/context';
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  createHttpLink,
+} from '@apollo/client';
+import { setContext } from '@apollo/client/link/context';
 
 import Nav from './components/Nav';
-// import { StoreProvider } from './utils/GlobalState';
+import { VetProvider } from './utils/GlobalState';
 
-// const httpLink = createHttpLink({
-//   uri: '/graphql',
-// });
+const httpLink = createHttpLink({
+  uri: '/graphql',
+});
 
 const authLink = setContext((_, { headers }) => {
   const token = localStorage.getItem('id_token');
@@ -24,19 +24,21 @@ const authLink = setContext((_, { headers }) => {
   };
 });
 
-// const client = new ApolloClient({
-//   link: authLink.concat(httpLink),
-//   cache: new InMemoryCache(),
-// });
+const client = new ApolloClient({
+  link: authLink.concat(httpLink),
+  cache: new InMemoryCache(),
+});
+
+console.log(client, "client");
 
 function App() {
   return (
-    // <ApolloProvider client={client}>
+    <ApolloProvider client={client}>
       <div>
-        {/* <StoreProvider> */}
+        <VetProvider>
           <Nav />
           <Outlet />
-        {/* </StoreProvider> */}
+        </VetProvider>
       </div>
     // </ApolloProvider>
   );
