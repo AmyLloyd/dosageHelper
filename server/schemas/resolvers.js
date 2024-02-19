@@ -39,13 +39,13 @@ const resolvers = {
       return Patient.findById(args.id).populate('prescriptions')
     },
     prescriptions: async() => {
-      return Prescription.find({}).populate('prescriber', 'drug')
+      return Prescription.find({}).populate('drug');
     },
     prescription: async(parent, args) => {
       return Prescription.findById(args.id).populate('prescriber', 'drug')
     },
     drugs: async() => {
-      return await Drug.find({})
+      return await Drug.find({});
     },
 
     drug: async(parent, args) => {
@@ -66,7 +66,8 @@ const resolvers = {
           const client = await Client.create({ username, email, password });
           const vet = await Vet.findOneAndUpdate(
             {_id:context.user._id},
-            { $addToSet: {clients:client._id}})
+            { $addToSet: {clients:client._id}},
+            { new: true })
 
           return vet;
         } catch (err) {
@@ -87,7 +88,8 @@ const resolvers = {
           console.log(patient, "patient");
           const client = await Client.findOneAndUpdate(
             {_id: args.client_id},
-            { $addToSet: { patients: patient._id }}
+            { $addToSet: { patients: patient._id }},
+            { new: true }
           ).populate('patients')
 
           return client;
@@ -101,8 +103,8 @@ const resolvers = {
 
       if(context.user) {
         try {
+ 
           const prescription = await Prescription.create({
-            drug: args.drug,
             dose_frequency: args.dose_frequency,
             instructions: args.instructions,
             quantity: args.quantity,
@@ -113,12 +115,32 @@ const resolvers = {
             dosage_checked_at: args.dosage_checked_at,
             dosage_notes: args.dosage_notes
           });
+  
           const patient = await Patient.findOneAndUpdate(
             {_id: args.patient_id},
-            { $addToSet: { prescriptions: prescription._id }}
+            { $addToSet: { prescriptions: prescription._id }},
+            { new: true }
           ).populate('prescriptions')
-
+   
           return patient;
+
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    },
+    addDrugToPrescription: async (parent, args, context) => {
+      if(context.user) {
+        try {
+
+          const drugObject = await Drug.findById({_id: args.drug_id});
+          const prescription = await Prescription.findOneAndUpdate(
+            {_id: args.prescription_id},
+            { $set: { drug: drugObject }},
+            { new: true }
+          );
+
+          return prescription;
 
         } catch (err) {
           console.log(err);
@@ -168,7 +190,8 @@ const resolvers = {
         const client = await Client.create({ username, email, password });
         const vet = await Vet.findOneAndUpdate(
           {_id:context.user._id},
-          { $push: {clients:client._id}}
+          { $push: {clients:client._id}},
+          { new: true }
           ).populate('clients')
         const token = signToken(client);
         return { token, client };
