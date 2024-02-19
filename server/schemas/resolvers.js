@@ -46,10 +46,11 @@ const resolvers = {
       return Prescription.findById(args.id).populate('prescriber', 'drug')
     },
     drugs: async() => {
-      return Drug.find({})
+      return await Drug.find()
     },
+
     drug: async(parent, args) => {
-      return Drug.findById(args.id)
+      return await Drug.findById(args.id)
     },
   },
 
@@ -117,7 +118,7 @@ const resolvers = {
       if(context.user) {
       return Vet.findByIdAndUpdate(context.user._id, args, {
         new: true
-      }).populate('clients').populate('patients');
+      }).populate('clients');
       }
       throw AuthenticationError;
     },
@@ -127,7 +128,7 @@ const resolvers = {
         const vet = await Vet.findOneAndUpdate(
           {_id:context.user._id},
           { $push: {clients:client._id}}
-          )
+          ).populate('clients')
         const token = signToken(client);
         return { token, client };
       }

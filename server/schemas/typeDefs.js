@@ -87,8 +87,8 @@ const typeDefs = `
         createClient(username: String!, email: String!, password: String! vet: String!): Client
         loginClient(email: String!, password: String!): Auth
         addPatientToVet(name: String!, animal_type: String!, condition_description: String!, client_id: ID!): Auth
-        addClientToVet( username: String!, email: String!, password: String!): Client
-        addPatientToClient(name: String!, animal_type: String!, condition_description: String!): Patient
+        addClientToVet( username: String!, email: String!, password: String!): Auth
+        addPatientToClient(name: String!, animal_type: String!, condition_description: String!): Auth
     }
 
 `;
