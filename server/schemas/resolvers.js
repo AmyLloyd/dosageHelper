@@ -1,6 +1,5 @@
 const { Client, Vet, Patient, Prescription, Drug } = require('../models');
 const { signToken, AuthenticationError } = require('../utils/auth');
-const {signTokenClient, AuthenticationErrorClient } = require('../utils/authClient');
 
 const resolvers = {
   Query: {
@@ -46,7 +45,7 @@ const resolvers = {
       return Prescription.findById(args.id).populate('prescriber', 'drug')
     },
     drugs: async() => {
-      return await Drug.find()
+      return await Drug.find({})
     },
 
     drug: async(parent, args) => {
@@ -60,28 +59,70 @@ const resolvers = {
       const token = signToken(vet);
       return { token, vet };
     },
+
     addClientToVet: async (parent, {username, email, password}, context) => {
       if(context.user ) {
-        const client = await Client.create({ username, email, password });
-        const vet = await Vet.findOneAndUpdate(
-          {_id:context.user._id},
-          { $push: {clients:client._id}}
-          )
-        const token = signToken(client);
-        return { token, client };
+        try {
+          const client = await Client.create({ username, email, password });
+          const vet = await Vet.findOneAndUpdate(
+            {_id:context.user._id},
+            { $addToSet: {clients:client._id}})
+
+          return vet;
+        } catch (err) {
+          console.log(err);
+        }
       }
-      throw AuthenticationError;
-      ('You need to be logged in!');
     },
     addPatientToClient: async (parent, args, context) => {
+
       if(context.user) {
-        const patient = await Patient.create(args.name, args.animal_type, args.condition_description);
-        const client = await Client.findOneAndUpdate(
-          {_id: context.user._id},
-          { $push: { patients: patient._id }}
-        )
-        const token = signToken(client);
-        return {token, patient};
+        try {
+          console.log(context.user, "context.user");
+          const patient = await Patient.create({
+            name: args.name,
+            animal_type: args.animal_type,
+            condition_description: args.condition_description
+          });
+          console.log(patient, "patient");
+          const client = await Client.findOneAndUpdate(
+            {_id: args.client_id},
+            { $addToSet: { patients: patient._id }}
+          ).populate('patients')
+
+          return client;
+
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    },
+    addPrescriptionToPatient: async (parent, args, context) => {
+
+      if(context.user) {
+        try {
+          const prescription = await Prescription.create({
+            drug: args.drug,
+            dose_frequency: args.dose_frequency,
+            instructions: args.instructions,
+            quantity: args.quantity,
+            course_length: args.course_length,
+            prescriber: args.prescriber,
+            number_of_dosages: args.number_of_dosages,
+            time_of_dosages: args.time_of_dosages,
+            dosage_checked_at: args.dosage_checked_at,
+            dosage_notes: args.dosage_notes
+          });
+          const patient = await Patient.findOneAndUpdate(
+            {_id: args.patient_id},
+            { $addToSet: { prescriptions: prescription._id }}
+          ).populate('prescriptions')
+
+          return patient;
+
+        } catch (err) {
+          console.log(err);
+        }
       }
     },
     loginVet: async (parent, {email, password }) => {

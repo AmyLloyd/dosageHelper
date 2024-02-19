@@ -56,11 +56,6 @@ const typeDefs = `
         client: Client
     }
 
-    type AuthClient {
-        token: ID!
-        client: Client
-    }
-
     type Query {
         vets: [Vet]
         vet(id: ID!): Vet
@@ -88,7 +83,8 @@ const typeDefs = `
         loginClient(email: String!, password: String!): Auth
         addPatientToVet(name: String!, animal_type: String!, condition_description: String!, client_id: ID!): Auth
         addClientToVet( username: String!, email: String!, password: String!): Auth
-        addPatientToClient(name: String!, animal_type: String!, condition_description: String!): Auth
+        addPatientToClient(name: String!, animal_type: String!, condition_description: String!, client_id: ID!): Client
+        addPrescriptionToPatient(drug: ID, dose_frequency: Int!, instructions: String, quantity: Int, course_length: Int, prescriber: ID, number_of_dosages: Int, time_of_dosages: [String], dosage_checked_at: String, dosage_notes: String, patient_id: ID!): Patient
     }
 
 `;
