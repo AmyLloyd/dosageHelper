@@ -40,7 +40,7 @@ function App() {
           <Outlet />
         </VetProvider>
       </div>
-    // </ApolloProvider>
+    </ApolloProvider>
   );
 }
 
