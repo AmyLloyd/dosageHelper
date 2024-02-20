@@ -1,5 +1,5 @@
 import { createContext, useContext, useReducer } from "react";
-import { reducer } from './reducers'
+// import { reducer } from './reducers'
 
 const VetContext = createContext();
 const { Provider } = VetContext;
