@@ -1,0 +1,41 @@
+/*From activity 22.10 */
+  .align {
+    text-align: center;
+  }
+  
+  ul {
+    list-style: none;
+    margin: 10px 0;
+    padding: 0;
+  }
+  
+  .prescr-list {
+    margin: 0 auto;
+    max-width: 1200px;
+  }
+  
+  table {
+    border-collapse: collapse;
+    width: 100%;
+  }
+  
+  th {
+    background: lightgreen;
+    padding: 10px;
+  }
+  
+  th,
+  td {
+    border: 1px solid grey;
+  }
+  
+  .add-prescr {
+    margin: 20px 0;
+  }
+  
+  .add-prescr button,
+  .add-prescr input,
+  .add-prescr select {
+    height: 40px;
+  }
+  
