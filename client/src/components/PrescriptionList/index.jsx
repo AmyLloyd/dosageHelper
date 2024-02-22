@@ -1,21 +1,53 @@
+import { useEffect } from 'react';
+import { useQuery } from '@apollo/client';
+import { useVetContext } from "../../utils/GlobalState";
+
 //import type variables
 import {
-
+    DOSAGE_CHECKED
  } from "../../utils/actions";
- import "./styles.css"
+import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
+import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 
- import { useVetContext } from "../../utils/GlobalState";
+import "./styles.css"
 
- export default function PrescriptionList() {
+function PrescriptionList() {
     const [state, dispatch] = useVetContext();
-    console.log(state, "state");
+    const { currentPatient } = state;
+
+    const { loading, data } = useQuery(QUERY_PATIENT_BY_ID);
+
+    useEffect(() => {
+        if(data) {
+            dispatch({
+                type: UPDATE_PRESCRIPTIONS,
+                prescriptions: data.prescriptions,
+            });
+        }
+    }, [data, dispatch]);
+
+    //this code could be used to filter by 'active' or not active prescriptions if we add that enhancement
+
+    function filterPrescriptions() {
+        if (!currentPatient) {
+            //CHANGE THIS it doesn't make sense to return all prescriptions
+            return state.prescriptions;
+        }
+
+        return state.prescriptions.filter(
+            (prescription) => prescription.patient._id === currentPatient
+        );
+    }
 
     return (
         <div>
     {/* Need to check defined */}
-            {state.prescriptions ? (
+            {state.prescriptions.length ? (
                 <>
                 <section className="prescr-list">
+                    {filterPrescriptions().map((prescription) => (
+                        
+                    ))}
                     <table>
                         <thead>
                             <tr>
@@ -40,7 +72,7 @@ import {
                                     onClick={() => {
                                         console.log("PrescriptionList.js: Dispatched checked!");
                                         return dispatch({ 
-                                            type: DRUG_CHECKED,
+                                            type: DOSAGE_CHECKED,
                                             payload: prescription.dosage_checked_at
                                         });
                                     }}
@@ -61,4 +93,5 @@ import {
             )}
         </div>
     );
- }
+}
+export default PrescriptionList

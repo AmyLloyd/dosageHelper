@@ -6,7 +6,7 @@ const VetContext = createContext();
 const { Provider } = VetContext;
 
 const VetProvider = ({ value = [], ...props }) => {
-  //to use uderReducer hook we have to consider the reducer and the inital state objects that need to be passed
+  //to use useReducer hook we have to consider the reducer and the inital state objects that need to be passed
   //Instead of calling the methods from inside components as we have before, now we will call dispatch(), which accepts an object that contains type and payload attributes.
   //
     const [state, dispatch] = useReducer(reducer, {
