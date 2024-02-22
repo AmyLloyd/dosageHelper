@@ -8,6 +8,7 @@ import {
  } from "../../utils/actions";
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
+import PrescriptionItem from '../PrescriptionItem';
 
 import "./styles.css"
 
@@ -45,9 +46,6 @@ function PrescriptionList() {
             {state.prescriptions.length ? (
                 <>
                 <section className="prescr-list">
-                    {filterPrescriptions().map((prescription) => (
-                        
-                    ))}
                     <table>
                         <thead>
                             <tr>
@@ -58,32 +56,19 @@ function PrescriptionList() {
                                 <th>DOSAGE GIVEN</th>
                             </tr>
                         </thead>
-
                         <tbody>
-                          {/* Access prescriptions from our state object returned from useReducer */}
-                          {state.prescriptions.map((prescription) => (
-                            <tr key={prescription.id}>
-                                <td>{prescription.id}</td>
-                                <td>{prescription.created_at}</td>
-                                <td>{prescription.dose_frequency}</td>
-                                <td>
-                                    <button 
-                                    type="button"
-                                    onClick={() => {
-                                        console.log("PrescriptionList.js: Dispatched checked!");
-                                        return dispatch({ 
-                                            type: DOSAGE_CHECKED,
-                                            payload: prescription.dosage_checked_at
-                                        });
-                                    }}
-                                    >
-                                        <span role="img" aria-label="delete">
-                                            ✖️
-                                        </span>
-                                    </button>
-                                </td>
-                            </tr>
-                          ))}
+                        {filterPrescriptions().map((prescription) => (
+                        <PrescriptionItem
+                            key={prescription._id}
+                            _id={prescription._id}
+                            quantity={prescription.quantity}
+                            drug={prescription.drug.name}
+                            dosage_notes={prescription.dosage_notes}
+                            number_of_doses={prescription.number_of_dosages}
+                            time_of_dosages={prescription.time_of_dosages}
+                            dosage_checked_at={prescription.dosage_checked_at}
+                            />
+                        ))}
                         </tbody>
                     </table>
                 </section>
