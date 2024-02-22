@@ -9,6 +9,8 @@ import {
 
 import { QUERY_MY_CLIENTS } from '../../utils/queries';
 
+import './clientMenu.css';
+
 function ClientMenu() {
     const [state, dispatch] = useVetContext();
 
