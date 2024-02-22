@@ -1,3 +1,5 @@
+
+
 .wrapper {
     width: 420px;
     background: transparent;
@@ -7,6 +9,8 @@
     color: #401b5a;
     border-radius: 10px;
     padding: 30px 40px;
+    /*distance between nav and login window*/
+    margin-top: 15rem;
 }
 
 .wrapper h1 {
@@ -96,3 +100,5 @@
 .register-link p a:hover {
     text-decoration: underline;
 }
+
+
