@@ -103,3 +103,8 @@ mutation UpdateVet($password: String, $username: String) {
     }
   }
 `;
+
+export const UPDATE_PRESCRIPTION = gql`
+mutation UpdatePrescription($username: String) {
+    
+}`

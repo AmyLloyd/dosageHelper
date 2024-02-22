@@ -1,19 +1,20 @@
 import { useEffect } from 'react';
-import { userQuery } from '@apollo/client';
+import { useQuery } from '@apollo/client';
 import { useVetContext } from '../../utils/GlobalState';
 
-import { UPDATE_CLIENTS,
-        UPDATE_CURRENT_CLIENT,
-} from '../utils/actions';
+import { 
+    UPDATE_CLIENTS,
+    UPDATE_CURRENT_CLIENT,
+} from '../../utils/actions';
 
-import { QUERY_CLIENTS } from '../utils/queries';
+import { QUERY_MY_CLIENTS } from '../../utils/queries';
 
 function ClientMenu() {
     const [state, dispatch] = useVetContext();
 
     const { clients } = state;
 
-    const { data: clientData } = useQuery (QUERY_CLIENTS);
+    const { data: clientData } = useQuery (QUERY_MY_CLIENTS);
 
     useEffect(() => {
         if(clientData) {

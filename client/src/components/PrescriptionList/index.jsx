@@ -3,11 +3,11 @@ import { useQuery } from '@apollo/client';
 import { useVetContext } from "../../utils/GlobalState";
 
 //import type variables
-import {
-    DOSAGE_CHECKED
- } from "../../utils/actions";
+// import {
+//     DOSAGE_CHECKED
+//  } from "../../utils/actions";
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
-import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
+// import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 import PrescriptionItem from '../PrescriptionItem';
 
 import "./styles.css"
@@ -21,7 +21,7 @@ function PrescriptionList() {
     useEffect(() => {
         if(data) {
             dispatch({
-                type: UPDATE_PRESCRIPTIONS,
+                type: UPDATE_PRESCRIPTION,
                 prescriptions: data.prescriptions,
             });
         }
