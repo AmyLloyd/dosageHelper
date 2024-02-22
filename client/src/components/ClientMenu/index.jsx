@@ -13,14 +13,16 @@ function ClientMenu() {
     const [state, dispatch] = useVetContext();
 
     const { clients } = state;
+    console.log(state, "state");
 
     const { data: clientData } = useQuery (QUERY_MY_CLIENTS);
+    console.log(clientData, "clientData");
 
     useEffect(() => {
         if(clientData) {
             dispatch({
                 type: UPDATE_CLIENTS,
-                clients: clientData.clients,
+                clients: clientData.myClients.clients,
             });
         }
     }, [clientData, dispatch]);

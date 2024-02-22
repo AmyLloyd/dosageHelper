@@ -151,19 +151,20 @@ const resolvers = {
       const vet = await Vet.findOne({ email });
 
       if(!vet) {
-        throw AuthenticationError;
+        throw AuthenticationError("Vet not found with the provided email");
       }
 
       const correctPw = await vet.isCorrectPassword(password);
 
       if(!correctPw) {
-        throw AuthenticationError;
+        throw AuthenticationError("Incorrect password");
       }
 
       const token = signToken(vet);
 
       return { token, vet };
     },
+
     loginClient: async (parent, { email, password }) => {
       const client = await Client.findOne({ email });
       if(!client) {
@@ -183,6 +184,7 @@ const resolvers = {
         new: true
       }).populate('clients');
       }
+      
       throw AuthenticationError;
     },
     addClientToVet: async (parent, {username, email, password}, context) => {
@@ -190,11 +192,10 @@ const resolvers = {
         const client = await Client.create({ username, email, password });
         const vet = await Vet.findOneAndUpdate(
           {_id:context.user._id},
-          { $push: {clients:client._id}},
+          { $addToSet: {clients:client._id}},
           { new: true }
           ).populate('clients')
-        const token = signToken(client);
-        return { token, client };
+        return { vet, temp_password };
       }
       throw AuthenticationError;
       ('You need to be logged in!');
