@@ -90,21 +90,21 @@ export const QUERY_PATIENT_BY_ID = gql `
         name
         animal_type
         prescriptions{
-            _id
-        created_at
-        dose_frequency
-        instructions
-        quantity
-        course_length
-        prescriber {
-            _id
-            username
-        }
-        number_of_dosages
-        time_of_dosages
-        dosage_checked_at
-        dosage_notes
-        }
+                _id
+            created_at
+            dose_frequency
+            instructions
+            quantity
+            course_length
+            prescriber {
+                _id
+                username
+            }
+            number_of_dosages
+            time_of_dosages
+            dosage_checked_at
+            dosage_notes
+            }
         }
     }
 `;
@@ -129,3 +129,4 @@ export const QUERY_PATIENT_BY_ID = gql `
 //       condition_description
 //     }
 //   }
+
