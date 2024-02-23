@@ -40,8 +40,7 @@ function ClientMenu() {
 
     return (
         <div> 
-            <h2> Choose a Client: </h2>
-            
+            <h2> Choose a Client: </h2>          
             <div className='card'>
                 {clients.map((item) => (
                 <ClientItem 
