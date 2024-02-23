@@ -6,7 +6,6 @@ import {
     UPDATE_CURRENT_PATIENT,
 } from '../../utils/actions';
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
-import './PatientMenu.css';
 
 function PatientMenu() {
     const [state, dispatch] = useVetContext();

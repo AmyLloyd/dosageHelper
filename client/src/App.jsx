@@ -29,8 +29,6 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-console.log(client, "client");
-
 function App() {
   return (
     <ApolloProvider client={client}>
@@ -40,7 +38,7 @@ function App() {
           <Outlet />
         </VetProvider>
       </div>
-    // </ApolloProvider>
+    </ApolloProvider>
   );
 }
 

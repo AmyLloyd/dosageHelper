@@ -1,0 +1,66 @@
+
+.container {
+    width: 85%;
+    max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  .flex-row {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .space-between {
+    justify-content: space-between;
+  }
+  
+  .flex-end {
+    justify-content: flex-end;
+  }
+
+  button {
+    font-size: 1rem;
+    text-decoration: none;
+    padding: 0.5rem 1.5rem;
+    border-radius: .5rem;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    margin: 0 1px;
+    background-color: var(--secondary);
+  }
+  
+  button:hover {
+    opacity: .8;
+  }
+  
+  button[disabled] {
+    cursor: default;
+    opacity: .8;
+  }
+
+  h1 {
+    font-size: 2.25rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+    color: white;
+  }
+  
+  h3 {
+    font-size: 1.75rem;
+  }
+  
+  h4 {
+    font-size: 1.5rem;
+  }
+  
+  h5 {
+    font-size: 1.25rem;
+  }
+  
+  h6 {
+    font-size: 1rem;
+  }

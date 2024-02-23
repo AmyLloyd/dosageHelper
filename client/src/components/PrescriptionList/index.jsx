@@ -10,7 +10,7 @@ import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 import PrescriptionItem from '../PrescriptionItem';
 
-import "./PrescriptionList.css"
+import "./styles.css"
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
