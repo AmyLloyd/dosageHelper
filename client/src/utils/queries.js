@@ -57,6 +57,8 @@ export const QUERY_MY_CLIENTS = gql `
         username
         clients{
             username
+            _id
+            email
         }
         }
     }

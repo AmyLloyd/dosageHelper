@@ -36,10 +36,10 @@ const router = createBrowserRouter([
         path: '/drug',
         element: <Drug />
       }, {
-        path: '/client',
+        path: '/clients/:id',
         element: <Client />
       }, {
-        path: '/patient',
+        path: '/patients/:id',
         element: <Patient />
       }
     ]
