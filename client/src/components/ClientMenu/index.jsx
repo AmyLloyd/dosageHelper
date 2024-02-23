@@ -41,19 +41,23 @@ function ClientMenu() {
     return (
         <div> 
             <h2> Choose a Client: </h2>
-            {clients.map((item) => (
-                
-                    <ClientItem 
-                        key={item._id}
-                        _id={item._id}
-                        onClick={() => {
-                        handleClick(item._id);
-                        }}                       
-                        username={item.username}
-                        email={item.email}
-                    />
-                      ))}
-            <button onClick={() => { handleClick('') }}>All</button>
+            
+            <div className='card'>
+                {clients.map((item) => (
+                <ClientItem 
+                    key={item._id}
+                    _id={item._id}
+                    onClick={() => {
+                    handleClick(item._id);
+                    }}                       
+                    username={item.username}
+                    email={item.email}
+                />
+                    ))}
+                <div>
+                    <button  onClick={() => { handleClick('') }}>All</button>
+                </div>
+            </div>
         </div>
     );
 }

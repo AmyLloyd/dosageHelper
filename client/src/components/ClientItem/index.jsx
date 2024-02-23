@@ -10,7 +10,7 @@ function ClientItem(item) {
     console.log(item, 'item');
 
     return (
-        <div className="card px-1 py-1">
+        <div className='my-2 mx-2'>
             <Link to={`/clients/${_id}`}>
                 <button>
                     <h6> {username} </h6>

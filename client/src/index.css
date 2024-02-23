@@ -7,6 +7,8 @@
   --tertiary: ;
   --dark: #0a0808;
   --shadow: #272f32;
+  --spacing-one: calc(1rem * 0.5);
+  --spacing-two: calc(1rem);
   }
 
 * {
@@ -117,7 +119,7 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 0 1px;
+  margin: 0 4px;
   background-color: var(--secondary);
 }
 
