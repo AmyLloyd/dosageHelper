@@ -59,18 +59,14 @@ query myClients {
         username
         _id
         email
+        is_client
         patients{
             _id
             name
             animal_type
             condition_description
             prescriptions{
-                _id
                 created_at
-                drug{
-                    _id
-                    name
-                }
             }
         }
     }
