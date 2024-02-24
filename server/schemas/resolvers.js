@@ -26,10 +26,7 @@ const resolvers = {
           populate: {
             path:  'patients',
             populate: {
-                path: 'prescriptions',
-                populate: {
-                  path: 'drug'
-                }
+                path: 'prescriptions'
             }
           },
         });
