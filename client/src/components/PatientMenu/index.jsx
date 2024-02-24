@@ -1,50 +1,89 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
+
+import PatientItem from '../../components/PatientItem';
 import { useVetContext } from '../../utils/GlobalState';
+import Auth from '../../utils/auth';
+
 import {
-    UPDATE_PATIENTS,
+    UPDATE_CLIENTS,
     UPDATE_CURRENT_PATIENT,
 } from '../../utils/actions';
-import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
+
+import { QUERY_MY_CLIENTS } from '../../utils/queries';
+
+import './patientMenu.css';
 
 function PatientMenu() {
     const [state, dispatch] = useVetContext();
 
-    const { patients } = state;
+    const { id } = useParams();
+    // const [currentClient, setCurrentClient] = useState({});
 
-    const { data: patientData } = useQuery(QUERY_PATIENT_BY_ID);
+    const { clients } = state;
+    console.log(state.clients, 'state.clients');
+
+    console.log(state.currentClient, "state.currentClient");
+    //saved in local state
+    let [oneClient, setOneClient] = useState();
+
 
     useEffect(() => {
-        if (patientData) {
-            dispatch({
-                type: UPDATE_PATIENTS,
-                patients: patientData.patients
-            });
+
+        if (clients.length) {
+
+            // setCurrentClient(clients.find((client) => client._id === id));
+            oneClient = clients.find((client) => client._id === id)
+            setOneClient(oneClient);
+            console.log(oneClient);
         }
-    }, [patientData, dispatch]); 
+
+    }, [clients, id]);
+    //Code available here for idb and caching in activity 22.26
 
     const handleClick = (id) => {
         dispatch({
-            type:UPDATE_CURRENT_PATIENT,
-            currentPatient: id, 
+            type: UPDATE_CURRENT_PATIENT,
+            currentPatient: id,
         });
     };
 
     return (
-        <div>
-            <h2>Choose a Patient:</h2>
-            {patients.map((item) => (
-                <button
-                    key={item._id}
-                    onClick={() => {
-                        handleClick(item._id);
-                    }}
-                >
-                    {item.name}
-                </button>
-            ))}
-            <button onClick={() => { handleClick('') }}>All</button>
-        </div>
+        <>
+            {Auth.loggedIn() ? (
+                <>
+                    {state.currentClient && clients ? (
+                        <div>
+                            <h2>Showing patients of {oneClient?.username}</h2>
+                            <h4>Choose a Patient:</h4>
+
+                            <div className='container flex-row'>
+                                {oneClient?.patients?.map((item) => (
+                                    <PatientItem
+                                        key={item._id}
+                                        _id={item._id}
+                                        onClick={() => {
+                                            handleClick(item._id);
+                                        }}
+                                        //passing props
+                                        name={item.name}
+                                        animal_type={item.animal_type}
+                                        condition_description={item.condition_description}
+                                    />
+
+                                ))}
+                                <button onClick={() => { handleClick('') }}>All</button>
+                            </div>
+
+                        </div>
+            ) : null}
+            </>
+  
+            ):(
+            <h1>You need to be logged in</h1>)}
+
+        </>
     );
 }
 

@@ -7,8 +7,6 @@ function ClientItem(item) {
         email
     } = item;
 
-    console.log(item, 'item');
-
     return (
         <div className='my-2 mx-2'>
             <Link to={`/clients/${_id}`}>

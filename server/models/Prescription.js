@@ -56,7 +56,11 @@ const prescriptionSchema = new Schema(
     dosage_notes: [{
       type: String,
       default: null,
-    }]
+    }],
+    active: {
+      type: Boolean,
+      default: true,
+    }
   },
   // set this to use virtual below
   {

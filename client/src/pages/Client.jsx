@@ -1,9 +1,8 @@
-
 import PatientMenu from "../components/PatientMenu";
 
 const Client = () => {
     return (
-        <div>
+        <div className="container">
             <h2>Client display page</h2>
             <PatientMenu />
         </div>
@@ -11,3 +10,4 @@ const Client = () => {
 }
 
 export default Client;
+

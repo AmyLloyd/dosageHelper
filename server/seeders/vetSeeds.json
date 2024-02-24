@@ -1,15 +1,13 @@
 [
     {
-        "username": "AdelaideVet",
-        "email": "advet@gmail.com",
-        "password": "advet123",
-        "clients": []
+        "username": "KuchingVet",
+        "email": "Kuchvet@gmail.com",
+        "password": "kuch123"
     },
     {
-        "username": "WaikerieVet",
-        "email": "waikvet@gmail.com",
-        "password": "waikvet123"
-
+        "username": "AdelaideVet",
+        "email": "advet@gmail.com",
+        "password": "advet123"
     },
     {
         "username": "CedunaVet",
@@ -21,6 +19,5 @@
         "username": "MarreeVet",
         "email": "marvet@gmail.com",
         "password": "marvet123"
-
     }
 ]

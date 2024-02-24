@@ -19,13 +19,27 @@ const resolvers = {
     myClients: async (parent, args, context) => {
       if(context.user) {
         console.log(context.user._id, "user");
-        return Vet.findById({ _id: context.user._id }).populate('clients');
+        return Vet
+        .findById({ _id: context.user._id })
+        .populate({
+          path:     'clients',
+          populate: {
+            path:  'patients',
+            populate: {
+                path: 'prescriptions',
+                populate: {
+                  path: 'drug'
+                }
+            }
+          },
+        });
       }
-      return  AuthenticationError
+      return  AuthenticationError;
     },
     client: async (parent, args) => {
       return await Client.findById(args.id).populate('patients')
     },
+
     clientsByVet: async (parent, args, context) => {
         return await Vet.findOne({_id: context.user._id}).populate('clients');
     },
@@ -42,7 +56,7 @@ const resolvers = {
       return Prescription.find({}).populate('drug');
     },
     prescription: async(parent, args) => {
-      return Prescription.findById(args.id).populate('prescriber', 'drug')
+      return Prescription.findById(args.id).populate('drug')
     },
     drugs: async() => {
       return await Drug.find({});
@@ -120,7 +134,12 @@ const resolvers = {
             {_id: args.patient_id},
             { $addToSet: { prescriptions: prescription._id }},
             { new: true }
-          ).populate('prescriptions')
+          ).populate({
+            path: 'prescriptions',
+            populate: {
+              path: 'drug'
+            }          
+          });
    
           return patient;
 
@@ -133,12 +152,14 @@ const resolvers = {
       if(context.user) {
         try {
 
-          const drugObject = await Drug.findById({_id: args.drug_id});
+          const drug_id = await Drug.findById({_id: args.drug_id});
+          console.log(drug_id, "drug_id");
           const prescription = await Prescription.findOneAndUpdate(
             {_id: args.prescription_id},
-            { $set: { drug: drugObject }},
+            { $set: { drug: drug_id }},
             { new: true }
           );
+          console.log(prescription, "prescription");
 
           return prescription;
 
@@ -195,12 +216,28 @@ const resolvers = {
           { $addToSet: {clients:client._id}},
           { new: true }
           ).populate('clients')
-        return { vet, temp_password };
+        return { vet, password };
       }
       throw AuthenticationError;
       ('You need to be logged in!');
     },
   },
 };
+
+// addClientToVet: async (parent, {username, email, password}, context) => {
+//   if(context.user ) {
+//     try {
+//       const client = await Client.create({ username, email, password });
+//       const vet = await Vet.findOneAndUpdate(
+//         {_id:context.user._id},
+//         { $addToSet: {clients:client._id}},
+//         { new: true })
+
+//       return vet;
+//     } catch (err) {
+//       console.log(err);
+//     }
+//   }
+// },
 
 module.exports = resolvers;
