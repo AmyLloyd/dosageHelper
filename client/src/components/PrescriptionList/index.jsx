@@ -14,9 +14,10 @@ import "./styles.css"
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
+    
     const { currentPatient } = state;
 
-    const { loading, data } = useQuery(QUERY_PATIENT_BY_ID);
+    const { data } = useQuery(QUERY_PATIENT_BY_ID);
 
     useEffect(() => {
         if(data) {

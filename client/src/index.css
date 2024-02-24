@@ -9,6 +9,7 @@
   --shadow: #272f32;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
+  --background: rgb(246, 241, 241);
   }
 
 * {
@@ -221,6 +222,11 @@ input:focus {
 .card {
   width: 25%;
   text-align: center;
+  background-color: var(--background);
+  border-width: 2px;
+  border-style:none;
+  border-color: var(--dark);
+  padding: 3px;
 }
 
 .error-text {
