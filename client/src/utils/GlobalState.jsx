@@ -11,7 +11,6 @@ const VetProvider = ({ value = [], ...props }) => {
     clients: [],
     patients: [],
     prescriptions: [],
-
     drugs: [],
 
     checked: false,
