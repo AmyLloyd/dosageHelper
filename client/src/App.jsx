@@ -7,11 +7,7 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-<<<<<<< HEAD
-// import Navigation from './components/Navigation';
-=======
 import Navbar from './components/Navigation';
->>>>>>> 98e891cc1451838850c7b8a4d31933f5cf783e43
 import { VetProvider } from './utils/GlobalState';
 
 const httpLink = createHttpLink({
@@ -38,11 +34,7 @@ function App() {
     <ApolloProvider client={client}>
       <div>
         <VetProvider>
-<<<<<<< HEAD
-          {/* <Navigation /> */}
-=======
           <Navbar />
->>>>>>> 98e891cc1451838850c7b8a4d31933f5cf783e43
           <Outlet />
         </VetProvider>
       </div>
