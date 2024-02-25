@@ -55,6 +55,7 @@ function PrescriptionList() {
             {currentPatient && oneClient && oneClient.patients ? (
                 <>
                 <h1>{onePatient?.name}</h1>
+                <h3>Condition: {onePatient.condition_description}</h3>
                 <h4>Active prescriptions</h4>
 
 

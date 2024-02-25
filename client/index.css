@@ -4,7 +4,7 @@
 :root {
   --primary: #401b5a;
   --secondary: #F3A847;
-  --tertiary: ;
+  --tertiary: rgb(221, 216, 227) ;
   --dark: #0a0808;
   --shadow: #272f32;
   }
@@ -64,6 +64,7 @@ h6 {
 
 h1 {
   font-size: 2.25rem;
+  color: var(--tertiary);
 }
 
 h2 {
