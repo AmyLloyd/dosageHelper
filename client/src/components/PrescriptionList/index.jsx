@@ -8,63 +8,56 @@ import { useVetContext } from "../../utils/GlobalState";
 //  } from "../../utils/actions";
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
-// import PrescriptionItem from '../PrescriptionItem';
+
 
 import "./PrescriptionList.css"
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
 
-<<<<<<< Updated upstream
-    console.log(state, "state");
-    console.log(state.clients, "state.clients");
-    console.log(state.currentClient, "state.currentClient");
-
-    // const { currentPatient } = state;
-
-    const { data } = useQuery(QUERY_PATIENT_BY_ID);
-
-=======
+    const { currentClient } = state;
+    const { currentPatient } = state;
     const clients  = state.clients;
   
     let [oneClient, setOneClient] = useState();
     let [onePatient, setOnePatient] = useState();
->>>>>>> Stashed changes
 
     useEffect(() => {
-        if(data) {
-            dispatch({
-                type: UPDATE_PRESCRIPTION,
-                prescriptions: data.prescriptions,
-            });
+        if (clients.length) {
+            const foundClient = clients.find((client) => client._id === currentClient);
+            setOneClient(foundClient);
+            console.log(foundClient);
+    
+            if (foundClient && foundClient.patients.length) {
+                const foundPatient = foundClient.patients.find((patient) => patient._id === currentPatient);
+                setOnePatient(foundPatient);
+                console.log(foundPatient);
+            }
         }
-    }, [data, dispatch]);
+    }, [clients, currentClient, currentPatient]);
+  
 
     //this code could be used to filter by 'active' or not active prescriptions if we add that enhancement
 
-    function filterPrescriptions() {
-        if (!currentPatient) {
-            //CHANGE THIS it doesn't make sense to return all prescriptions
-            return state.prescriptions;
-        }
+    // function filterPrescriptions() {
+    //     if (!currentPatient) {
+    //         //CHANGE THIS it doesn't make sense to return all prescriptions
+    //         return prescriptions;
+    //     }
 
-        return state.prescriptions.filter(
-            (prescription) => prescription.patient._id === currentPatient
-        );
-    }
+    //     return prescriptions.filter(
+    //         (prescription) => prescription.patient._id === currentPatient
+    //     );
+    // }
 
     return (
         <div>
-<<<<<<< Updated upstream
-    {/* Need to check defined */}
-            {state.prescriptions.length ? (
-                <>
-=======
             {currentPatient && oneClient && oneClient.patients ? (
                 <>
                 <h1>{onePatient?.name}</h1>
                 <h4>Active prescriptions</h4>
->>>>>>> Stashed changes
+
+
                 <section className="prescr-list">
                     <table>
                         <thead>
@@ -77,19 +70,6 @@ function PrescriptionList() {
                             </tr>
                         </thead>
                         <tbody>
-<<<<<<< Updated upstream
-                        {filterPrescriptions().map((prescription) => (
-                        <PrescriptionItem
-                            key={prescription._id}
-                            _id={prescription._id}
-                            quantity={prescription.quantity}
-                            drug={prescription.drug.name}
-                            dosage_notes={prescription.dosage_notes}
-                            number_of_doses={prescription.number_of_dosages}
-                            time_of_dosages={prescription.time_of_dosages}
-                            dosage_checked_at={prescription.dosage_checked_at}
-                            />
-=======
                         {onePatient?.prescriptions?.map((item) => (
                             <tr>
                                 <td>{item.drug.name}</td>
@@ -113,7 +93,6 @@ function PrescriptionList() {
                                     </button>
                                 </td>
                             </tr>
->>>>>>> Stashed changes
                         ))}
                         </tbody>
                     </table>
