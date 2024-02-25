@@ -5,9 +5,11 @@ import { QUERY_ALL_DRUGS } from '../../utils/queries';
 import { UPDATE_CURRENT_DRUG } from '../../utils/actions';
 
 function DrugList() {
-    const [state, dispatch] = useVetContext;
+    const [state, dispatch] = useVetContext();
 
-    const drugs = useQuery(QUERY_ALL_DRUGS);
+    const { data } = useQuery(QUERY_ALL_DRUGS);
+
+    console.log(data, "data");
 
     const handleClick = (id) => {
         dispatch({ 
@@ -19,7 +21,7 @@ function DrugList() {
     return (
         <div>
             <h4>Drugs to choose from:</h4>
-            {drugs.map((item) => (
+            {data?.drugs.map((item) => (
                 <div className='card mx-2 my-2'>
                     <p>{item.name}</p>
                     <p>{item.strength}</p>

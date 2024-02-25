@@ -75,7 +75,30 @@ function PrescriptionList() {
                             <tr>
                                 <td>{item.drug.name}</td>
                                 <td>{item.created_at}</td>
-                                <td>{item.time_of_dosages}</td>
+                                <td>
+                                    <input class="checkbox" id="checked" type="checkbox" />
+                                    <label for="agreement">{item.time_of_dosages[0]} </label>
+                                    {item.time_of_dosages[1]?(
+                                        <>
+                                            <input class="checkbox" id="checked" type="checkbox" />
+                                            <label for="agreement">{item.time_of_dosages[1]}</label> 
+                                        </>
+                                    ):(
+                                        <>
+                                        </>
+                                    )}
+                                    {/* //itinary statements */}
+                                    {item.time_of_dosages[2]?(
+                                        <>
+                                            <input class="checkbox" id="checked" type="checkbox"/>
+                                            <label for="agreement">{item.time_of_dosages[2]}</label> 
+                                        </>
+                                    ):(
+                                        <>
+                                        </>
+                                    )}
+                    
+                                </td>
                                 <td>{item.dosage_notes}</td>
                                 <td>
                         
