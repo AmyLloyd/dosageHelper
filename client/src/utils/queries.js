@@ -66,7 +66,22 @@ query myClients {
             animal_type
             condition_description
             prescriptions{
+                _id
                 created_at
+                dose_frequency
+                instructions
+                quantity
+                course_length
+                number_of_dosages
+                dosage_checked_at
+                time_of_dosages
+                drug{
+                    _id
+                    name
+                    strength
+                    type
+                }
+                active
             }
         }
     }
