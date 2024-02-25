@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useVetContext } from "../../utils/GlobalState";
 
@@ -14,38 +14,58 @@ import "./PrescriptionList.css"
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
-    
+    const { currentClient } = state;
     const { currentPatient } = state;
 
-    const { data } = useQuery(QUERY_PATIENT_BY_ID);
+    console.log("THIS IS THE CODE FOR THE PRESCRIPTION LIST");
+
+    // const { id } = useParams();
+    console.log(currentPatient, "currentPatient");
+    console.log(currentClient, "currentClient");
+    console.log(state,"state");
+    console.log(state.clients, "state.clients");
+
+    const clients  = state.clients;
+    console.log(clients, 'clients');
+  
+    let [oneClient, setOneClient] = useState();
+    let [onePatient, setOnePatient] = useState();
 
     useEffect(() => {
-        if(data) {
-            dispatch({
-                type: UPDATE_PRESCRIPTION,
-                prescriptions: data.prescriptions,
-            });
+        if (clients.length) {
+            const foundClient = clients.find((client) => client._id === currentClient);
+            setOneClient(foundClient);
+            console.log(foundClient);
+    
+            if (foundClient && foundClient.patients.length) {
+                const foundPatient = foundClient.patients.find((patient) => patient._id === currentPatient);
+                setOnePatient(foundPatient);
+                console.log(foundPatient);
+            }
         }
-    }, [data, dispatch]);
+    }, [clients, currentClient, currentPatient]);
+  
 
     //this code could be used to filter by 'active' or not active prescriptions if we add that enhancement
 
-    function filterPrescriptions() {
-        if (!currentPatient) {
-            //CHANGE THIS it doesn't make sense to return all prescriptions
-            return state.prescriptions;
-        }
+    // function filterPrescriptions() {
+    //     if (!currentPatient) {
+    //         //CHANGE THIS it doesn't make sense to return all prescriptions
+    //         return prescriptions;
+    //     }
 
-        return state.prescriptions.filter(
-            (prescription) => prescription.patient._id === currentPatient
-        );
-    }
+    //     return prescriptions.filter(
+    //         (prescription) => prescription.patient._id === currentPatient
+    //     );
+    // }
 
     return (
         <div>
     {/* Need to check defined */}
-            {state.prescriptions.length ? (
+            {currentPatient && oneClient && oneClient.patients ? (
                 <>
+                <h2>{onePatient?.name}</h2>
+                <h4>Your prescriptions</h4>
                 <section className="prescr-list">
                     <table>
                         <thead>
@@ -58,16 +78,17 @@ function PrescriptionList() {
                             </tr>
                         </thead>
                         <tbody>
-                        {filterPrescriptions().map((prescription) => (
+                        {onePatient?.prescriptions?.map((item) => (
                         <PrescriptionItem
-                            key={prescription._id}
-                            _id={prescription._id}
-                            quantity={prescription.quantity}
-                            drug={prescription.drug.name}
-                            dosage_notes={prescription.dosage_notes}
-                            number_of_doses={prescription.number_of_dosages}
-                            time_of_dosages={prescription.time_of_dosages}
-                            dosage_checked_at={prescription.dosage_checked_at}
+                            key={item._id}
+                            _id={item._id}
+                            created_at={item.created_at}
+                            // quantity={item.quantity}
+                            // drug={item.drug.name}
+                            // dosage_notes={item.dosage_notes}
+                            // number_of_doses={item.number_of_dosages}
+                            // time_of_dosages={item.time_of_dosages}
+                            // dosage_checked_at={item.dosage_checked_at}
                             />
                         ))}
                         </tbody>

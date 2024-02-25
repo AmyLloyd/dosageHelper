@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 
 import PatientItem from '../../components/PatientItem';
@@ -59,32 +59,31 @@ function PatientMenu() {
                             <h4>Choose a Patient:</h4>
 
                             <div className='container flex-row'>
-                                {oneClient?.patients?.map((item) => (
-                                    <PatientItem
-                                        key={item._id}
-                                        _id={item._id}
-                                        onClick={() => {
-                                            handleClick(item._id);
-                                        }}
-                                        //passing props
-                                        name={item.name}
-                                        animal_type={item.animal_type}
-                                        condition_description={item.condition_description}
-                                    />
-
-                                ))}
-                                <button onClick={() => { handleClick('') }}>All</button>
+                               
+                            {oneClient?.patients?.map((item) => (
+                                <div className='my-2 mx-2' key={item._id}>
+                                    <Link to={`/patients/${item._id}`}>
+                                        <button 
+                                         onClick={() => {
+                                         handleClick(item._id);
+                                         }}
+                                        >
+                                            {item.username}
+                                        </button>
+                                    </Link>
+                                </div>
+                            ))}
                             </div>
-
                         </div>
-            ) : null}
-            </>
+                    ) : null}
+                </>
   
-            ):(
-            <h1>You need to be logged in</h1>)}
+            ):(<h1>You need to be logged in</h1>)
+            }
 
         </>
     );
-}
+};
 
 export default PatientMenu;
+
