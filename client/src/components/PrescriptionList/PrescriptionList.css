@@ -29,6 +29,10 @@
     border: 1px solid grey;
   }
   
+  td {
+    background: var(--tertiary);
+  }
+
   .add-prescr {
     margin: 20px 0;
   }

@@ -1,4 +1,5 @@
 import ClientMenu from '../components/ClientMenu';
+import ClientForm from '../components/ClientForm';
 
 function Home() {
     
@@ -6,6 +7,7 @@ function Home() {
         <div>
             <h2>Home display page</h2>
             <ClientMenu />
+            <ClientForm />
         </div>
     )
 }
