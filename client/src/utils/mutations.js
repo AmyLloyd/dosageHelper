@@ -48,12 +48,11 @@ export const ADD_CLIENT_TO_VET = gql`
 export const ADD_PATIENT_TO_CLIENT = gql`
     mutation AddPatientToClient($name: String!, $animal_type: String!, $condition_description: String!, $client_id: ID!) {
         addPatientToClient(name: $name, animal_type: $animal_type, condition_description: $condition_description, client_id: $client_id ) {
+            _id
             username 
             patients{
-            name
-            prescriptions{
                 _id
-            }
+                name
             }
         }
     }

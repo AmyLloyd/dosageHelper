@@ -1,28 +1,19 @@
 import { useState } from 'react';
-import { useVetContext } from '../../utils/GlobalState';
 import { useMutation } from '@apollo/client';
-import { ADD_PATIENT_TO_CLIENT } from '../../utils/mutations';
+import { ADD_DRUG_TO_PRESCRIPTION } from '../../utils/mutations';
 
-
-function PatientForm() {
-    const [state, dispatch] = useVetContext();
-
-    console.log(state.currentClient, "state.currentClient");
-
-    const [formState, setFormState] = useState({ name: '', animal_type:'', condition_description: ''});
-    const [addPatientToClient, { error }] = useMutation(ADD_PATIENT_TO_CLIENT);
-    const id = state.currentClient;
-   
+function DrugForm() {
+    const [formState, setFormState] = useState({ username: '', email:'', password: ''});
+    const [addDrugToPrescription, { error }] = useMutation(ADD_DRUG_TO_PRESCRIPTION);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
-            const mutationResponse = await addPatientToClient({
+            const mutationResponse = await addDrugToPrescription({
                 variables: {
                     name: formState.name,
-                    animal_type: formState.animal_type,
-                    condition_description: formState.condition_description,
-                    client_id: id
+                    strength: formState.strength,
+                    type: formState.type
                     },
             });
         } catch (e) {
@@ -40,7 +31,7 @@ function PatientForm() {
 
     return (
         <div className = "container my-1">
-           <h2>Add a Patient</h2>
+           <h2>Add a new drug</h2>
            <form onSubmit={handleFormSubmit}>
               <div className="flex-row space-between my-2">
                 <label htmlFor="name">Name: </label>
@@ -53,28 +44,28 @@ function PatientForm() {
                 />
               </div>
               <div className="flex-row space-between my-2">
-                <label htmlFor="animal_type">Animal Type: </label>
+                <label htmlFor="strength">Strength: </label>
                 <input 
-                placeholder="animal type"
-                name="animal_type"
-                type="animal_type"
-                id="animal_type"
+                placeholder="strength"
+                name="strength"
+                type="strength"
+                id="strength"
                 onChange={handleChange}
                 />
               </div>
               <div className="flex-row space-between my-2">
-                <label htmlFor="condition_description">Condition Description: </label>
+                <label htmlFor="type">Type: </label>
                 <input 
-                placeholder="condition description"
-                name="condition_description"
-                type="condition_description"
-                id="condition_description"
+                placeholder="type"
+                name="type"
+                type="type"
+                id="type"
                 onChange={handleChange}
                 />
               </div>
               {error ? (
                 <div>
-                <p className="error-text">Please check new patient credentials and try again.</p>
+                <p className="error-text">Please check new drug details before trying again.</p>
                 </div>
               ) : null}
               <div className="flex-row flex-end">
@@ -85,4 +76,4 @@ function PatientForm() {
     );
 }
 
-export default PatientForm;
+export default ClientForm;

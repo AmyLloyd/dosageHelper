@@ -78,6 +78,7 @@ function PrescriptionList() {
                                 <td>{item.time_of_dosages}</td>
                                 <td>{item.dosage_notes}</td>
                                 <td>
+                        
                                     <button 
                                     type="button"
                                     // onClick={() => {

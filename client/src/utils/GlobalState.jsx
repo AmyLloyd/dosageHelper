@@ -17,6 +17,7 @@ const VetProvider = ({ value = [], ...props }) => {
 
     currentClient: '',
     currentPatient:'',
+    currentPrescription:'',
   });
 
   return <Provider value={[state, dispatch]} {...props} />;
