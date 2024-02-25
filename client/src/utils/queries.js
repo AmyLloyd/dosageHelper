@@ -68,12 +68,6 @@ query myClients {
             prescriptions{
                 _id
                 created_at
-<<<<<<< Updated upstream
-                drug{
-                    _id
-                    name
-                }
-=======
                 dose_frequency
                 instructions
                 quantity
@@ -88,7 +82,6 @@ query myClients {
                     type
                 }
                 active
->>>>>>> Stashed changes
             }
         }
     }
