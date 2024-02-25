@@ -1,4 +1,4 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useVetContext } from "../../utils/GlobalState";
 
@@ -14,10 +14,15 @@ import "./PrescriptionList.css"
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
-    
-    const { currentPatient } = state;
+
+    console.log(state, "state");
+    console.log(state.clients, "state.clients");
+    console.log(state.currentClient, "state.currentClient");
+
+    // const { currentPatient } = state;
 
     const { data } = useQuery(QUERY_PATIENT_BY_ID);
+
 
     useEffect(() => {
         if(data) {

@@ -16,6 +16,7 @@ const patientSchema = new Schema(
         prescriptions: [
             {
                 type: Schema.Types.ObjectId,
+                required: false,
                 ref: 'Prescription'
             }
         ]

@@ -7,7 +7,6 @@ import { useVetContext } from '../../utils/GlobalState';
 import Auth from '../../utils/auth';
 
 import {
-    UPDATE_CLIENTS,
     UPDATE_CURRENT_PATIENT,
 } from '../../utils/actions';
 
@@ -43,6 +42,7 @@ function PatientMenu() {
     //Code available here for idb and caching in activity 22.26
 
     const handleClick = (id) => {
+        console.log(id, "id here")
         dispatch({
             type: UPDATE_CURRENT_PATIENT,
             currentPatient: id,
@@ -73,7 +73,7 @@ function PatientMenu() {
                                     />
 
                                 ))}
-                                <button onClick={() => { handleClick('') }}>All</button>
+
                             </div>
 
                         </div>

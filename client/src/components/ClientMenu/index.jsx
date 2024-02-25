@@ -22,14 +22,14 @@ function ClientMenu() {
 
     console.log(state, "state");
   
-    console.log(state.currentClient, "state.currentClient");
- 
+    // // console.log(state.currentClient, "state.currentClient");
+
 
     useEffect(() => {
         if(clientData) {
             dispatch({
                 type: UPDATE_CLIENTS,
-                clients: clientData.myClients.clients,
+                clients: clientData.myClients.clients
             });
         }
     }, [clientData, dispatch]);

@@ -66,7 +66,12 @@ query myClients {
             animal_type
             condition_description
             prescriptions{
+                _id
                 created_at
+                drug{
+                    _id
+                    name
+                }
             }
         }
     }

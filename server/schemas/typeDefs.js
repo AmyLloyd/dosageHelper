@@ -38,8 +38,8 @@ const typeDefs = `
     type Drug {
         _id: ID!
         name: String!
-        strength: String!
-        type: String!
+        strength: String
+        type: String
     }
 
     type Patient {
