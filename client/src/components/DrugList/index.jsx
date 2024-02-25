@@ -26,7 +26,7 @@ function DrugList() {
                     <p>{item.type}</p>            
                     <button key={item._id}
                     onClick={() => {
-                        handleclick(item._id);
+                        handleClick(item._id);
                     }}>{item.name}</button>
                 </div>
             ))}

@@ -24,6 +24,7 @@ function Navbar() {
         <Link to="/Home"> Home </Link>
         <Link to="/Drug"> + Drug </Link>
         <Link to="/Signup"> Sign Up </Link>
+        <Link to="/Login">Log in</Link>
         <button onClick={toggleNavbar}>
           {/* <ReorderIcon /> */}
         </button>
