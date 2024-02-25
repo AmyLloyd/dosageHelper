@@ -1,5 +1,6 @@
-import "./styles.css"
+// import "./styles.css"
 
+<<<<<<< Updated upstream
 function PrescriptionItem(item) {
     const {
         _id,
@@ -36,7 +37,28 @@ function PrescriptionItem(item) {
             </td>
         </tr>
     );
-        
-}
+=======
+// function PrescriptionItem(item) {
+//     const {
+//         _id,
+//         key,
+//         created_at,
+//         // quantity,
+//         // dose_frequency,
+//         // drug,
+//         dosage_notes,
+//         // number_of_dosages,
+//         time_of_dosages,
+//         // dosage_checked_at
+//     } = item;
 
-export default PrescriptionItem;
+//     return (
+//         <div>
+           
+//         </div>
+//     );
+>>>>>>> Stashed changes
+        
+// }
+
+// export default PrescriptionItem;

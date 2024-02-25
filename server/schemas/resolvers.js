@@ -28,9 +28,15 @@ const resolvers = {
             populate: {
                 path: 'prescriptions',
                 populate: {
+<<<<<<< Updated upstream
                   path: 'drug'
                 },
             },
+=======
+                  path: 'drug',
+                }
+            }
+>>>>>>> Stashed changes
           },
         });
       }

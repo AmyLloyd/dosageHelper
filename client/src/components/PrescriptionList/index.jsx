@@ -8,13 +8,14 @@ import { useVetContext } from "../../utils/GlobalState";
 //  } from "../../utils/actions";
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
-import PrescriptionItem from '../PrescriptionItem';
+// import PrescriptionItem from '../PrescriptionItem';
 
 import "./PrescriptionList.css"
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
 
+<<<<<<< Updated upstream
     console.log(state, "state");
     console.log(state.clients, "state.clients");
     console.log(state.currentClient, "state.currentClient");
@@ -23,6 +24,12 @@ function PrescriptionList() {
 
     const { data } = useQuery(QUERY_PATIENT_BY_ID);
 
+=======
+    const clients  = state.clients;
+  
+    let [oneClient, setOneClient] = useState();
+    let [onePatient, setOnePatient] = useState();
+>>>>>>> Stashed changes
 
     useEffect(() => {
         if(data) {
@@ -48,14 +55,21 @@ function PrescriptionList() {
 
     return (
         <div>
+<<<<<<< Updated upstream
     {/* Need to check defined */}
             {state.prescriptions.length ? (
                 <>
+=======
+            {currentPatient && oneClient && oneClient.patients ? (
+                <>
+                <h1>{onePatient?.name}</h1>
+                <h4>Active prescriptions</h4>
+>>>>>>> Stashed changes
                 <section className="prescr-list">
                     <table>
                         <thead>
                             <tr>
-                                <th>DRUG NAME</th>
+                                <th>DRUG</th>
                                 <th>DOSE</th>
                                 <th>DOSAGE TIME</th>
                                 <th>DOSAGE NOTES</th>
@@ -63,6 +77,7 @@ function PrescriptionList() {
                             </tr>
                         </thead>
                         <tbody>
+<<<<<<< Updated upstream
                         {filterPrescriptions().map((prescription) => (
                         <PrescriptionItem
                             key={prescription._id}
@@ -74,6 +89,31 @@ function PrescriptionList() {
                             time_of_dosages={prescription.time_of_dosages}
                             dosage_checked_at={prescription.dosage_checked_at}
                             />
+=======
+                        {onePatient?.prescriptions?.map((item) => (
+                            <tr>
+                                <td>{item.drug.name}</td>
+                                <td>{item.created_at}</td>
+                                <td>{item.time_of_dosages}</td>
+                                <td>{item.dosage_notes}</td>
+                                <td>
+                                    <button 
+                                    type="button"
+                                    // onClick={() => {
+                                    //     console.log("PrescriptionList.js: Dispatched checked!");
+                                    //     return dispatch({ 
+                                    //         type: DOSAGE_CHECKED,
+                                    //         payload: dosage_checked_at
+                                    //     });
+                                    // }}
+                                    >
+                                        <span role="img" aria-label="delete">
+                                            ✖️
+                                        </span>
+                                    </button>
+                                </td>
+                            </tr>
+>>>>>>> Stashed changes
                         ))}
                         </tbody>
                     </table>

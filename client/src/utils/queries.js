@@ -68,10 +68,27 @@ query myClients {
             prescriptions{
                 _id
                 created_at
+<<<<<<< Updated upstream
                 drug{
                     _id
                     name
                 }
+=======
+                dose_frequency
+                instructions
+                quantity
+                course_length
+                number_of_dosages
+                dosage_checked_at
+                time_of_dosages
+                drug{
+                    _id
+                    name
+                    strength
+                    type
+                }
+                active
+>>>>>>> Stashed changes
             }
         }
     }
