@@ -12,6 +12,7 @@ import Patient from './pages/Patient';
 import Drug from './pages/Drug';
 import Error from './pages/Error';
 import Landing from './pages/Landing';
+import DosageHelperPDF from './pages/DosageHelperPDF.jsx';
 
 const router = createBrowserRouter([
   {
@@ -41,7 +42,11 @@ const router = createBrowserRouter([
       }, {
         path: '/patients/:id',
         element: <Patient />
+      }, {
+        path: '/prescriptionPDF',
+        element: <DosageHelperPDF />
       }
+
     ]
   }
 ])

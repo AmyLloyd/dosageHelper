@@ -22,7 +22,7 @@ function DrugList() {
         <div>
             <h4>Drugs to choose from:</h4>
             {data?.drugs.map((item) => (
-                <div className='card mx-2 my-2'>
+                <div className='card mx-2 my-2' key={item._id}>
                     <p>{item.name}</p>
                     <p>{item.strength}</p>
                     <p>{item.type}</p>            

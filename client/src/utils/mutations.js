@@ -106,10 +106,19 @@ mutation UpdateVet($password: String, $username: String) {
 `;
 
 export const UPDATE_PRESCRIPTION= gql`
-mutation UpdatePrescription($id: ID!, $dosageChecked: Boolean) {
-    updatePrescription()
-}`
-// export const UPDATE_PRESCRIPTION = gql`
-// mutation UpdatePrescription($username: String) {
-    
-// }`
+mutation UpdatePrescription($prescription_id: ID!, $dosage_checked_at: [String]) {
+    updatePrescription(prescription_id: $prescription_id,dosage_checked_at: $dosage_checked_at) {
+        created_at
+        time_of_dosages
+        dosage_notes
+        number_of_dosages
+        dose_frequency
+        dosage_checked_at
+        drug{
+            _id
+            name
+            }
+        _id
+        }
+  }
+`;
