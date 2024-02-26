@@ -208,6 +208,15 @@ const resolvers = {
       
       throw AuthenticationError;
     },
+    updatePrescription: async (parent, args, context) => {
+      if(context.user) {
+        return Prescription.findByIdAndUpdate(args, {
+          new: true
+        }).populate('drug');
+      }
+
+      throw AuthenticationError;
+    },
     addClientToVet: async (parent, {username, email, password}, context) => {
       if(context.user ) {
         const client = await Client.create({ username, email, password });

@@ -2,7 +2,8 @@ function Drug() {
     
     return (
         <div>
-            <h2>Drug display page</h2>
+            <h2>Add new drug</h2>
+            <DrugForm />
         </div>
     )
 }

@@ -91,7 +91,8 @@ const typeDefs = `
 
         addPrescriptionToPatient(dose_frequency: Int!, instructions: String, quantity: Int, course_length: Int, prescriber: ID, number_of_dosages: Int, time_of_dosages: [String], dosage_notes: String, patient_id: ID!): Patient
 
-        addDrugToPrescription(drug_id: ID!, prescription_id: ID!): Prescription  
+        addDrugToPrescription(drug_id: ID!, prescription_id: ID!): Prescription
+        updatePrescription(prescription_id: ID!, dosage_checked_at: [String]): Prescription
     }
 
 `;
