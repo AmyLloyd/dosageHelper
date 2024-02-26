@@ -61,7 +61,10 @@ function PatientMenu() {
                             <div className='container flex-row'>
                                
                             {oneClient?.patients?.map((item) => (
-                                <div className='my-2 mx-2' key={item._id}>
+                                <div className=' card my-2 mx-2' key={item._id}>
+                                    <h3>{item.name}</h3>
+                                    <p>{item.condition_description}</p>
+                                    <p>{item.animal_type}</p>
                                     <Link to={`/patients/${item._id}`}>
                                         <button 
                                          onClick={() => {

@@ -10,8 +10,7 @@ function Patient() {
     return (
         <div>
             <PrescriptionList />
-            <DrugList />
-            <PrescriptionForm />
+
         </div>
     )
 }

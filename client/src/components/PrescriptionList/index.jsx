@@ -42,6 +42,9 @@ function PrescriptionList() {
 
     return (
         <>
+            <button>
+                <Link to="/Prescription"> Add new prescription </Link>
+            </button>
             {currentPatient && oneClient && oneClient.patients ? (
             <>
                 <h1>{onePatient?.name}</h1>
@@ -118,9 +121,9 @@ function PrescriptionList() {
                 {/* <h3>Condition: {onePatient.condition_description}</h3> */}
                 <h4>Dosage Helper</h4>
                 <div>
-                    <div className='button'>
+                    <button>
                         <Link to="/DosageHelperPDF"> Print Dosage Helper for client </Link>
-                    </div>
+                    </button>
                 </div>
                 
                 <section className="prescr-list">
