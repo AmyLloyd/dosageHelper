@@ -8,48 +8,5 @@
         "number_of_dosages":3,
         "time_of_dosages":["am", "noon", "pm"], 
         "dosage_notes":"No water or food 1 hour before."
-    },
-    {
-        "dose_frequency":1,
-        "instructions":"Take 1 every day for a week",
-        "quantity":7,
-        "course_length":7,
-        "prescriber":"65cc52e9a3940223d6c1f1bf",
-        "number_of_dosages":1,
-        "time_of_dosages":["pm"],
-  
-        "dosage_notes":"3/4 tablet"
-    },
-    {
-        "dose_frequency":2,
-        "instructions":"Apply 1 every 7 days for 3 weeks",
-        "quantity":3,
-        "course_length":21,
-        "prescriber":"65cc52e9a3940223d6c1f1be",
-        "number_of_dosages":"",
-        "time_of_dosages":["am"],
- 
-        "dosage_notes":"Good luck!"
-    },
-    {
-        "dose_frequency":2,
-        "instructions":"Apply 1 drop, once every day for 10 days",
-        "quantity":10,
-        "course_length":10,
-        "prescriber":"65cc52e9a3940223d6c1f1c1",
-        "number_of_dosages":3,
-        "time_of_dosages":["am"],
-
-        "dosage_notes":"Wash with washie wash one hour before applying."
-    },
-    {
-        "dose_frequency":1,
-        "instructions":"Insert 0.5mL into each ear, once per day",
-        "quantity": 10,
-        "course_length": 10,
-        "prescriber":"65cc52e9a3940223d6c1f1c1",
-        "number_of_dosages": 1,
-        "time_of_dosages": ["am"],
-        "dosage_notes": "Use wash one hour before ear drops."
     }
 ]

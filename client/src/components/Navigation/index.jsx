@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import Logo from "./public/images/logo.png";
+import Logo from "/images/logo.png";
 import { Link } from "react-router-dom";
 // import ReorderIcon from "@material-ui/icons/Reorder";
 import "./Navigation.css";
@@ -20,12 +20,12 @@ function Navbar() {
           <Link to="/Signup"> Sign Up </Link>
         </div>
       </div>
-      <div className="rightSide">
+      <div className="rightSide">  
         <Link to="/Home"> Home </Link>
         <Link to="/Drug"> + Drug </Link>
         <Link to="/Signup"> Sign Up </Link>
         <button onClick={toggleNavbar}>
-          <ReorderIcon />
+          {/* <ReorderIcon /> */}
         </button>
       </div>
     </div>
