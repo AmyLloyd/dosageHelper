@@ -33,13 +33,15 @@ mutation LoginVet($email: String!, $password: String!) {
 export const ADD_CLIENT_TO_VET = gql`
     mutation addClientToVet($username: String!, $email: String!, $password: String!) {
         addClientToVet(username: $username, email: $email, password: $password) {
-        token 
-        client {
-            _id
+
             username
-            email
-            password
-        }
+            clients {
+                _id
+                username
+                email
+                password
+                is_client
+            }
         }
     }
 `;
@@ -47,12 +49,12 @@ export const ADD_CLIENT_TO_VET = gql`
 export const ADD_PATIENT_TO_CLIENT = gql`
     mutation AddPatientToClient($name: String!, $animal_type: String!, $condition_description: String!, $client_id: ID!) {
         addPatientToClient(name: $name, animal_type: $animal_type, condition_description: $condition_description, client_id: $client_id ) {
+
+            _id
             username 
             patients{
-            name
-            prescriptions{
                 _id
-            }
+                name
             }
         }
     }
@@ -62,6 +64,8 @@ export const ADD_DRUG_TO_PRESCRIPTION = gql`
     mutation addDrugToPrescription($drug_id: ID!, $prescription_id: ID!){
         addDrugToPrescription(drug_id: $drug_id, prescription_id: $prescription_id ) {
         _id
+
+        created_at
         drug{
             _id
             name
@@ -104,7 +108,21 @@ mutation UpdateVet($password: String, $username: String) {
   }
 `;
 
-export const UPDATE_PRESCRIPTION = gql`
-mutation UpdatePrescription($username: String) {
-    
-}`
+export const UPDATE_PRESCRIPTION= gql`
+mutation UpdatePrescription($prescription_id: ID!, $dosage_checked_at: [String]) {
+    updatePrescription(prescription_id: $prescription_id,dosage_checked_at: $dosage_checked_at) {
+        created_at
+        time_of_dosages
+        dosage_notes
+        number_of_dosages
+        dose_frequency
+        dosage_checked_at
+        drug{
+            _id
+            name
+            }
+        _id
+        }
+  }
+`;
+

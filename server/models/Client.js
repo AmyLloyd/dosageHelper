@@ -10,14 +10,24 @@ const clientSchema = new Schema(
         },
         email: {
             type: String,
-            required: true,
+            required: false,
             unique: true,
             match:  [/.+@.+\..+/, 'Must use a valid email address'],
         },
         password: {
             type: String,
-            required: true,
+            required: false,
             minLength: 5,
+        },
+        // temp_password: {
+        //     type:String,
+        //     required: false,
+        //     minLength:5,
+        // },
+        is_client: {
+            type: Boolean,
+            required: true,
+            default: true
         },
         patients: [
             {
@@ -47,6 +57,21 @@ clientSchema.pre('save', async function (next) {
 clientSchema.methods.isCorrectPassword = async function (password) {
     return bcrypt.compare(password, this.password);
 };
+
+// //set up pre-save middleware to create password
+// clientSchema.pre('save', async function (next) {
+//     if(this.isNew || this.isModified('temp_password')) {
+//         const saltRounds = 10;
+//         this.temp_password = await bcrypt.hash(this.temp_password, saltRounds);
+//     }
+
+//     next();
+// });
+
+// //compare the incoming password with the hashed password
+// clientSchema.methods.isCorrectPassword = async function (temp_password) {
+//     return bcrypt.compare(temp_password, this.temp_password);
+// };
 
 const Client = model('Client', clientSchema);
 

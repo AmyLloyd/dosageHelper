@@ -7,8 +7,9 @@ import {
 } from '@apollo/client';
 import { setContext } from '@apollo/client/link/context';
 
-import Nav from './components/Nav';
-// import { VetProvider } from './utils/GlobalState';
+import Navbar from './components/Navigation';
+import { VetProvider } from './utils/GlobalState';
+
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -29,14 +30,14 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
-console.log(client, "client");
-
 function App() {
   return (
     <ApolloProvider client={client}>
       <div>
-        {/* <VetProvider> */}
-          <Nav />
+
+        <VetProvider>
+          <Navbar />
+
           <Outlet />
         {/* </VetProvider> */}
       </div>

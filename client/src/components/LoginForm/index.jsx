@@ -19,6 +19,8 @@ function LoginForm(props) {
             console.log(mutationResponse, "mutationResponse");
             const token = mutationResponse.data.loginVet.token;
             Auth.login(token);
+
+            
             console.log("You are now logged in.");
         } catch (e) {
             console.log(e);
@@ -34,49 +36,53 @@ function LoginForm(props) {
     };
 
     return (
-        <div className='wrapper'>
-            <form action="" onSubmit={handleFormSubmit}>
-                <h1>Welcome Back!</h1>
-                <div className="input-box">
-                    <input type="email"
-                    placeholder='Email address'
-                    name="email"
-                    id="email"
-                    onChange={handleChange}
-                    required />
-                    <FaUser className='icon' />
-                </div>
-                <div className="input-box">
-                    <input type="password"
-                    placeholder='Password'
-                    name="password"
-                    id="pwd"
-                    onChange={handleChange}
-                    required />
-                    <FaLock className='icon' />
-                </div>
 
-
-                {/* <div className="remember-forgot">
-                    <label><input type="checkbox" />Remember me</label>
-                    <a href="#">Forgot password?</a>
-                </div> */}
-
-                {error ? (
-                    <div>
-                        <p className="error-text">Please check your email and password and try again.</p>
+            <div className='wrapper'>
+                <form action="" onSubmit={handleFormSubmit}>
+                    <h1>Welcome Back!</h1>
+                    <div className="input-box">
+                        <input type="email"
+                        placeholder='Email address'
+                        name="email"
+                        id="email"
+                        onChange={handleChange}
+                        required />
+                        <FaUser className='icon' />
                     </div>
-                ) : null}
+                    <div className="input-box">
+                        <input type="password"
+                        placeholder='Password'
+                        name="password"
+                        id="pwd"
+                        onChange={handleChange}
+                        required />
+                        <FaLock className='icon' />
+                    </div>
 
-                <button type="submit">Login</button>
 
-                <div className="register-link">
-                    <p>Don't have an account? <a href="#">Register</a></p>
-                </div>
-                <Link to="/signup">Signup</Link>
-            </form>
-        </div>
+                    {/* <div className="remember-forgot">
+                        <label><input type="checkbox" />Remember me</label>
+                        <a href="#">Forgot password?</a>
+                    </div> */}
+
+                    {error ? (
+                        <div>
+                            <p className="error-text">Please check your email and password and try again.</p>
+                        </div>
+                    ) : null}
+
+                    <button type="submit">Login</button>
+
+                    <div className="register-link">
+                        <p>Don&apos;t have an account? <a href="#">
+                        <Link to="/signup">Signup</Link>
+                        </a></p>
+                    </div>
+                    
+                </form>
+            </div>
     );
-};
+}
+
 
 export default LoginForm;

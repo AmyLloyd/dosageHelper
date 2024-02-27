@@ -51,13 +51,56 @@ query getDrugById($id: ID!) {
 `;
 
 export const QUERY_MY_CLIENTS = gql `
-    query myClients {
-        myClients {
-        _id
+
+query myClients {
+    myClients{
+    _id
+    username
+    clients{
         username
-        clients{
-            username
+        _id
+        email
+        is_client
+        patients{
+            _id
+            name
+            animal_type
+            condition_description
+            prescriptions{
+                _id
+                created_at
+                dose_frequency
+                instructions
+                quantity
+                course_length
+                number_of_dosages
+                dosage_checked_at
+                time_of_dosages
+                drug{
+                    _id
+                    name
+                    strength
+                    type
+                }
+                active
+            }
         }
+    }
+  }
+}
+`
+
+export const QUERY_PATIENTS_BY_CLIENT = gql `
+    query getPatientsByClient($id: ID!) {
+        client(id: $id){
+            _id
+            username
+            patients{
+                _id
+                name
+                animal_type
+                condition_description
+            }
         }
     }
 `;
@@ -108,6 +151,8 @@ export const QUERY_PATIENT_BY_ID = gql `
         }
     }
 `;
+
+
 
 // query getAllClients{
 //     clients{

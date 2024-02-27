@@ -13,6 +13,11 @@ import Patient from './pages/Patient';
 import Drug from './pages/Drug';
 import Error from './pages/Error';
 
+import Landing from './pages/Landing';
+import DosageHelperPDF from './pages/DosageHelperPDF.jsx';
+import Prescription from './pages/Prescription.jsx';
+
+
 const router = createBrowserRouter([
   {
     path: '/',
@@ -21,6 +26,10 @@ const router = createBrowserRouter([
     children: [
       {
         index: true,
+        element: <Landing />
+      },
+      {
+        path: '/home',
         element: <Home />
       }, {
         path: '/login',
@@ -37,7 +46,14 @@ const router = createBrowserRouter([
       }, {
         path: '/patient',
         element: <Patient />
+      }, {
+        path: '/prescriptionPDF',
+        element: <DosageHelperPDF />
+      }, {
+        path: '/prescription',
+        element: <Prescription />
       }
+
     ]
   }
 ])

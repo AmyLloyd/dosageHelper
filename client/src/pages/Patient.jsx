@@ -1,11 +1,17 @@
 import PrescriptionList from "../components/PrescriptionList";
 
+import PrescriptionForm from "../components/PrescriptionForm";
+import DrugList from "../components/DrugList";
+
 function Patient() {
     
+    
+
+
     return (
         <div>
-            <h2>Patient display page</h2>
             <PrescriptionList />
+
         </div>
     )
 }

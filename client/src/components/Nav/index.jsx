@@ -1,5 +1,6 @@
 import Auth from "../../utils/auth";
 import { Link } from "react-router-dom";
+import './nav.css';
 
 function Nav() {
 
@@ -33,7 +34,8 @@ function Nav() {
     } else {
       return (
       <div>
-        <ul className="d-flex flex-row">
+
+        <ul className="flex-row">
           <li className="mx-1">
             <Link to="/signup">
               Signup
@@ -52,11 +54,12 @@ function Nav() {
 
   return (
     
-  <div className="d-flex">
+
+  <div className="">
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
-          <span role="img" aria-label="shopping bag">🛍️</span>
+          <span role="img" aria-label=""></span>
           dosageHelper
         </Link>
       </h1>
