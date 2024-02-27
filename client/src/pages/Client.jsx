@@ -3,8 +3,8 @@ import PatientForm from "../components/PatientForm";
 
 const Client = () => {
     return (
-        <div>
-           <h2>Patients List</h2>         
+        <div className='center'>
+           <h2 className='center'>Patients List</h2>         
             <div className="container">   
                 <PatientMenu />
                 <PatientForm />

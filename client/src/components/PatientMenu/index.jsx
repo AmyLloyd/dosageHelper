@@ -52,7 +52,7 @@ function PatientMenu() {
     return (
         <>
             {Auth.loggedIn() ? (
-                <>
+                <div className='center'>
                     {state.currentClient && clients ? (
                         <div>
                             <h3>Here are you patients:</h3>
@@ -61,9 +61,9 @@ function PatientMenu() {
                             <div className='container flex-row'>
                                
                             {oneClient?.patients?.map((item) => (
-                                <div>
+                                <div className='card  my-2 mx-2'>
                                     
-                                    <div className=' card my-2 mx-2' key={item._id}>
+                                    <div  key={item._id}>
                                         <h3>{item.name}</h3>
                                         <p>{item.condition_description}</p>
                                         <p>{item.animal_type}</p>
@@ -82,7 +82,7 @@ function PatientMenu() {
                             </div>
                         </div>
                     ) : null}
-                </>
+                </div>
   
             ):(<h1>You need to be logged in</h1>)
             }

@@ -38,9 +38,9 @@ function ClientMenu() {
 
     return (
         <div> 
-                    <div className='card'>
+                    <div className='container background-br flex-row py-2 px-2'>
                         {clients.map((item) => (
-                                <div className='my-2 mx-2'
+                                <div className='my-2 mx-2 flex-item'
                                 key={item._id}>
                                     <Link to={`/clients/${item._id}`}>
                                         <button

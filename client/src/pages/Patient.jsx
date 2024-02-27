@@ -8,7 +8,7 @@ function Patient() {
 
 
     return (
-        <div>
+        <div className='center'>
             <h1>Your patients:</h1>
             <PrescriptionList />
 
