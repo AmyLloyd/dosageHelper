@@ -1,3 +1,5 @@
+import DrugForm from '../components/DrugForm';
+
 function Drug() {
     
     return (
