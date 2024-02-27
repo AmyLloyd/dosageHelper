@@ -8,8 +8,6 @@ const { authMiddleware } = require('./utils/auth');
 const { typeDefs, resolvers } = require('./schemas');
 const db = require('./config/connection');
 
-console.log(db, "db");
-
 const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
@@ -17,7 +15,6 @@ const server = new ApolloServer({
     resolvers
   });
 
-console.log(server, "server");
   
 const startApolloServer = async () => {
 await server.start();
@@ -38,7 +35,6 @@ app.use('/graphql', expressMiddleware(server, {
       res.sendFile(path.join(__dirname, '../client/dist/index.html'));
     });
   }
-console.log(app, "app");
 
   db.once("open", () => {
       app.listen(PORT, () => {
