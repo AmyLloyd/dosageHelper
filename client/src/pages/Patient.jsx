@@ -9,7 +9,7 @@ function Patient() {
 
     return (
         <div className='center'>
-            <h1>Your patients:</h1>
+            <h2>Your prescriptions:</h2>
             <PrescriptionList />
 
         </div>

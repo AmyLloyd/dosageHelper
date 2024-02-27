@@ -38,20 +38,21 @@ function PrescriptionList() {
         }
     }, [clients, currentClient, currentPatient]);
   
-    const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"];
+    const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14"];
 
     return (
         <>
-            <button>
+            <button className='my-2'>
                 <Link to="/Prescription"> Add new prescription </Link>
             </button>
             {currentPatient && oneClient && oneClient.patients ? (
             <>
-                <h1>{onePatient?.name}</h1>
+          
+                <h2>{onePatient?.name}</h2>
                 {/* <h3>Condition: {onePatient.condition_description}</h3> */}
-                <h4>Prescription History</h4>
+                <h5>Prescription History</h5>
 
-                <section className="prescr-list">
+                <section className="prescr-list my-2">
                     <table>
                         <thead>
                             <tr>
@@ -126,7 +127,7 @@ function PrescriptionList() {
                     </button>
                 </div>
                 
-                <section className="prescr-list">
+                <section className="prescr-list my-2">
                     <table>
                         <thead>
                             <tr>

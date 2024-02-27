@@ -3,8 +3,7 @@ import DrugForm from '../components/DrugForm';
 function Drug() {
     
     return (
-        <div>
-            <h2>Add new drug</h2>
+        <div className='background-br'>
             <DrugForm />
         </div>
     )

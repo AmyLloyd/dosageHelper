@@ -5,7 +5,7 @@ function Home() {
     
     return (
         <div className='center-a'>
-            <h1 className='center'>Welcome Vet!</h1>
+            <h2 className='center'>Welcome Vet!</h2>
             <ClientMenu />
             <ClientForm />
         </div>
