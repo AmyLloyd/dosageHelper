@@ -12,7 +12,7 @@ function Navbar() {
     const toggleNavbar = () => {
       setOpenLinks(!openLinks);
     };
-    
+
     if (Auth.loggedIn()) {
 
 
@@ -34,6 +34,9 @@ function Navbar() {
             <div>
               <a href="/" onClick={() => Auth.logout()}>Logout</a>
             </div>
+            <button onClick={toggleNavbar}>
+            {/* <ReorderIcon /> */}
+            </button>
           </div>
         </div>
       );
@@ -56,6 +59,9 @@ function Navbar() {
           <Link to="/Drug"> + Drug </Link>
           <Link to="/Signup"> Sign Up </Link>
           <Link to="/Login">Log in</Link>
+          <button onClick={toggleNavbar}>
+          {/* <ReorderIcon /> */} 
+        </button>
         </div>
       </div>
       );
