@@ -55,25 +55,28 @@ function PatientMenu() {
                 <>
                     {state.currentClient && clients ? (
                         <div>
-                            <h2>Showing patients of {oneClient?.username}</h2>
-                            <h4>Choose a Patient:</h4>
+                            
 
                             <div className='container flex-row'>
                                
                             {oneClient?.patients?.map((item) => (
-                                <div className=' card my-2 mx-2' key={item._id}>
-                                    <h3>{item.name}</h3>
-                                    <p>{item.condition_description}</p>
-                                    <p>{item.animal_type}</p>
-                                    <Link to={`/patients/${item._id}`}>
-                                        <button 
-                                         onClick={() => {
-                                         handleClick(item._id);
-                                         }}
-                                        >
-                                            {item.username}
-                                        </button>
-                                    </Link>
+                                <div>
+                                    <h4>Here are you patients:</h4>
+                                    <h2>Animals of {oneClient?.username}</h2>
+                                    <div className=' card my-2 mx-2' key={item._id}>
+                                        <h3>{item.name}</h3>
+                                        <p>{item.condition_description}</p>
+                                        <p>{item.animal_type}</p>
+                                        <Link to={`/patients/${item._id}`}>
+                                            <button 
+                                            onClick={() => {
+                                            handleClick(item._id);
+                                            }}
+                                            >
+                                                {item.username}
+                                            </button>
+                                        </Link>
+                                    </div>
                                 </div>
                             ))}
                             </div>

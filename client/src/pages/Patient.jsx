@@ -9,6 +9,7 @@ function Patient() {
 
     return (
         <div>
+            <h1>Your patients:</h1>
             <PrescriptionList />
 
         </div>

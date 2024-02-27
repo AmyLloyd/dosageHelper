@@ -20,11 +20,6 @@ function ClientMenu() {
 
     const { data: clientData } = useQuery (QUERY_MY_CLIENTS);
 
-    console.log(state, "state");
-  
-    // // console.log(state.currentClient, "state.currentClient");
-
-
     useEffect(() => {
         if(clientData) {
             dispatch({
@@ -43,7 +38,6 @@ function ClientMenu() {
 
     return (
         <div> 
-            <h2> Choose a Client: </h2>
                     <div className='card'>
                         {clients.map((item) => (
                                 <div className='my-2 mx-2'
