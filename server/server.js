@@ -10,7 +10,7 @@ const db = require('./config/connection');
 
 console.log(db, "db");
 
-const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 3001;
 const app = express();
 const server = new ApolloServer({
     typeDefs,
