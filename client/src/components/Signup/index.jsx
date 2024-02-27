@@ -1,28 +1,27 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import './Signup.css';
+import './styles.css';
 import { FaUser, FaLock } from "react-icons/fa";
 import { Link } from 'react-router-dom';
-import { LOGIN } from '../../utils/mutations';
+import { SIGNUP } from '../../utils/mutations';
 import Auth from '../../utils/auth';
 
-function Signup(props) {
+function SignupForm(props) {
     const [formState, setFormState] = useState({ username: '', email: '', password: '' });
-    const [login, { error }] = useMutation(LOGIN);
+    const [signup, { error }] = useMutation(SIGNUP);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
+        console.log(formState, "formState");
         try {
-            const mutationResponse = await login({
-                variables: { email: formState.email, password: formState.password },
+            const { data } = await signup({
+              variables: { ...formState },
             });
-            console.log(mutationResponse, "mutationResponse");
-            const token = mutationResponse.data.loginVet.token;
-            Auth.login(token);
-            console.log("You are now logged in.");
-        } catch (e) {
-            console.log(e);
-        }
+      
+            Auth.login(data.signUpVet.token);
+          } catch (e) {
+            console.error(e);
+          }
     };
 
     const handleChange = (event) => {
@@ -65,12 +64,6 @@ function Signup(props) {
                         <FaLock className='icon' />
                     </div>
 
-
-                    {/* <div className="remember-forgot">
-                        <label><input type="checkbox" />Remember me</label>
-                        <a href="#">Forgot password?</a>
-                    </div> */}
-
                     <button type="submit">Sign Up</button>
 
                     <div className="register-link">
@@ -84,4 +77,4 @@ function Signup(props) {
     );
 }
 
-export default Signup;
+export default SignupForm;

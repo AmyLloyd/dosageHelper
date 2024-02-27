@@ -76,4 +76,4 @@ function DrugForm() {
     );
 }
 
-export default ClientForm;
+export default DrugForm;

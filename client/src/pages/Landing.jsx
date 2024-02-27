@@ -1,8 +1,10 @@
+import LandingComp from '../components/LandingComp';
+
 function Landing() {
     
     return (
         <div>
-            <h2>Landing page with Hero</h2>
+            <LandingComp />
 
         </div>
     )
