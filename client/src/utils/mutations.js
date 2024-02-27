@@ -3,12 +3,12 @@ import { gql } from '@apollo/client';
 export const SIGNUP = gql `
     mutation signUpVet($username: String!, $email: String!, $password: String!) {
         signUpVet(username: $username, email: $email, password: $password) {
-        token
-        vet {
-            _id
-            username
-            email
-        }
+            token
+            vet {
+                _id
+                username
+                email
+            }
         }
     }
 `;

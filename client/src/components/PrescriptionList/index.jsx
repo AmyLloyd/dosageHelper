@@ -75,12 +75,12 @@ function PrescriptionList() {
                                 <td>{item.course_length} days</td>
 
                                 <td>
-                                    <input class="checkbox" id="checked" type="checkbox" />
+                                    <input className="checkbox" id="checked" type="checkbox" />
                                     <label for="agreement">{item.time_of_dosages[0]} </label>
                                     
                                     {item.time_of_dosages[1]?(
                                         <>
-                                            <input class="checkbox" id="checked" type="checkbox" />
+                                            <input className="checkbox" id="checked" type="checkbox" />
                                             <label for="agreement">{item.time_of_dosages[1]}</label> 
                                         </>
                                     ):(
@@ -91,7 +91,7 @@ function PrescriptionList() {
                                     {/* //itinary statements */}
                                     {item.time_of_dosages[2]?(
                                         <>
-                                            <input class="checkbox" id="checked" type="checkbox"/>
+                                            <input className="checkbox" id="checked" type="checkbox"/>
                                             <label for="agreement">{item.time_of_dosages[2]}</label> 
                                         </>
                                     ):(
@@ -144,11 +144,11 @@ function PrescriptionList() {
                                     <td>DAY ___________</td>
                                     {onePatient?.prescriptions?.map((item) => (
                                     <td key={item._id}>
-                                        <input class="checkbox" id="checked" type="checkbox" />
+                                        <input className="checkbox" id="checked" type="checkbox" />
                                         <label for="agreement">{item.time_of_dosages[0]} </label>
                                     {item.time_of_dosages[1]?(
                                             <>
-                                                <input class="checkbox" id="checked" type="checkbox" />
+                                                <input className="checkbox" id="checked" type="checkbox" />
                                                 <label for="agreement">{item.time_of_dosages[1]}</label> 
                                             </>
                                     ):(
@@ -158,7 +158,7 @@ function PrescriptionList() {
                                     {/* //itinary statements */}
                                     {item.time_of_dosages[2]?(
                                         <>
-                                            <input class="checkbox" id="checked" type="checkbox"/>
+                                            <input className="checkbox" id="checked" type="checkbox"/>
                                             <label for="agreement">{item.time_of_dosages[2]}</label> 
                                         </>
                                     ):(
