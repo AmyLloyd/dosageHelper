@@ -21,7 +21,7 @@ Never forget a single dose again! With the client checklist, all medications pre
 
 ![Client medication checklist with a tickbox function]('')
 
-After completeing every dose, be sure to tick it off in the chart. 
+After completeing a dose, be sure to tick it off in the chart. 
 
 ## Credits
 
