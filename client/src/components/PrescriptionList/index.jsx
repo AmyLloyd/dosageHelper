@@ -124,7 +124,7 @@ function PrescriptionList() {
 
            
                 {/* <h3>Condition: {onePatient.condition_description}</h3> */}
-                <h4>Dosage Helper</h4>
+                <h4 className= 'my-2' >Dosage Helper</h4>
                 <div>
                     <button>
                         <Link to="/DosageHelperPDF"> Print Dosage Helper for client </Link>
