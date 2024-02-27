@@ -6,11 +6,12 @@ function Drug() {
 
         <div className='background-br'>
 
-        <div>
+            <div>
 
-            <h2>Add new drug</h2>
+                <h2>Add new drug</h2>
 
-            <DrugForm />
+                <DrugForm />
+            </div>
         </div>
     )
 }

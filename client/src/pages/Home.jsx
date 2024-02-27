@@ -10,12 +10,13 @@ function Home() {
         <div className='center-a'>
             <h2 className='center'>Welcome Vet!</h2>
 
-        <div>
+            <div>
 
 
-            <ClientMenu />
-            <ClientForm />
+                <ClientMenu />
+                <ClientForm />
 
+            </div>
         </div>
     )
 }
