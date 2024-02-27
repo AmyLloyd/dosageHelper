@@ -32,7 +32,8 @@ function Nav() {
       );
     } else {
       return (
-        <ul className="flex-row">
+      <div>
+        <ul className="d-flex flex-row">
           <li className="mx-1">
             <Link to="/signup">
               Signup
@@ -44,11 +45,14 @@ function Nav() {
             </Link>
           </li>
         </ul>
+      </div>
       );
     }
   }
 
   return (
+    
+  <div className="d-flex">
     <header className="flex-row px-1">
       <h1>
         <Link to="/">
@@ -61,6 +65,8 @@ function Nav() {
         {showNavigation()}
       </nav>
     </header>
+  </div>
+
   );
 }
 
