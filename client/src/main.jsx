@@ -2,6 +2,7 @@ import ReactDOM from 'react-dom/client'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 
 import './index.css'
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 import App from './App.jsx'
 import Home from './pages/Home';
@@ -11,9 +12,11 @@ import Signup from './pages/Signup';
 import Patient from './pages/Patient';
 import Drug from './pages/Drug';
 import Error from './pages/Error';
+
 import Landing from './pages/Landing';
 import DosageHelperPDF from './pages/DosageHelperPDF.jsx';
 import Prescription from './pages/Prescription.jsx';
+
 
 const router = createBrowserRouter([
   {
@@ -38,10 +41,10 @@ const router = createBrowserRouter([
         path: '/drug',
         element: <Drug />
       }, {
-        path: '/clients/:id',
+        path: '/client',
         element: <Client />
       }, {
-        path: '/patients/:id',
+        path: '/patient',
         element: <Patient />
       }, {
         path: '/prescriptionPDF',

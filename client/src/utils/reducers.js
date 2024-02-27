@@ -4,6 +4,7 @@ UPDATE_CURRENT_PATIENT,
 UPDATE_CLIENTS,
 UPDATE_CURRENT_CLIENT,
 UPDATE_CURRENT_DRUG
+
 //DOSAGE_CHECKED
 } from "./actions";
 
@@ -34,6 +35,7 @@ export const reducer = (state, action) => {
     return {
         ...state,
         currentClient: action.currentClient
+
     };
 
     case UPDATE_CURRENT_DRUG:

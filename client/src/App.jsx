@@ -10,6 +10,7 @@ import { setContext } from '@apollo/client/link/context';
 import Navbar from './components/Navigation';
 import { VetProvider } from './utils/GlobalState';
 
+
 const httpLink = createHttpLink({
   uri: '/graphql',
 });
@@ -33,10 +34,12 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <div>
+
         <VetProvider>
           <Navbar />
+
           <Outlet />
-        </VetProvider>
+        {/* </VetProvider> */}
       </div>
     </ApolloProvider>
   );

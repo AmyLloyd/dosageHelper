@@ -19,6 +19,7 @@ function LoginForm(props) {
             console.log(mutationResponse, "mutationResponse");
             const token = mutationResponse.data.loginVet.token;
             Auth.login(token);
+
             
             console.log("You are now logged in.");
         } catch (e) {
@@ -35,6 +36,7 @@ function LoginForm(props) {
     };
 
     return (
+
             <div className='wrapper'>
                 <form action="" onSubmit={handleFormSubmit}>
                     <h1>Welcome Back!</h1>
@@ -75,5 +77,6 @@ function LoginForm(props) {
             </div>
     );
 }
+
 
 export default LoginForm;

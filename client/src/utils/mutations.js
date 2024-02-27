@@ -33,6 +33,7 @@ mutation LoginVet($email: String!, $password: String!) {
 export const ADD_CLIENT_TO_VET = gql`
     mutation addClientToVet($username: String!, $email: String!, $password: String!) {
         addClientToVet(username: $username, email: $email, password: $password) {
+
             username
             clients {
                 _id
@@ -48,6 +49,7 @@ export const ADD_CLIENT_TO_VET = gql`
 export const ADD_PATIENT_TO_CLIENT = gql`
     mutation AddPatientToClient($name: String!, $animal_type: String!, $condition_description: String!, $client_id: ID!) {
         addPatientToClient(name: $name, animal_type: $animal_type, condition_description: $condition_description, client_id: $client_id ) {
+
             _id
             username 
             patients{
@@ -62,6 +64,7 @@ export const ADD_DRUG_TO_PRESCRIPTION = gql`
     mutation addDrugToPrescription($drug_id: ID!, $prescription_id: ID!){
         addDrugToPrescription(drug_id: $drug_id, prescription_id: $prescription_id ) {
         _id
+
         created_at
         drug{
             _id
@@ -122,3 +125,4 @@ mutation UpdatePrescription($prescription_id: ID!, $dosage_checked_at: [String])
         }
   }
 `;
+

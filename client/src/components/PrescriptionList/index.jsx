@@ -4,12 +4,14 @@ import { useVetContext } from "../../utils/GlobalState";
 import { Link } from 'react-router-dom';
 // import { Fragment } from 'react';
 
+
 //import type variables
 // import {
 //     DOSAGE_CHECKED
 //  } from "../../utils/actions";
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
+
 
 
 import "./PrescriptionList.css"
@@ -56,6 +58,7 @@ function PrescriptionList() {
                     <table>
                         <thead>
                             <tr>
+
                                 <th>PRESCRIPTION DATE</th>
                                 <th>DRUG</th>
                                 <th>DRUG STRENGTH</th>
@@ -118,6 +121,7 @@ function PrescriptionList() {
                         </tbody>
                     </table>
                 </section>
+
            
                 {/* <h3>Condition: {onePatient.condition_description}</h3> */}
                 <h4>Dosage Helper</h4>

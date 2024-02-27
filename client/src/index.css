@@ -1,5 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
 
+
 /*Could we have the color scheme here for easy access - can you add the ones you've got? I added an orange as a feature colour (instead of the pinky ones). */ 
 :root {
   --primary: #401b5a;
@@ -255,3 +256,4 @@ input:focus {
     width: 100%;
   }
 }
+

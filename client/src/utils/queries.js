@@ -51,6 +51,7 @@ query getDrugById($id: ID!) {
 `;
 
 export const QUERY_MY_CLIENTS = gql `
+
 query myClients {
     myClients{
     _id
@@ -150,7 +151,6 @@ export const QUERY_PATIENT_BY_ID = gql `
         }
     }
 `;
-
 
 
 

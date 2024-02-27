@@ -12,10 +12,11 @@ import {
 
 import { QUERY_MY_CLIENTS } from '../../utils/queries';
 
-import './patientMenu.css';
+import './patientMenu.css'
 
 function PatientMenu() {
     const [state, dispatch] = useVetContext();
+
 
     const { id } = useParams();
     // const [currentClient, setCurrentClient] = useState({});
@@ -50,6 +51,7 @@ function PatientMenu() {
     };
 
     return (
+
         <>
             {Auth.loggedIn() ? (
                 <div className='center'>
@@ -92,4 +94,3 @@ function PatientMenu() {
 };
 
 export default PatientMenu;
-

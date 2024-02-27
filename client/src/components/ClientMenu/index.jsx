@@ -2,7 +2,9 @@ import { useEffect } from 'react';
 import { useQuery } from '@apollo/client';
 import { useVetContext } from '../../utils/GlobalState';
 
+
 import { Link } from 'react-router-dom';
+
 
 import { 
     UPDATE_CLIENTS,
@@ -11,7 +13,9 @@ import {
 
 import { QUERY_MY_CLIENTS } from '../../utils/queries';
 
+
 import './clientMenu.css';
+
 
 function ClientMenu() {
     const [state, dispatch] = useVetContext();
@@ -20,11 +24,14 @@ function ClientMenu() {
 
     const { data: clientData } = useQuery (QUERY_MY_CLIENTS);
 
+
     useEffect(() => {
         if(clientData) {
             dispatch({
                 type: UPDATE_CLIENTS,
+
                 clients: clientData.myClients.clients
+
             });
         }
     }, [clientData, dispatch]);
@@ -38,7 +45,13 @@ function ClientMenu() {
 
     return (
         <div> 
+
                     <div className='container flex-row py-2 px-2'>
+
+
+            <h2> Choose a Client: </h2>
+                    <div className='card'>
+
                         {clients.map((item) => (
                                 <div className='my-2 mx-2 flex-item'
                                 key={item._id}>
@@ -57,6 +70,7 @@ function ClientMenu() {
                     <div>
                 </div>
             </div>
+
         </div>
     );
 }

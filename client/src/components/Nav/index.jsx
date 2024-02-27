@@ -34,6 +34,7 @@ function Nav() {
     } else {
       return (
       <div>
+
         <ul className="flex-row">
           <li className="mx-1">
             <Link to="/signup">
@@ -53,6 +54,7 @@ function Nav() {
 
   return (
     
+
   <div className="">
     <header className="flex-row px-1">
       <h1>
