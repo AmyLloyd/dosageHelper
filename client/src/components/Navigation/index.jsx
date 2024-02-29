@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Logo from "/images/logo.png";
 import { Link } from "react-router-dom";
-import "./Navigation.css";
+import "./styles.css";
 import Auth from "../../utils/auth";
 
 function Navbar() {

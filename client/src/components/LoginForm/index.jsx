@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
-import './LoginForm.css';
+import './styles.css';
 import { FaUser, FaLock } from "react-icons/fa";
 import { Link } from 'react-router-dom';
 import { LOGIN } from '../../utils/mutations';

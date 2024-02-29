@@ -14,7 +14,7 @@ import {
 import { QUERY_MY_CLIENTS } from '../../utils/queries';
 
 
-import './clientMenu.css';
+import './styles.css';
 
 
 function ClientMenu() {

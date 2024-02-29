@@ -12,7 +12,7 @@ import {
 
 import { QUERY_MY_CLIENTS } from '../../utils/queries';
 
-import './patientMenu.css'
+import './styles.css'
 
 function PatientMenu() {
     const [state, dispatch] = useVetContext();

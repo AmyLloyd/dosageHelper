@@ -1,7 +1,7 @@
 import React from 'react';
-// import '../App.css';
+
 import { Button } from './../Button';
-import './Landing.css';
+import './styles.css';
 import { Link } from 'react-router-dom';
 
 function Landing() {
