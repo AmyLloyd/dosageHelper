@@ -2,17 +2,9 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useVetContext } from "../../utils/GlobalState";
 import { Link } from 'react-router-dom';
-// import { Fragment } from 'react';
 
-
-//import type variables
-// import {
-//     DOSAGE_CHECKED
-//  } from "../../utils/actions";
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
-
-
 
 import "./PrescriptionList.css"
 
@@ -40,20 +32,20 @@ function PrescriptionList() {
         }
     }, [clients, currentClient, currentPatient]);
   
-    const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14", "15", "16", "17", "18", "19", "20", "21", "22", "23", "24"];
+    const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14"];
 
     return (
         <>
-            <button>
+            <button className='my-2'>
                 <Link to="/Prescription"> Add new prescription </Link>
             </button>
             {currentPatient && oneClient && oneClient.patients ? (
             <>
-                <h1>{onePatient?.name}</h1>
-                {/* <h3>Condition: {onePatient.condition_description}</h3> */}
-                <h4>Prescription History</h4>
+          
+                <h2>{onePatient?.name}</h2>
+                <h5>Prescription History</h5>
 
-                <section className="prescr-list">
+                <section className="prescr-list my-2">
                     <table>
                         <thead>
                             <tr>
@@ -121,16 +113,14 @@ function PrescriptionList() {
                     </table>
                 </section>
 
-           
-                {/* <h3>Condition: {onePatient.condition_description}</h3> */}
-                <h4>Dosage Helper</h4>
+                <h4 className= 'my-2' >Dosage Helper</h4>
                 <div>
                     <button>
                         <Link to="/DosageHelperPDF"> Print Dosage Helper for client </Link>
                     </button>
                 </div>
                 
-                <section className="prescr-list">
+                <section className="prescr-list my-2">
                     <table>
                         <thead>
                             <tr>

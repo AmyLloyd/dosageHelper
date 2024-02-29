@@ -77,22 +77,26 @@
   }
   
   @media only screen and (max-width: 600px) {
-    .navbar .rightSide a {
+    .navbar .leftSide a {
       display: none;
     }
   
-    .navbar .rightSide {
+    .navbar .leftSide {
       justify-content: flex-end;
       padding-right: 50px;
     }
   
-    .navbar .rightSide button {
+    .navbar .leftSide button {
       display: inherit;
+    }
+
+    .rightSide {
+      justify-content:center;
     }
   }
   
   @media only screen and (min-width: 600px) {
-    .navbar .rightSide button {
+    .navbar .leftSide button {
       display: none;
     }
   

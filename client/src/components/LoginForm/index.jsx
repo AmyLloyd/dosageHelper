@@ -59,12 +59,6 @@ function LoginForm(props) {
                         <FaLock className='icon' />
                     </div>
 
-
-                    {/* <div className="remember-forgot">
-                        <label><input type="checkbox" />Remember me</label>
-                        <a href="#">Forgot password?</a>
-                    </div> */}
-
                     {error ? (
                         <div>
                             <p className="error-text">Please check your email and password and try again.</p>

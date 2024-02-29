@@ -39,7 +39,7 @@ function PatientForm() {
     };
 
     return (
-        <div className = "container my-1">
+        <div className = "container my-1 background-br py-2 px-2">
            <h2>Add a Patient</h2>
            <form onSubmit={handleFormSubmit}>
               <div className="flex-row space-between my-2">
