@@ -39,7 +39,7 @@ function App() {
           <Navbar />
 
           <Outlet />
-        {/* </VetProvider> */}
+        </VetProvider>
       </div>
     </ApolloProvider>
   );
