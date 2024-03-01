@@ -76,7 +76,7 @@ const typeDefs = `
         prescription(id: ID!): Prescription
         drugs: [Drug]
         drug(id: ID!): Drug
-        getAllDrugs: Drug
+        
     }
     
     type Mutation {
