@@ -74,6 +74,17 @@ const resolvers = {
       return { token, vet };
     },
 
+    addDrug: async (parent, { name, strength, type }, context) => {
+      if(context.user) {
+        try {
+          const drug = await Drug.create({ name, strength, type });
+          return drug;
+        } catch (err) {
+          console.log(err, "error");
+        }
+      }
+    },
+
     addClientToVet: async (parent, {username, email, password}, context) => {
       if(context.user ) {
         try {

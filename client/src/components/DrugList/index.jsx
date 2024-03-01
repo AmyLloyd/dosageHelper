@@ -3,26 +3,20 @@ import { useQuery } from '@apollo/client';
 import { useVetContext } from '../../utils/GlobalState';
 import { QUERY_ALL_DRUGS } from '../../utils/queries';
 import { UPDATE_CURRENT_DRUG } from '../../utils/actions';
-import PrescriptionForm from '../../components/PrescriptionForm';
 
 function DrugList() {
     const [state, dispatch] = useVetContext();
 
     const { data } = useQuery(QUERY_ALL_DRUGS);
-    console.log(state, 'state');
-    // console.log(state.currentDrug, "state.currentDrug");
 
-    // const handleClick = (id) => {
-    //     console.log(id, 'id here')
-    //     dispatch({ 
-    //         type: UPDATE_CURRENT_DRUG,
-    //         currentDrug: id,
-    //     });
-    // };
+    console.log(data, "data");
 
-    if(!data.drugs.length) {
-        return <h4> No drugs in database yet</h4>;
-    }
+    const handleClick = (id) => {
+        dispatch({ 
+            type: UPDATE_CURRENT_DRUG,
+            currentDrug: id,
+        });
+    };
 
     return (
         <div>
@@ -42,7 +36,6 @@ function DrugList() {
                 
                 ))}
             </div>
-            <PrescriptionForm />
         </div>
     )
 }

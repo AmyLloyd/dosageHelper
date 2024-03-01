@@ -137,3 +137,12 @@ mutation removeClient($id: ID!) {
     }
 }`
 
+export const ADD_DRUG = gql`
+mutation addDrug($name: String!, $strength: String, $type: String) {
+    addDrug(name:$name, strength: $strength, type:$type){
+        _id
+        name
+        strength
+        type
+    }
+}`
