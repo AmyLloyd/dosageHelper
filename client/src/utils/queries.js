@@ -19,7 +19,7 @@ export const QUERY_VETS = gql`
 `;
  
 export const QUERY_ALL_DRUGS = gql`
-    query getAllDrugs {
+    query getDrug {
         drugs {
         _id
         name

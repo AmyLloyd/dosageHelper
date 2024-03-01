@@ -10,7 +10,6 @@ function DrugList() {
     const { data } = useQuery(QUERY_ALL_DRUGS);
 
     console.log(data, "data");
-    console.log(data.drugs, "data.drugs");
 
     const handleClick = (id) => {
         dispatch({ 
