@@ -47,12 +47,12 @@ function Navbar() {
             <div className="leftSide" id={openLinks ? "open" : "close"}>
               <img src={Logo} />
               <div className="hiddenLinks">
-                <Link to="/Home"> Home </Link>
+      
                 <Link to="/Signup"> Sign Up </Link>
               </div>
             </div>
             <div className="rightSide">  
-              <Link to="/Home"> Home </Link>
+     
               <Link to="/Signup"> Sign Up </Link>
               <Link to="/Login">Log in</Link>
               <button onClick={toggleNavbar}>
