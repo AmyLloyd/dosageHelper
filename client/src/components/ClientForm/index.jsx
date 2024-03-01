@@ -10,8 +10,6 @@ function ClientForm() {
       QUERY_MY_CLIENTS, 'myClients']}
     );
 
-    
-
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {

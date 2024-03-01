@@ -215,6 +215,13 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+    removeClient: async (parent, { client_id }, context) => {
+      if(context.user) {
+      return Client.findOneAndDelete({_id: client_id 
+      });
+      }
+    },
+    
     addClientToVet: async (parent, {username, email, password}, context) => {
       if(context.user ) {
         const client = await Client.create({ username, email, password });
@@ -230,6 +237,8 @@ const resolvers = {
     },
   },
 };
+
+
 
 // addClientToVet: async (parent, {username, email, password}, context) => {
 //   if(context.user ) {

@@ -1,11 +1,8 @@
 import { useEffect } from 'react';
-import { useQuery } from '@apollo/client';
+import { useQuery, useMutation } from '@apollo/client';
 import { useVetContext } from '../../utils/GlobalState';
-
-
+import { REMOVE_CLIENT } from '../../utils/mutations';
 import { Link } from 'react-router-dom';
-
-
 import { 
     UPDATE_CLIENTS,
     UPDATE_CURRENT_CLIENT,
@@ -42,6 +39,29 @@ function ClientMenu() {
             currentClient: id,
         });
     };
+
+    const [removeClient, { error }] = useMutation
+    (REMOVE_CLIENT, {
+        refetchQueries: [
+            QUERY_MY_CLIENTS, 'myclients'
+        ]
+    });
+
+    const handleRemoveClient = async (client) => {
+        try {
+            const { data } = await removeClient({
+                variables: { skill },
+            });
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    if(!clients.length) {
+        return <h4> No clients yet</h4>;
+    }
+
+
 
     return (
   

@@ -124,3 +124,16 @@ mutation UpdatePrescription($prescription_id: ID!, $dosage_checked_at: [String])
   }
 `;
 
+export const REMOVE_CLIENT = gql`
+mutation removeClient($id: ID!) {
+    removeClient(client: $client_id) {
+        _id
+        username
+        clients{
+            _id
+            username
+            email
+        }
+    }
+}`
+
