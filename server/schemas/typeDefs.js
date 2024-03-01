@@ -22,7 +22,7 @@ const typeDefs = `
     type Prescription {
         _id: ID!
         created_at: String
-        drug: Drug!
+        drug: Drug
         dose_frequency: Int
         instructions: String
         quantity: Int
@@ -76,6 +76,7 @@ const typeDefs = `
         prescription(id: ID!): Prescription
         drugs: [Drug]
         drug(id: ID!): Drug
+        getAllDrugs: Drug
     }
     
     type Mutation {
@@ -94,6 +95,8 @@ const typeDefs = `
         addDrugToPrescription(drug_id: ID!, prescription_id: ID!): Prescription
         updatePrescription(prescription_id: ID!, dosage_checked_at: [String]): Prescription
         removeClient(client_id: ID!): Client 
+
+        addDrug(name: String!, strength: String, type: String): Drug
     }
 
 `;

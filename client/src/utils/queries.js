@@ -19,8 +19,8 @@ export const QUERY_VETS = gql`
 `;
  
 export const QUERY_ALL_DRUGS = gql`
-    query getDrugs {
-        drugs{
+    query getAllDrugs {
+        drugs {
         _id
         name
         strength

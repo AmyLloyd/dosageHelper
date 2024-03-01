@@ -7,18 +7,13 @@ import './styles.css'
 
 function PatientMenu() {
     const [state, dispatch] = useVetContext();
-
-
     const { id } = useParams();
     // const [currentClient, setCurrentClient] = useState({});
 
     const { clients } = state;
-    console.log(state.clients, 'state.clients');
 
-    console.log(state.currentClient, "state.currentClient");
     //saved in local state
     let [oneClient, setOneClient] = useState();
-
 
     useEffect(() => {
 
@@ -48,28 +43,27 @@ function PatientMenu() {
                 <div className='center'>
                     {state.currentClient && clients ? (
                         <div>
-                            <h3>Here are you patients:</h3>
-                            <h6>Animals of {oneClient?.username}</h6>
+                            
+                            <h3>{oneClient?.username}'s animals</h3>
 
                             <div className='container flex-row'>
                                
                             {oneClient?.patients?.map((item) => (
-                                <div className='card  my-2 mx-2'>
-                                    
-                                    <div  key={item._id}>
-                                        <h3>{item.name}</h3>
-                                        <p>{item.condition_description}</p>
-                                        <p>{item.animal_type}</p>
+                                <div key={item._id} className='card  my-2 mx-2'>
+                                
+                                        <h3><span className='field-text' > Name: </span>    {item.name}</h3>
+                                        <p><span className='field-text' >Animal type:</span>    {item.animal_type}</p>
+                                        <p><span className='field-text' >Condition:</span>    {item.condition_description}</p>
                                         <Link to={`/patients/${item._id}`}>
                                             <button 
                                             onClick={() => {
                                             handleClick(item._id);
                                             }}
                                             >
-                                                {item.username}
+                                                See {item.name}'s prescriptions
                                             </button>
                                         </Link>
-                                    </div>
+            
                                 </div>
                             ))}
                             </div>

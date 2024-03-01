@@ -1,4 +1,4 @@
-import DrugForm from '../components/DrugForm';
+import NewDrugForm from '../components/NewDrugForm';
 
 function Drug() {
     
@@ -10,7 +10,7 @@ function Drug() {
 
                 <h2>Add new drug</h2>
 
-                <DrugForm />
+                <NewDrugForm />
             </div>
         </div>
     )
