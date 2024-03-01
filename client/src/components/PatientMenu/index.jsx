@@ -57,16 +57,16 @@ function PatientMenu() {
                                 <div className='card  my-2 mx-2'>
                                     
                                     <div  key={item._id}>
-                                        <h3>{item.name}</h3>
-                                        <p>{item.condition_description}</p>
-                                        <p>{item.animal_type}</p>
+                                        <h3><span className='field-text' > Name: </span> {item.name}</h3>
+                                        <p><span className='field-text' >Animal type:</span> {item.animal_type}</p>
+                                        <p><span className='field-text' >Condition:</span> {item.condition_description}</p>
                                         <Link to={`/patients/${item._id}`}>
                                             <button 
                                             onClick={() => {
                                             handleClick(item._id);
                                             }}
                                             >
-                                                {item.username}
+                                                See {item.name}'s prescriptions
                                             </button>
                                         </Link>
                                     </div>
