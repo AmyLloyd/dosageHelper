@@ -7,13 +7,13 @@ import Auth from "../../utils/auth";
 function Navbar() {
 
   function showNavigation() {
-    if (Auth.loggedIn()) {
+    
         const [openLinks, setOpenLinks] = useState(false);
 
         const toggleNavbar = () => {
           setOpenLinks(!openLinks);
         };
-
+        if (Auth.loggedIn()) {
           return (
             <div className="navbar">
               <div className="leftSide" id={openLinks ? "open" : "close"}>
