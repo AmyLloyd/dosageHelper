@@ -11,6 +11,20 @@ The motivation for designing this app was for veterinarians to be able to commun
 - [Credits](#credits)
 
 ## Usage
+
+You can try sample data by logging in as:
+email: glenelgvet@gmail.com
+password: glenelg123
+
+then go to:
+Timothy Client
+
+then go to: 
+Gussy
+
+and you will see his prescriptions rendered on the page and in the chart.
+
+---------
 To use the 'Dosage-Helper' app, so to this link: https://dosagehelper.onrender.com/
 !['Dosage-Helper' landing page with purple accented logo and background design.](./assets/images/Landing_page.PNG) 
 
