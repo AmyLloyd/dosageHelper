@@ -11,17 +11,17 @@ The motivation for designing this app was for veterinarians to be able to commun
 - [Credits](#credits)
 
 ## Usage
-To use the 'Dosage-Helper' app, so to this link: *add link here*
+To use the 'Dosage-Helper' app, so to this link: https://dosagehelper.onrender.com/
 !['Dosage-Helper' landing page with purple accented logo and background design.]('') 
 
 Sign up and log in.
 ![Sign-up form ready to be filled in]('')
 
-Never forget a single dose again! With the client checklist, all medications prescribed by your vet will appear as a tickable checklist, ensuring your pet gets all the right doses at all the right times.
+They'll Never forget a single dose again! With the client checklist, all medications prescribed will appear as a tickable checklist that's easily printed for the client. This way their beloved animals get all the right doses at all the right times.
 
 ![Client medication checklist with a tickbox function]('')
 
-After completeing a dose, be sure to tick it off in the chart. 
+After completing a dose, be sure to tick it off in the chart. 
 
 ## Credits
 
