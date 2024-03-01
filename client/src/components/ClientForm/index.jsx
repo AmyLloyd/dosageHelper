@@ -1,12 +1,16 @@
 import { useState } from 'react';
-// import { UPDATE_CLIENTS } from '../../utils/actions';
-// import { useVetContext } from '../../utils/GlobalState';
 import { useMutation } from '@apollo/client';
 import { ADD_CLIENT_TO_VET } from '../../utils/mutations';
+import { QUERY_MY_CLIENTS } from '../../utils/queries';
+
 
 function ClientForm() {
     const [formState, setFormState] = useState({ username: '', email:'', password: ''});
-    const [addClientToVet, { error }] = useMutation(ADD_CLIENT_TO_VET);
+    const [addClientToVet, { error }] = useMutation(ADD_CLIENT_TO_VET, { refetchQueries: [
+      QUERY_MY_CLIENTS, 'myClients']}
+    );
+
+    
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();

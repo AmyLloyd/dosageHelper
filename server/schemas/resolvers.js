@@ -93,13 +93,11 @@ const resolvers = {
 
       if(context.user) {
         try {
-          console.log(context.user, "context.user");
           const patient = await Patient.create({
             name: args.name,
             animal_type: args.animal_type,
             condition_description: args.condition_description
           });
-          console.log(patient, "patient");
           const client = await Client.findOneAndUpdate(
             {_id: args.client_id},
             { $addToSet: { patients: patient._id }},

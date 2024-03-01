@@ -1,22 +1,37 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useVetContext } from '../../utils/GlobalState';
 import { useMutation } from '@apollo/client';
 import { ADD_PATIENT_TO_CLIENT } from '../../utils/mutations';
+import { QUERY_MY_CLIENTS } from '../../utils/queries';
+import { useQuery } from '@apollo/client';
 
 
 function PatientForm() {
     const [state, dispatch] = useVetContext();
-
-    console.log(state.currentClient, "state.currentClient");
-
     const [formState, setFormState] = useState({ name: '', animal_type:'', condition_description: ''});
-    const [addPatientToClient, { error }] = useMutation(ADD_PATIENT_TO_CLIENT);
+    const [addPatientToClient, { error }] = useMutation( ADD_PATIENT_TO_CLIENT );
+    
     const id = state.currentClient;
    
+    const { clients } = state;
+
+    const { data: clientData } = useQuery (QUERY_MY_CLIENTS);
+
+
+    useEffect(() => {
+        if(clientData) {
+            dispatch({
+                type: UPDATE_CLIENTS,
+
+                clients: clientData.myClients.clients
+
+            });
+        }
+    }, [clientData, dispatch]);
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        try {
+        try { 
             const mutationResponse = await addPatientToClient({
                 variables: {
                     name: formState.name,
@@ -25,6 +40,7 @@ function PatientForm() {
                     client_id: id
                     },
             });
+            await updatePage();
         } catch (e) {
             console.log(e);
         }

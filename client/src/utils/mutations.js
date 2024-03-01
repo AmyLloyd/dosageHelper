@@ -33,8 +33,6 @@ mutation LoginVet($email: String!, $password: String!) {
 export const ADD_CLIENT_TO_VET = gql`
     mutation addClientToVet($username: String!, $email: String!, $password: String!) {
         addClientToVet(username: $username, email: $email, password: $password) {
-
-            username
             clients {
                 _id
                 username
