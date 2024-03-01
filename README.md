@@ -3,7 +3,7 @@
 Bootcamp Project 3
 
 ## Description
-The motivation for designing this app was for veterinarians to be able to communicate to clients their pets' medical needs with efficacy and ease of access at the forefront. 
+The motivation for designing this app was for veterinarians to be able to communicate to clients their pets' medical needs with efficacy and ease of access at the forefront. This app will be particulary helpful when pets are given multiple medications to give a multiple times. This can become confusing for clients, so the dosageHelper can give them a tick off chart with the details to manage multiple prescriptions. 
 
 
 ## Table of Contents
