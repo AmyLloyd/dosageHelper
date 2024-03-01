@@ -93,13 +93,11 @@ const resolvers = {
 
       if(context.user) {
         try {
-          console.log(context.user, "context.user");
           const patient = await Patient.create({
             name: args.name,
             animal_type: args.animal_type,
             condition_description: args.condition_description
           });
-          console.log(patient, "patient");
           const client = await Client.findOneAndUpdate(
             {_id: args.client_id},
             { $addToSet: { patients: patient._id }},
@@ -217,6 +215,13 @@ const resolvers = {
 
       throw AuthenticationError;
     },
+    removeClient: async (parent, { client_id }, context) => {
+      if(context.user) {
+      return Client.findOneAndDelete({_id: client_id 
+      });
+      }
+    },
+    
     addClientToVet: async (parent, {username, email, password}, context) => {
       if(context.user ) {
         const client = await Client.create({ username, email, password });
@@ -232,6 +237,8 @@ const resolvers = {
     },
   },
 };
+
+
 
 // addClientToVet: async (parent, {username, email, password}, context) => {
 //   if(context.user ) {

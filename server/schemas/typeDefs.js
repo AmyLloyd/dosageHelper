@@ -93,6 +93,7 @@ const typeDefs = `
 
         addDrugToPrescription(drug_id: ID!, prescription_id: ID!): Prescription
         updatePrescription(prescription_id: ID!, dosage_checked_at: [String]): Prescription
+        removeClient(client_id: ID!): Client 
     }
 
 `;

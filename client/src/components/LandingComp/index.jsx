@@ -24,7 +24,6 @@ function Landing() {
           className='btns'
           buttonStyle='btn--primary'
           buttonSize='btn--large'
-          onClick={console.log('hey')}
         >
            <Link to={`/signup`}>
           SIGN UP

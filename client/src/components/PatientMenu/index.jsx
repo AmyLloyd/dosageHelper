@@ -1,17 +1,8 @@
 import { useEffect, useState } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { useQuery } from '@apollo/client';
-
-import PatientItem from '../../components/PatientItem';
 import { useVetContext } from '../../utils/GlobalState';
 import Auth from '../../utils/auth';
-
-import {
-    UPDATE_CURRENT_PATIENT,
-} from '../../utils/actions';
-
-import { QUERY_MY_CLIENTS } from '../../utils/queries';
-
+import { UPDATE_CURRENT_PATIENT } from '../../utils/actions';
 import './styles.css'
 
 function PatientMenu() {
