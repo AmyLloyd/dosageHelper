@@ -4,7 +4,8 @@ import { useMutation } from '@apollo/client';
 import { ADD_PRESCRIPTION_TO_PATIENT } from '../../utils/mutations';
 
 
-function PrescriptionForm() {
+
+function PrescriptionForm(props) {
     const [state, dispatch] = useVetContext();
 
     const [formState, setFormState] = useState({ 
@@ -17,8 +18,6 @@ function PrescriptionForm() {
     });
 
     const [addPrescriptionToPatient, { error }] = useMutation(ADD_PRESCRIPTION_TO_PATIENT);
-
-    console.log(state, "state");
 
     const currentPatientId = state.currentPatient;
     const currentDrugId = state.currentDrug;
@@ -60,8 +59,12 @@ function PrescriptionForm() {
     };
 
     return (
+
         <div className = "container my-1 background-br py-2 px-2">
-           <h2>Add a Prescription</h2>
+
+          <h4>Which drug would you like to prescribe?</h4>
+
+           <h2>Add prescription details</h2>
            <form onSubmit={handleFormSubmit}>
               <div className="flex-row space-between my-2">
                 <label htmlFor="dose_frequency">Dose frequency:</label>
