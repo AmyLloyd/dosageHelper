@@ -20,21 +20,29 @@ function DrugList() {
 
     return (
         <div>
-            <h4>Drugs to choose from:</h4>
+            <h2>Drug data </h2>
             <div className='container'>
+            <table>
+                <thead>
+                    <tr>
+                        <th>DRUG ID</th>
+                        <th>DRUG NAME </th>
+                        <th>DRUG STRENGTH</th>
+                        <th>DRUG TYPE</th>
+                    </tr>
+                </thead>
+                <tbody>
                 {data?.drugs.map((item) => (
-                
-                        <div className='card mx-2 my-2' key={item._id}>
-                            <p>{item.name}</p>
-                            <p>{item.strength}</p>
-                            <p>{item.type}</p>            
-                            <button key={item._id}
-                            onClick={() => {
-                                handleClick(item._id);
-                            }}>{item.name}</button>
-                        </div>
-                
+                    <tr key={item._id}>
+                        <td>{item._id}</td>
+                        <td>{item.name}</td>        
+                        <td>{item.strength}</td>
+                        <td>{item.type}</td>  
+                    </tr>
                 ))}
+
+                </tbody>
+            </table>
             </div>
         </div>
     )
