@@ -3,6 +3,8 @@ import { useVetContext } from '../../utils/GlobalState';
 import { useMutation } from '@apollo/client';
 import { ADD_PRESCRIPTION_TO_PATIENT } from '../../utils/mutations';
 
+import DrugDropdown from '../DrugDropdown';
+
 
 function PrescriptionForm() {
     const [state, dispatch] = useVetContext();
@@ -79,6 +81,9 @@ function PrescriptionForm() {
         <div className = "container my-1 background-br py-2 px-2">
            <h2>Add a Prescription</h2>
            <form onSubmit={handleFormSubmit}>
+
+              <DrugDropdown />
+
               <div className="flex-row space-between my-2">
                 <label htmlFor="dose_frequency">Dose frequency:</label>
                 <input 

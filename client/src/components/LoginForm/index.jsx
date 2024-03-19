@@ -68,7 +68,7 @@ function LoginForm(props) {
                     <button type="submit">Login</button>
 
                     <div className="register-link">
-                        <p>Don&apos;t have an account? <a href="#">
+                        <p>Don't have an account? <a href="#">
                         <Link to="/signup">Signup</Link>
                         </a></p>
                     </div>

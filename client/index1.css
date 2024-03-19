@@ -7,6 +7,9 @@
   --tertiary: ;
   --dark: #0a0808;
   --shadow: #272f32;
+  --spacing-one: calc(1rem * 0.5);
+  --spacing-two: calc(1rem);
+  --background: rgb(246, 241, 241);
   }
 
 * {
@@ -229,4 +232,8 @@ input:focus {
   .card {
     width: 100%;
   }
+}
+
+table {
+  background-color: var(--background);
 }

@@ -257,3 +257,6 @@ input:focus {
   }
 }
 
+table {
+  background-color: var(--background);
+}
