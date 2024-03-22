@@ -56,7 +56,10 @@ function PrescriptionList() {
                                 <th>DRUG TYPE</th>
                                 <th>COURSE LENGTH</th>
                                 <th>DOSAGE TIMES</th>
+                                <th>QUANTITY</th>
+                                <th>DOSE FREQUENCY</th>
                                 <th>DOSAGE NOTES</th>
+                                <th>INSTRUCTIONS</th>
                                 <th>ACTIVE?</th>
                             </tr>
                         </thead>
@@ -95,8 +98,10 @@ function PrescriptionList() {
                                     )}
                     
                                 </td>
-
+                                <td>{item.quantity}</td>
+                                <td>{item.dose_frequency}</td>
                                 <td>{item.dosage_notes}</td>
+                                <td>{item.instructions}</td>
                                 <td>{item.active ? (
                                     <>
                                         <div>✅</div>
