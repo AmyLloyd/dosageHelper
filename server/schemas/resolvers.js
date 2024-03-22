@@ -128,6 +128,7 @@ const resolvers = {
         try {
  
           const prescription = await Prescription.create({
+            drug: args.drug_id,
             dose_frequency: args.dose_frequency,
             instructions: args.instructions,
             quantity: args.quantity,
