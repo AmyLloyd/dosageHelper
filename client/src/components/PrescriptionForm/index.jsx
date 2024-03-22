@@ -19,7 +19,8 @@ function PrescriptionForm() {
         number_of_dosages: '', 
         time_of_dosages: [], 
         dosage_notes: '', 
-        instructions: ''
+        instructions: '',
+        quantity:''
     });
 
     const [addPrescriptionToPatient, { error }] = useMutation(ADD_PRESCRIPTION_TO_PATIENT);
@@ -28,6 +29,7 @@ function PrescriptionForm() {
 
     const currentPatientId = state.currentPatient;
     // const currentDrugId = state.currentDrug;
+    console.log(currentPatientId, "currentPatientId");
    
 
     const handleFormSubmit = async (event) => {
@@ -42,9 +44,13 @@ function PrescriptionForm() {
                     time_of_dosages: formState.time_of_dosages,
                     dosage_notes: formState.dosage_notes,
                     instructions: formState.instructions,
+                    quantity: formState.number_of_dosages * formState.course_length,
                     patient_id: currentPatientId
                     },
+
             });
+
+            console.log(newPrescription, "newPrescription");
 
             // const mutationResponse = await addDrugToPrescription({
             //   variables: {
@@ -78,39 +84,36 @@ function PrescriptionForm() {
         [name]: output,
       });
     };
-    
-//     <script type="text/javascript">
-//     function getOption() {
-//         selectElement = 
-//               document.querySelector('#selectDrug');
-//         output = selectElement.value;
-//         document.querySelector('.output').textContent = output;
-//     }
-// </script>
 
-    const handleChangeInt = (event) => {
-        const numericValue = parseInt(event.target.value, 10);
-        const { name } = event.target;
-
-        setFormState({
-            ...formState,
-            [name]: numericValue,
-        });
-    };
-
-    const handleCheckboxChange = (event) => {
-      const { value } = event.target;
+    const handleChangeCheckbox = (event) => {
+      console.log(event.target);
       const selected = [];
-      //Stuck here because when pushed onto array it replaces the previous element. Or perhaps it starts a new array each time.
-      if(event.target.checked) {
-        selected.push(event.target.value);
+      const checkboxEl = document.querySelector('#selected');
+      const input = checkboxEl.children;
+
+      for (var i=0; i < input.length; i++){
+        if (input[i].checked){
+          selected.push(input[i].value)
+        } 
       }
-      console.log(selected, "selected");
+      console.log(selected.length, "selected.length");
+
       setFormState({
         ...formState,
-        time_of_dosages: selected
+        time_of_dosages: selected,
+        number_of_dosages: selected.length,
       })
-    };
+    }
+
+    const handleChangeInt = (event) => {
+      const numericValue = parseInt(event.target.value, 10);
+      const { name } = event.target;
+
+      setFormState({
+          ...formState,
+          [name]: numericValue,
+      });
+  };
 
     return (
         <div className = "container my-1 background-br py-2 px-2">
@@ -148,23 +151,14 @@ function PrescriptionForm() {
                 onChange={handleChangeInt}
                 />
               </div>
-              {/* <div className="flex-row space-between my-2">
-                <label htmlFor="number_of_dosages"> Number_of_dosages: </label>
-                <input 
-                placeholder="How many dosages are required each day?"
-                name="number_of_dosages"
-                type="number_of_dosages"
-                id="number_of_dosages"
-                onChange={handleChange}
-                />
-              </div> */}
-              <div className="flex-row space-between my-2">
+
+              <div className="flex-row space-between my-2" id="selected" onChange={handleChangeCheckbox}>
                 <label htmlFor="time_of_dosages">Time_of_dosages: </label>
-                <input type="checkbox" value="am" onChange={handleCheckboxChange}/>
+                <input type="checkbox" value="am"/>
                 <label htmlFor="am">am</label><br/>
-                <input type="checkbox" value="noon" onChange={handleCheckboxChange}/>
+                <input type="checkbox" value="noon"/>
                 <label htmlFor="noon">noon</label>
-                <input type="checkbox" value="pm" onChange={handleCheckboxChange}/>
+                <input type="checkbox" value="pm"/>
                 <label htmlFor="pm">pm</label>
               </div>
 {/* 

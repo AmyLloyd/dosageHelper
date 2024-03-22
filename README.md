@@ -47,6 +47,8 @@ After completing a dose, be sure to tick it off in the chart.
 To see the code and contribute to this project please visit: https://github.com/AmyLloyd/dosageHelper
 
 ## Credits
+Reference for developing dropdown:
+https://www.geeksforgeeks.org/how-to-get-selected-value-in-dropdown-list-using-javascript/
 
 Team Leader: 
 
