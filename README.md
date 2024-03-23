@@ -50,6 +50,8 @@ To see the code and contribute to this project please visit: https://github.com/
 Reference for developing dropdown:
 https://www.geeksforgeeks.org/how-to-get-selected-value-in-dropdown-list-using-javascript/
 
+ADD ATTIBUTION for printPDF!!!
+
 Team Leader: 
 
 Amy https://github.com/AmyLloyd 

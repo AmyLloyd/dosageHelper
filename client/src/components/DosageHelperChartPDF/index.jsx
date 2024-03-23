@@ -1,7 +1,14 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useQuery } from '@apollo/client';
 import { useVetContext } from "../../utils/GlobalState";
 import { Link } from 'react-router-dom';
+
+//for printing PDF
+import React from 'react';
+//libraries needed for downloading PDF
+import html2canvas from 'html2canvas';
+import jsPDF from 'jspdf';
+
 
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
@@ -36,14 +43,36 @@ function DosageHelperChartPDF() {
   
     const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14"];
 
+    // For printing PDF
+    const pdfRef = useRef();
+    const downloadPDF = () => {
+        const input = pdfRef.current;
+        html2canvas(input).then((canvas) => {
+            const imgData = canvas.toDataURL('image/png');
+            // generates a pdf using jdPDF
+            const pdf = new jsPDF('p', 'mm', 'a4', true);
+            //determines dimensions
+            const pdfWidth = pdf.internal.pageSize.getWidth();
+            const pdfHeight = pdf.internal.pageSize.getHeight();
+            const imgWidth = canvas.width;
+            const imgHeight = canvas.height;
+            const ratio = Math.min(pdfWidth / imgWidth, pdfHeight / imgHeight);
+            const imgX = (pdfWidth - imgWidth * ratio) / 2;
+            const imgY = 30;
+            //adds the image to the generated pdf
+            pdf.addImage(imgData, 'PNG', imgX, imgY, imgWidth * ratio, imgHeight * ratio);
+            pdf.save('dosageHelper.pdf');
+        });
+    };
+
     return (
         <>
-
+            <button className="btn btn-primary button" type="submit" onClick={downloadPDF}>Download dosageHelper</button>
             {currentPatient && oneClient && oneClient.patients ? (
             <>
 
 {/* Printable version of dosageHelper           */}
-                <section className="prescr-list my-2">
+                <section className="prescr-list my-2" ref={pdfRef}>
                     <table>
                         <thead>
                             <tr>
