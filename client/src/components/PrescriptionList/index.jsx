@@ -120,6 +120,7 @@ function PrescriptionList() {
                     </table>
                 </section>
 
+{/* Button for opening printable PDF */}
                 <h4 className= 'my-2' >Dosage Helper</h4>
                 <div>
                     <button>
@@ -127,6 +128,7 @@ function PrescriptionList() {
                     </button>
                 </div>
                 
+{/* Printable version of dosageHelper           */}
                 <section className="prescr-list my-2">
                     <table>
                         <thead>

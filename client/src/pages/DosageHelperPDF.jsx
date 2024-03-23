@@ -11,6 +11,7 @@ function DosageHelperPDF() {
 
     return (
         <div>
+            <h2>dosageHelper Chart</h2>
             <DosageHelperChartPDF />
             <Link to={`/patients/:${state.currentPatient}`} />
 
