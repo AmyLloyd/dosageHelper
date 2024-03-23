@@ -1,20 +1,22 @@
 import { useEffect, useState } from 'react';
 import { useVetContext } from '../../utils/GlobalState';
 import { Link } from 'react-router-dom';
-// import { Fragment } from 'react';
 
 import './styles.css';
 
-function DosageHelperChart() {
+function DosageHelperChartPDF() {
     const [state, dispatch] = useVetContext();
 
     const { currentClient } = state;
+    console.log(currentClient, "currentClient");
     const { currentPatient } = state;
+    console.log(currentPatient, "currentPatient");
     const clients  = state.clients;
     console.log(clients, 'clients');
   
     let [oneClient, setOneClient] = useState();
     let [onePatient, setOnePatient] = useState();
+    console.log(onePatient, "onePatient")
 
     useEffect(() => {
         if (clients.length) {
@@ -143,4 +145,4 @@ function DosageHelperChart() {
         </div>
     );
 }
-export default DosageHelperChart;
+export default DosageHelperChartPDF;

@@ -44,7 +44,7 @@ function PrescriptionForm() {
                     time_of_dosages: formState.time_of_dosages,
                     dosage_notes: formState.dosage_notes,
                     instructions: formState.instructions,
-                    quantity: formState.number_of_dosages * formState.course_length,
+                    quantity: formState.number_of_dosages * (formState.course_length / formState.dose_frequency),
                     patient_id: currentPatientId
                     },
 

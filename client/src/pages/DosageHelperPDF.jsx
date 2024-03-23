@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import DosageHelperChart from '../components/DosageHelperChart';
+import DosageHelperChartPDF from '../components/DosageHelperChartPDF';
 import { Link } from 'react-router-dom';
 import { useVetContext } from '../utils/GlobalState';
 
@@ -11,7 +11,7 @@ function DosageHelperPDF() {
 
     return (
         <div>
-            <DosageHelperChart />
+            <DosageHelperChartPDF />
             <Link to={`/patients/:${state.currentPatient}`} />
 
         </div>

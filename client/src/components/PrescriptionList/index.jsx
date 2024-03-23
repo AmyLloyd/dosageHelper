@@ -12,7 +12,9 @@ function PrescriptionList() {
     const [state, dispatch] = useVetContext();
 
     const { currentClient } = state;
+    console.log(currentClient, "currentClient");
     const { currentPatient } = state;
+    console.log(currentPatient, "currentPatient");
     const clients  = state.clients;
   
     let [oneClient, setOneClient] = useState();
@@ -121,7 +123,7 @@ function PrescriptionList() {
                 <h4 className= 'my-2' >Dosage Helper</h4>
                 <div>
                     <button>
-                        <Link to="/DosageHelperPDF"> Print Dosage Helper for client </Link>
+                        <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
                     </button>
                 </div>
                 

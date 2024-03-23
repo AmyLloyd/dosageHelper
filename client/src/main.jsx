@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         path: '/patients/:id',
         element: <Patient />
       }, {
-        path: '/prescriptionPDF',
+        path: '/dosageHelperPDF',
         element: <DosageHelperPDF />
       }, {
         path: '/prescription',
