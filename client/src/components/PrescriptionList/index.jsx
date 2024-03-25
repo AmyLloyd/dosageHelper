@@ -3,6 +3,7 @@ import { useQuery } from '@apollo/client';
 import { useVetContext } from "../../utils/GlobalState";
 import { Link } from 'react-router-dom';
 
+
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 
@@ -10,6 +11,7 @@ import "./styles.css"
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
+    console.log(state, "state");
 
     const { currentClient } = state;
     console.log(currentClient, "currentClient");
@@ -38,14 +40,11 @@ function PrescriptionList() {
 
     return (
         <>
-            <button className='my-2'>
-                <Link to="/Prescription"> Add new prescription </Link>
-            </button>
             {currentPatient && oneClient && oneClient.patients ? (
             <>
-          
-                <h2>{onePatient?.name}</h2>
-                <h5>Prescription History</h5>
+                <h2>Prescription History</h2>
+                <h3>{onePatient?.name}</h3>
+
 
                 <section className="prescr-list my-2">
                     <table>
@@ -120,61 +119,16 @@ function PrescriptionList() {
                     </table>
                 </section>
 
-{/* Button for opening printable PDF */}
-                <h4 className= 'my-2' >Dosage Helper</h4>
-                <div>
-                    <button>
+                <div className="container space-between flex-row">
+                    <button className='my-2 flex-item'>
+                        <Link to="/Prescription"> Add new prescription </Link>
+                    </button>
+                    {/* Button for to go to printable PDF */}
+                    <button className='my-2 flex-item'>
                         <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
                     </button>
                 </div>
-                
-{/* Printable version of dosageHelper           */}
-                <section className="prescr-list my-2">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td></td>
-                            {onePatient?.prescriptions?.map((item) => (
-                                <th key={item._id}>{item.drug.name} Strength:{item.drug.strength} Type: {item.drug.type}</th>
-                            ))}
-                            </tr>
-                        </thead>
-                
-                        <tbody>
-                            {days.map((day) => (
 
-                                <tr key={day}>
-                                    <td>DAY ___________</td>
-                                    {onePatient?.prescriptions?.map((item) => (
-                                    <td key={item._id}>
-                                        <input className="checkbox" id="checked" type="checkbox" />
-                                        <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
-                                    {item.time_of_dosages[1]?(
-                                            <>
-                                                <input className="checkbox" id="checked" type="checkbox" />
-                                                <label htmlFor="agreement">{item.time_of_dosages[1]}</label> 
-                                            </>
-                                    ):(
-                                        <>
-                                        </>
-                                    )}
-                                    {/* //itinary statements */}
-                                    {item.time_of_dosages[2]?(
-                                        <>
-                                            <input className="checkbox" id="checked" type="checkbox"/>
-                                            <label htmlFor="agreement">{item.time_of_dosages[2]}</label> 
-                                        </>
-                                    ):(
-                                        <>
-                                        </>
-                                    )}
-                                    </td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </section>
             </> 
 
             ) : (

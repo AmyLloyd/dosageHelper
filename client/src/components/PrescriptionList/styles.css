@@ -1,5 +1,5 @@
 /*From activity 22.10 */
-  .align {
+.align {
     text-align: center;
   }
   
@@ -19,10 +19,10 @@
     width: 100%;
   }
   
-  th {
-    background: lightgreen;
+  /* th {
+    background: var(--secondary);
     padding: 10px;
-  }
+  } */
   
   th,
   td {

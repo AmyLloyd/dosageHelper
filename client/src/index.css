@@ -5,12 +5,13 @@
 :root {
   --primary: #401b5a;
   --secondary: #F3A847;
-  --tertiary: ;
+  /* --tertiary: ; */
   --dark: #0a0808;
   --shadow: #272f32;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
   --background: rgb(246, 241, 241);
+  --text: black;
   }
 
 * {
@@ -96,13 +97,9 @@ p {
 }
 
 a {
-  color: var(--tertiary);
-  text-decoration: none;
-  font-weight: bold;
-}
-
-a:hover {
-  text-decoration: underline;
+  color: var(--text)!important;
+  text-decoration: none!important;
+  font-weight: normal;
 }
 
 header {
@@ -165,9 +162,6 @@ input:focus {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
-
-
-  
 }
 
 
@@ -244,7 +238,6 @@ input:focus {
   border-style:none;
   border-color: var(--dark);
   padding: 3px;
-
 }
 
 .error-text {
@@ -256,7 +249,7 @@ input:focus {
     width: 100%;
   }
 }
-
+/* 
 table {
   background-color: var(--background);
-}
+} */
