@@ -223,12 +223,24 @@ input:focus {
   padding-bottom: var(--spacing-two);
 }
 
+.wide-card {
+  width: 100%;
+  display: block;
+  background-color: var(--background2);
+  border-width: 2px;
+  border-style: none;
+  padding: 3px;
+  margin: 1px;
+  align-items:baseline;
+  justify-content:space-between;
+}
+
 .card {
   min-width: 25%;
   text-align: center;
   background-color: var(--background2);
   border-width: 2px;
-  border-style:none;
+  border-style: none;
   border-color: var(--dark);
   padding: 3px;
 }

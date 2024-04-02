@@ -66,26 +66,29 @@ function ClientMenu() {
     return (
   
 
-         <div className='container flex-row py-2 px-2'>
+         <div className='container py-2 px-2'>
 
 
-            <h2> Choose a Client: </h2>
-                    <div className='card'>
+            <h2> Clients </h2>
+                    <div>
 
                         {clients.map((item) => (
-                                <div className='my-2 mx-2 flex-item'
+                          
+                                <div className='wide-card flex-row'
                                 key={item._id}>
-                                    <Link to={`/clients/${item._id}`}>
-                                        <button
-                                            
-                                            onClick={() => {
-                                                handleClick(item._id);
-                                            }}
-                                        >
-                                            {item.username}
-                                        </button>
-                                    </Link>
+                                    <div className="flex-item">{item.username}      </div>
+                                           <Link to={`/clients/${item._id}`}>
+                                            <button 
+                                                onClick={() => {
+                                                    handleClick(item._id);
+                                                }}
+                                            >
+                                                Details
+                                            </button>
+                                        </Link>
+                              
                                 </div>
+                      
                         ))}
                     <div>
                 </div>
