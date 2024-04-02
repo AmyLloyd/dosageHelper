@@ -12,15 +12,14 @@
   
   .btn--primary {
     background-color: var(--button);
-    color: #401b5a;
+    color: var(--secondary);
     border: 1px solid var(--button);
   }
   
   .btn--outline {
     background-color: transparent;
-    color: #fff;
     padding: 8px 20px;
-    border: 1px solid var(--button);
+    border: 1px solid var(--secondary);
     transition: all 0.3s ease-out;
   }
   

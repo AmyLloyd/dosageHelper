@@ -7,7 +7,7 @@ function LandingComp() {
   return (
     <div className='hero-container'>
       <h1>DOSAGE HELPER</h1>
-      <p>Helping owners care for their animals</p>
+      <h3>Helping owners care for their animals</h3>
       <div className='hero-btns'>
         <Button
           className='btns'

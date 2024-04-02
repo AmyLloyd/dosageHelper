@@ -66,7 +66,7 @@ function ClientMenu() {
     return (
   
 
-         <div className='container py-2 px-2'>
+         <div className='py-2 px-2'>
 
 
             <h2> Clients </h2>

@@ -1,10 +1,15 @@
 
 .container {
-    width: 85%;
-    max-width: 1200px;
+    max-width: 80%;
+    min-width: 66%;
     margin-left: auto;
     margin-right: auto;
   }
+
+.sidebar {
+  min-width: 25%;
+  justify-content: center;
+}
   
   .flex-row {
     display: flex;

@@ -34,31 +34,38 @@ function ClientForm() {
     };
 
     return (
-        <div className = "container my-1 background-br py-2 px-2">
+        <div className = "my-1 background-br py-2 px-2">
            <h2>Add a Client</h2>
            <form onSubmit={handleFormSubmit}>
-              <div className="flex-row space-between my-2">
-                <label htmlFor="username">Username: </label>
-                <input 
-                placeholder="username"
-                name="username"
-                type="username"
-                id="username"
-                onChange={handleChange}
-                />
+              <div className="my-2">
+                <label htmlFor="username">Username</label>
+                <div>
+                  <input 
+                  placeholder="username"
+                  name="username"
+                  type="username"
+                  id="username"
+                  onChange={handleChange}
+                  />
+                </div>
+
               </div>
-              <div className="flex-row space-between my-2">
-                <label htmlFor="email">Email address: </label>
-                <input 
-                placeholder="newclient@text.com"
-                name="email"
-                type="email"
-                id="email"
-                onChange={handleChange}
-                />
+              <div className="my-2">
+                <label htmlFor="email">Email address </label>
+                <div>
+                  <input 
+                  placeholder="newclient@text.com"
+                  name="email"
+                  type="email"
+                  id="email"
+                  onChange={handleChange}
+                  />
+                </div>
+
               </div>
-              <div className="flex-row space-between my-2">
-                <label htmlFor="password">Password: </label>
+              <div className="my-2">
+                <label htmlFor="password">Password</label>
+                <div>
                 <input 
                 placeholder="*****"
                 name="password"
@@ -66,13 +73,15 @@ function ClientForm() {
                 id="pwd"
                 onChange={handleChange}
                 />
+                </div>
+
               </div>
               {error ? (
                 <div>
                 <p className="error-text">Please check new client credentials and try again.</p>
                 </div>
               ) : null}
-              <div className="flex-row flex-end">
+              <div>
                 <button type="submit">Submit</button>
               </div>
             </form>
