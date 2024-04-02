@@ -1,14 +1,14 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
  
 :root {
-  --primary: #834daa;
+  --primary: #684c85;
   --secondary: #F3A847;
   --tertiary: lightgreen;
   --dark: #0a0808;
   --shadow: #272f32;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
-  --background1: rgb(83,61,106);
+  --background1: #684c85;
   --background2: rgb(246, 241, 241);
   --text: black;
   }
@@ -42,6 +42,7 @@ body {
   width: 100%;
   justify-content: center;
   align-items: center;
+  background: url('/images/dark_bg2.png') center/cover no-repeat;
 }
 
 code {
@@ -157,10 +158,10 @@ input:focus {
   margin-left: auto;
   margin-right: auto;
 }
-
+/* 
 .background-br {
   background-color: rgba(251, 251, 251, 0.074)
-}
+} */
 
 .center {
   justify-content: center;
@@ -225,7 +226,7 @@ input:focus {
 .card {
   min-width: 25%;
   text-align: center;
-  background-color: var(--background);
+  background-color: var(--background2);
   border-width: 2px;
   border-style:none;
   border-color: var(--dark);
@@ -276,7 +277,7 @@ input:focus {
   }
   
   td {
-    background: var(--background);
+    background: var(--background2);
   }
 
   .add-prescr {

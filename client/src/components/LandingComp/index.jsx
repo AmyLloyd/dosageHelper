@@ -14,13 +14,14 @@ function LandingComp() {
           buttonStyle='btn--outline'
           buttonSize='btn--large'
         >
-          <Link to={`/login`}>
-          LOG IN
-          </Link>
+           <Link to={`/login`}>
+           LOG IN
+           </Link>
+         
         </Button>
         <Button
           className='btns'
-          buttonStyle='btn--primary'
+          buttonStyle='btn--outline'
           buttonSize='btn--large'
         >
            <Link to={`/signup`}>

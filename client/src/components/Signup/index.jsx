@@ -33,7 +33,7 @@ function SignupForm(props) {
     };
 
     return (
-            <div className='wrapper'>
+            <div className='wrapper container-a'>
                 <form action="" onSubmit={handleFormSubmit}>
                     <h1>Sign Up!</h1>
                     <div className="input-box">
