@@ -1,3 +1,6 @@
+body {
+    background: url('/images/dark_bg2.png') center/cover no-repeat;
+}
 
 .wrapper {
     width: 420px;
@@ -11,7 +14,6 @@
 
     /*distance between nav and login window*/
     margin-top: 5rem;
-
 }
 
 .wrapper h1 {

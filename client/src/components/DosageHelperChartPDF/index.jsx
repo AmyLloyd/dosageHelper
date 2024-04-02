@@ -13,8 +13,6 @@ import jsPDF from 'jspdf';
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 
-import "./styles.css"
-
 function DosageHelperChartPDF() {
     const [state, dispatch] = useVetContext();
 

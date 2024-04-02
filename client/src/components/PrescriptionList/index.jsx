@@ -7,8 +7,6 @@ import { Link } from 'react-router-dom';
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 
-import "./styles.css"
-
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
     console.log(state, "state");

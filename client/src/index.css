@@ -8,7 +8,8 @@
   --shadow: #272f32;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
-  --background: rgb(246, 241, 241);
+  --background1: rgb(83,61,106);
+  --background2: rgb(246, 241, 241);
   --text: black;
   }
 
@@ -26,11 +27,10 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   display: block;
-
   min-height: 100vh;
   line-height: 1.5;
-  background: url('/images/dark_bg2.png') no-repeat;
-  background-size: cover;
+  background-color: var(--background1);
+  background-size: auto;
   /*Added these for help with overall layout on every page*/
   background-position: center;
   flex-direction: row;

@@ -1,5 +1,5 @@
 .hero-container {
-    background: url('/client/public/images/dark_bg2.png') center center/cover no-repeat;
+    background: url('/images/dark_bg2.png') center/cover no-repeat;
     height: 100vh;
     width: 100%;
     display: flex;

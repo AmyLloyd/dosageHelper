@@ -1,13 +1,11 @@
 import React from 'react';
-
 import { Button } from './../Button';
 import './styles.css';
 import { Link } from 'react-router-dom';
 
-function Landing() {
+function LandingComp() {
   return (
     <div className='hero-container'>
-      <img src="/client/public/images/dark_bg2.png" alt="" />
       <h1>DOSAGE HELPER</h1>
       <p>Helping owners care for their animals</p>
       <div className='hero-btns'>
@@ -35,4 +33,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default LandingComp;

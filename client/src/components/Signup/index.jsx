@@ -68,7 +68,7 @@ function SignupForm(props) {
 
                     <div className="register-link">
                         <p>Already have an account? <a href="#">
-                        <Link to="/LoginForm">LOGIN</Link>
+                        <Link to="/login">Log in</Link>
                         </a></p>
                     </div>
                     
