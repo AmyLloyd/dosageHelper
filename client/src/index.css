@@ -68,15 +68,17 @@ h6 {
 
 h1 {
   font-size: 2.25rem;
+  color: white;
+  text-shadow: 2px 2px 4px #000000;
 }
 
 h2 {
   font-size: 2rem;
 }
 
-h1 {
-  font-size: 2.25rem;
-  color: white;
+h3 {
+  font-size: 1.75rem;
+  color: var(--secondary);
   text-shadow: 2px 2px 4px #000000;
 }
 
@@ -94,7 +96,9 @@ h6 {
 
 p {
   font-size: 1.1rem;
-  margin-top: 0;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  margin-left: 1rem;
 }
 
 a {
@@ -119,7 +123,7 @@ button {
   border: none;
   outline: none;
   cursor: pointer;
-  margin: 0 4px;
+  margin: 3px;
   background-color: var(--secondary);
 }
 
@@ -244,7 +248,7 @@ input:focus {
   border-width: 2px;
   border-style: none;
   border-color: var(--dark);
-  padding: 3px;
+  padding: 6px;
 }
 
 .error-text {

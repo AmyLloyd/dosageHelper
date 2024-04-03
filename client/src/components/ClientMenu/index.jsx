@@ -83,7 +83,7 @@ function ClientMenu() {
                                                     handleClick(item._id);
                                                 }}
                                             >
-                                                Details
+                                               See patients
                                             </button>
                                         </Link>
                               
