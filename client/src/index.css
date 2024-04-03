@@ -164,6 +164,10 @@ input:focus {
   /* margin-left: auto;
   margin-right: auto; */
 }
+.container-form {
+  width: 500px;
+  min-width: 350px;
+}
 
 .background-br {
   background-color: rgba(251, 251, 251, 0.074)
@@ -179,6 +183,11 @@ input:focus {
 .flex-row {
   display: flex;
   flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.flex-item {
+  display: flex;
 }
 
 .space-between {

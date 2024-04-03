@@ -116,11 +116,11 @@ function PrescriptionForm() {
   };
 
     return (
-        <div className = "container my-1 background-br py-2 px-2">
+        <div className = "container-form background-br mx-2 my-2 px-2 py-2">
            <h2>Add a Prescription</h2>
            <form onSubmit={handleFormSubmit}>
               <div> 
-                  <label> Chooose a drug 
+                  <label> Choose a drug 
                           <select id="selectDrug" name="drug_id" placeholder="Search..." onChange={handleChangeDropdown} >
                           {data?.drugs.map((item) => (
                               <option key={item._id} name="drug_id" value={item._id}>{item.name} {item.strength} {item.type}</option>

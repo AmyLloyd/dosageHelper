@@ -40,15 +40,12 @@ function PrescriptionList() {
         <>
             {currentPatient && oneClient && oneClient.patients ? (
             <>
-                <h2>Prescription History</h2>
-                <h3>{onePatient?.name}</h3>
-
+                <h2>{onePatient?.name}'s prescription history</h2>
 
                 <section className="prescr-list my-2">
                     <table>
                         <thead>
                             <tr>
-
                                 <th>PRESCRIPTION DATE</th>
                                 <th>DRUG</th>
                                 <th>DRUG STRENGTH</th>
