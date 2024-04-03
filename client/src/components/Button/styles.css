@@ -8,12 +8,14 @@
     outline: none;
     border: none;
     cursor: pointer;
+    box-shadow: 2px 2px 4px #000000;
   }
   
   .btn--primary {
     background-color: var(--button);
     color: var(--secondary);
     border: 1px solid var(--button);
+
   }
   
   .btn--outline {
@@ -36,7 +38,8 @@
   .btn--large:hover,
   .btn--medium:hover {
     transition: all 0.3s ease-out;
-    background: #fff;
+    background: var(--secondary);
+    opacity:0.3;
     color: #401b5a;
     transition: 250ms;
   }
