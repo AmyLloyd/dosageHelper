@@ -11,12 +11,12 @@ function DrugList() {
 
     console.log(data, "data");
 
-    const handleClick = (id) => {
-        dispatch({ 
-            type: UPDATE_CURRENT_DRUG,
-            currentDrug: id,
-        });
-    };
+    // const handleClick = (id) => {
+    //     dispatch({ 
+    //         type: UPDATE_CURRENT_DRUG,
+    //         currentDrug: id,
+    //     });
+    // };
 
     return (
         <div>

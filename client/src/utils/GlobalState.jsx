@@ -32,4 +32,4 @@ export { VetProvider, useVetContext };
 
 //Alternatives: 22.10 useReducer shows could table display od data with checkbox
 
-//OR 22.22 student typedefs review qwith product items on shopping website
+//OR 22.22 student typedefs review with product items on shopping website

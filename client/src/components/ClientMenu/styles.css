@@ -1,10 +1,15 @@
 
 .container {
-    width: 85%;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    max-width: 70%;
+    min-width: 66%;
+    /* margin-left: auto;
+    margin-right: auto; */
   }
+
+.sidebar {
+  min-width: 25%;
+  justify-content: center;
+}
   
   .flex-row {
     display: flex;
@@ -26,12 +31,12 @@
   button {
     font-size: 1rem;
     text-decoration: none;
-    padding: 0.5rem 1.5rem;
+    padding: 0.25rem 1rem;
     border-radius: .5rem;
     border: none;
     outline: none;
     cursor: pointer;
-    margin: 0 1px;
+    margin: 3px;
     background-color: var(--secondary);
   }
   
@@ -46,6 +51,8 @@
 
   h1 {
     font-size: 2.25rem;
+    color: white;
+    text-shadow: 2px 2px 4px #000000;
   }
   
   h2 {
@@ -55,6 +62,8 @@
   
   h3 {
     font-size: 1.75rem;
+    color: var(--secondary);
+    text-shadow: 2px 2px 4px #000000;
   }
   
   h4 {

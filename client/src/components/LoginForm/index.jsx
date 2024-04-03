@@ -65,11 +65,11 @@ function LoginForm(props) {
                         </div>
                     ) : null}
 
-                    <button type="submit">Login</button>
+                    <button type="submit">Log in</button>
 
                     <div className="register-link">
-                        <p>Don&apos;t have an account? <a href="#">
-                        <Link to="/signup">Signup</Link>
+                        <p>Don't have an account? <a href="#">
+                        <Link to="/signup">Sign up</Link>
                         </a></p>
                     </div>
                     

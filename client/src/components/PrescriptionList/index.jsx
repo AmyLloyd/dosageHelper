@@ -3,16 +3,18 @@ import { useQuery } from '@apollo/client';
 import { useVetContext } from "../../utils/GlobalState";
 import { Link } from 'react-router-dom';
 
+
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 
-import "./styles.css"
-
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
+    console.log(state, "state");
 
     const { currentClient } = state;
+    console.log(currentClient, "currentClient");
     const { currentPatient } = state;
+    console.log(currentPatient, "currentPatient");
     const clients  = state.clients;
   
     let [oneClient, setOneClient] = useState();
@@ -36,27 +38,24 @@ function PrescriptionList() {
 
     return (
         <>
-            <button className='my-2'>
-                <Link to="/Prescription"> Add new prescription </Link>
-            </button>
             {currentPatient && oneClient && oneClient.patients ? (
             <>
-          
-                <h2>{onePatient?.name}</h2>
-                <h5>Prescription History</h5>
+                <h2>{onePatient?.name}'s prescription history</h2>
 
                 <section className="prescr-list my-2">
                     <table>
                         <thead>
                             <tr>
-
                                 <th>PRESCRIPTION DATE</th>
                                 <th>DRUG</th>
                                 <th>DRUG STRENGTH</th>
                                 <th>DRUG TYPE</th>
                                 <th>COURSE LENGTH</th>
                                 <th>DOSAGE TIMES</th>
+                                <th>QUANTITY</th>
+                                <th>DOSE FREQUENCY</th>
                                 <th>DOSAGE NOTES</th>
+                                <th>INSTRUCTIONS</th>
                                 <th>ACTIVE?</th>
                             </tr>
                         </thead>
@@ -95,8 +94,10 @@ function PrescriptionList() {
                                     )}
                     
                                 </td>
-
+                                <td>{item.quantity}</td>
+                                <td>{item.dose_frequency}</td>
                                 <td>{item.dosage_notes}</td>
+                                <td>{item.instructions}</td>
                                 <td>{item.active ? (
                                     <>
                                         <div>✅</div>
@@ -113,59 +114,16 @@ function PrescriptionList() {
                     </table>
                 </section>
 
-                <h4 className= 'my-2' >Dosage Helper</h4>
-                <div>
-                    <button>
-                        <Link to="/DosageHelperPDF"> Print Dosage Helper for client </Link>
+                <div className="container space-between flex-row">
+                    <button className='my-2 flex-item'>
+                        <Link to="/Prescription"> Add new prescription </Link>
+                    </button>
+                    {/* Button for to go to printable PDF */}
+                    <button className='my-2 flex-item'>
+                        <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
                     </button>
                 </div>
-                
-                <section className="prescr-list my-2">
-                    <table>
-                        <thead>
-                            <tr>
-                                <td></td>
-                            {onePatient?.prescriptions?.map((item) => (
-                                <th key={item._id}>{item.drug.name} Strength:{item.drug.strength} Type: {item.drug.type}</th>
-                            ))}
-                            </tr>
-                        </thead>
-                
-                        <tbody>
-                            {days.map((day) => (
 
-                                <tr key={day}>
-                                    <td>DAY ___________</td>
-                                    {onePatient?.prescriptions?.map((item) => (
-                                    <td key={item._id}>
-                                        <input className="checkbox" id="checked" type="checkbox" />
-                                        <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
-                                    {item.time_of_dosages[1]?(
-                                            <>
-                                                <input className="checkbox" id="checked" type="checkbox" />
-                                                <label htmlFor="agreement">{item.time_of_dosages[1]}</label> 
-                                            </>
-                                    ):(
-                                        <>
-                                        </>
-                                    )}
-                                    {/* //itinary statements */}
-                                    {item.time_of_dosages[2]?(
-                                        <>
-                                            <input className="checkbox" id="checked" type="checkbox"/>
-                                            <label htmlFor="agreement">{item.time_of_dosages[2]}</label> 
-                                        </>
-                                    ):(
-                                        <>
-                                        </>
-                                    )}
-                                    </td>
-                                    ))}
-                                </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </section>
             </> 
 
             ) : (

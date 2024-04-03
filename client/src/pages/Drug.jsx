@@ -4,16 +4,14 @@ import DrugList from '../components/DrugList';
 function Drug() {
     
     return (
-        
-        <div className='background-br'>
-
             <div>
-                <DrugList />
-                <h2>Add new drug</h2>
-
-                <NewDrugForm />
+                <div className='center px-2 py-2'>
+                    <DrugList />
+                </div>
+                <div className='flex-row center'>
+                        <NewDrugForm />
+                </div>
             </div>
-        </div>
     )
 }
 

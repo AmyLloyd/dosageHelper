@@ -44,14 +44,14 @@ function PatientMenu() {
                     {state.currentClient && clients ? (
                         <div>
                             
-                            <h3>{oneClient?.username}'s animals</h3>
+                            <h2>{oneClient?.username}'s animals</h2>
 
-                            <div className='container flex-row'>
+                            <div className='flex-row'>
                                
                             {oneClient?.patients?.map((item) => (
-                                <div key={item._id} className='card  my-2 mx-2'>
+                                <div key={item._id} className='card my-2 mx-2'>
                                 
-                                        <h3><span className='field-text' > Name: </span>    {item.name}</h3>
+                                        <h4>{item.name}</h4>
                                         <p><span className='field-text' >Animal type:</span>    {item.animal_type}</p>
                                         <p><span className='field-text' >Condition:</span>    {item.condition_description}</p>
                                         <Link to={`/patients/${item._id}`}>

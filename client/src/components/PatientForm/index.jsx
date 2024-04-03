@@ -56,38 +56,45 @@ function PatientForm() {
     };
 
     return (
-        <div className = "container my-1 background-br py-2 px-2">
+        <div className = "background-br py-2 px-2">
            <h2>Add a Patient</h2>
            <form onSubmit={handleFormSubmit}>
-              <div className="flex-row space-between my-2">
-                <label htmlFor="name">Name: </label>
-                <input 
-                placeholder="name"
-                name="name"
-                type="name"
-                id="name"
-                onChange={handleChange}
-                />
+              <div className="my-2">
+                <label htmlFor="name">Name</label>
+                <div>
+                    <input 
+                    placeholder="name"
+                    name="name"
+                    type="name"
+                    id="name"
+                    onChange={handleChange}
+                    />
+                </div>
               </div>
-              <div className="flex-row space-between my-2">
-                <label htmlFor="animal_type">Animal Type: </label>
-                <input 
-                placeholder="animal type"
-                name="animal_type"
-                type="animal_type"
-                id="animal_type"
-                onChange={handleChange}
-                />
+              <div className="my-2">
+                <label htmlFor="animal_type">Animal Type</label>
+                <div>
+                    <input 
+                    placeholder="animal type"
+                    name="animal_type"
+                    type="animal_type"
+                    id="animal_type"
+                    onChange={handleChange}
+                    />
+                </div>
               </div>
-              <div className="flex-row space-between my-2">
+              <div className="my-2">
                 <label htmlFor="condition_description">Condition Description: </label>
-                <input 
-                placeholder="condition description"
-                name="condition_description"
-                type="condition_description"
-                id="condition_description"
-                onChange={handleChange}
-                />
+                <div>
+                    <input 
+                    placeholder="condition description"
+                    name="condition_description"
+                    type="condition_description"
+                    id="condition_description"
+                    onChange={handleChange}
+                    />
+                </div>
+
               </div>
               {error ? (
                 <div>

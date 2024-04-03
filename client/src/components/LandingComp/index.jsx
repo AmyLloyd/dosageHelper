@@ -1,28 +1,27 @@
 import React from 'react';
-
 import { Button } from './../Button';
 import './styles.css';
 import { Link } from 'react-router-dom';
 
-function Landing() {
+function LandingComp() {
   return (
     <div className='hero-container'>
-      <img src="/client/public/images/dark_bg2.png" alt="" />
       <h1>DOSAGE HELPER</h1>
-      <p>Helping owners care for their animals</p>
+      <h3>Helping owners care for their animals</h3>
       <div className='hero-btns'>
         <Button
           className='btns'
           buttonStyle='btn--outline'
           buttonSize='btn--large'
         >
-          <Link to={`/login`}>
-          LOG IN
-          </Link>
+           <Link to={`/login`}>
+           LOG IN
+           </Link>
+         
         </Button>
         <Button
           className='btns'
-          buttonStyle='btn--primary'
+          buttonStyle='btn--outline'
           buttonSize='btn--large'
         >
            <Link to={`/signup`}>
@@ -35,4 +34,4 @@ function Landing() {
   );
 }
 
-export default Landing;
+export default LandingComp;
