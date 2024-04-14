@@ -85,6 +85,12 @@ const resolvers = {
       }
     },
 
+    removeDrug: async (parent, { drugId }, context) => {
+      if(context.user) {
+        return Drug.findOneAndDelete({ _id: drugId });
+      }
+    },
+
     addClientToVet: async (parent, {username, email, password}, context) => {
       if(context.user ) {
         try {
@@ -249,23 +255,5 @@ const resolvers = {
     },
   },
 };
-
-
-
-// addClientToVet: async (parent, {username, email, password}, context) => {
-//   if(context.user ) {
-//     try {
-//       const client = await Client.create({ username, email, password });
-//       const vet = await Vet.findOneAndUpdate(
-//         {_id:context.user._id},
-//         { $addToSet: {clients:client._id}},
-//         { new: true })
-
-//       return vet;
-//     } catch (err) {
-//       console.log(err);
-//     }
-//   }
-// },
 
 module.exports = resolvers;

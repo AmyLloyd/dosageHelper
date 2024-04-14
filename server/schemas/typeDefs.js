@@ -97,6 +97,7 @@ const typeDefs = `
         removeClient(client_id: ID!): Client 
 
         addDrug(name: String!, strength: String, type: String): Drug
+        removeDrug(drugId: ID!): Drug
     }
 
 `;

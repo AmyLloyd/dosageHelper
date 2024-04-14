@@ -72,6 +72,15 @@ export const ADD_DRUG_TO_PRESCRIPTION = gql`
     }
 `;
 
+export const REMOVE_DRUG = gql`
+    mutation removeDrug($drugId: ID!) {
+        removeDrug(drugId: $drugId) {
+            _id
+            name
+        }
+    }
+`;
+
 export const ADD_PRESCRIPTION_TO_PATIENT = gql`
     mutation AddPrescriptionToPatient($drug_id: ID!, $dose_frequency: Int!, $instructions: String, $quantity: Int, $course_length: Int, $prescriber: ID, $number_of_dosages: Int, $time_of_dosages: [String], $dosage_notes: String $patient_id: ID!) {
         addPrescriptionToPatient(drug_id: $drug_id, dose_frequency: $dose_frequency, instructions: $instructions, quantity: $quantity, course_length: $course_length, prescriber: $prescriber, number_of_dosages: $number_of_dosages, time_of_dosages: $time_of_dosages, dosage_notes: $dosage_notes, patient_id: $patient_id) {
