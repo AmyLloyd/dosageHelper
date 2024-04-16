@@ -134,13 +134,19 @@ function PrescriptionList() {
                                 <td>{item.instructions}</td>
                                 <td>{item.active ? (
                                     <>
-                                        <div>✅</div>
-                                        <button onClick={handleDeactivateBtn} value={item._id}>Deactivate</button>
+                                        <div class="center">
+                                            <div>✅</div>                   
+                                            <button onClick={handleActivateBtn} value={item._id} class="material-symbols-outlined" >
+                                                swap_horizontal_circle</button>                                       
+                                        </div>
                                     </>
                                     ) : (
-                                    <>
-                                        <div>✖️</div>
-                                        <button onClick={handleActivateBtn} value={item._id}>Activate</button>
+                                    <>                                      
+                                        <div class="center">
+                                            <div>✖️</div>                   
+                                            <button onClick={handleActivateBtn} value={item._id} class="material-symbols-outlined" >
+                                                swap_horizontal_circle</button>                                       
+                                        </div>                                        
                                     </>    
                                     )}
                                 </td>
