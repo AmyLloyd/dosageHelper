@@ -296,6 +296,7 @@ input:focus {
   th {
     background: var(--tertiary);
     padding: 10px;
+    align-content:flex-start;
   }
   
   th,
