@@ -317,3 +317,18 @@ input:focus {
     height: 40px;
   }
   
+  .field-text {
+    font-weight:bold;
+    text-align: left;
+}
+.subheading {
+  font-weight:normal;
+  text-align:left;
+  font-size:medium;
+  padding: 0.5rem;
+}
+
+.blank-width {
+  min-width: 100px;
+  min-height: 30px;
+}
