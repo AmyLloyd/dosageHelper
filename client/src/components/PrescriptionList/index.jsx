@@ -2,10 +2,13 @@ import { useEffect, useState } from 'react';
 import { useQuery } from '@apollo/client';
 import { useVetContext } from "../../utils/GlobalState";
 import { Link } from 'react-router-dom';
+import { useMutation } from '@apollo/client';
 
 
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
+import { TOGGLE_ACTIVE_PRESCRIPTION } from '../../utils/mutations';
+import { TOGGLE_INACTIVE_PRESCRIPTION } from '../../utils/mutations';
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
@@ -35,6 +38,37 @@ function PrescriptionList() {
     }, [clients, currentClient, currentPatient]);
   
     const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14"];
+
+    const [toggleActivePrescription, { error }] = useMutation( TOGGLE_ACTIVE_PRESCRIPTION );
+    const handleDeactivateBtn = async (event) => {
+        event.preventDefault();
+        try {
+            const id = event.target.value;
+
+            const mutationResponse = await toggleActivePrescription({
+                variables: {
+                    prescriptionId: id
+                },               
+            });
+        } catch (e) {
+            console.log(e);
+        }  
+    };
+
+    const [toggleInactivePrescription] = useMutation( TOGGLE_INACTIVE_PRESCRIPTION );
+    const handleActivateBtn = async (event) => {
+        event.preventDefault();
+        try {
+            const id = event.target.value;
+            const mutationResponse = await toggleInactivePrescription({
+                variables: {
+                    prescriptionId: id
+                },               
+            });
+        } catch (e) {
+            console.log(e);
+        }  
+    };
 
     return (
         <>
@@ -101,10 +135,12 @@ function PrescriptionList() {
                                 <td>{item.active ? (
                                     <>
                                         <div>✅</div>
+                                        <button onClick={handleDeactivateBtn} value={item._id}>Deactivate</button>
                                     </>
                                     ) : (
                                     <>
                                         <div>✖️</div>
+                                        <button onClick={handleActivateBtn} value={item._id}>Activate</button>
                                     </>    
                                     )}
                                 </td>

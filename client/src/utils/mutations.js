@@ -155,3 +155,19 @@ mutation addDrug($name: String!, $strength: String, $type: String) {
         type
     }
 }`
+
+export const TOGGLE_ACTIVE_PRESCRIPTION = gql`
+mutation ToggleActivePrescription($prescriptionId: ID!) {
+    toggleActivePrescription(prescription_id: $prescriptionId) {
+      active
+      _id
+    }
+  }`
+
+export const TOGGLE_INACTIVE_PRESCRIPTION = gql`
+mutation ToggleInactivePrescription($prescriptionId: ID!) {
+    toggleInactivePrescription(prescription_id: $prescriptionId) {
+      _id
+      active
+    }
+  }`

@@ -224,15 +224,37 @@ const resolvers = {
       
       throw AuthenticationError;
     },
-    updatePrescription: async (parent, args, context) => {
-      if(context.user) {
-        return Prescription.findByIdAndUpdate(args, {
-          new: true
-        }).populate('drug');
-      }
 
-      throw AuthenticationError;
+    toggleActivePrescription: async (parent, args, context) => {
+      if(context.user) {
+        try {
+          const prescriptionActive = await Prescription.where({ active: true }).findOneAndUpdate(
+            { _id: args.prescription_id },
+            { $set: { active: false } }, 
+            { new: true }
+          );
+          return prescriptionActive;
+        } catch (err) {
+          console.log(err);
+        }
+      }
     },
+
+    toggleInactivePrescription: async (parent, args, context) => {
+      if(context.user) {
+        try {
+          const prescriptionActive = await Prescription.where({ active: false }).findOneAndUpdate(
+            { _id: args.prescription_id },
+            { $set: { active: true } }, 
+            { new: true }
+          );
+          return prescriptionActive;
+        } catch (err) {
+          console.log(err);
+        }
+      }
+    },
+
     removeClient: async (parent, { client_id }, context) => {
       if(context.user) {
       return Client.findOneAndDelete({_id: client_id 
