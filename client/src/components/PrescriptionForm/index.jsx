@@ -35,6 +35,7 @@ function PrescriptionForm() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
+          console.log(formState.drug_id, "formState.drug_id");
             const { newPrescription } = await addPrescriptionToPatient({
                 variables: {
                     drug_id: formState.drug_id,
@@ -74,10 +75,15 @@ function PrescriptionForm() {
     };
 
     const handleChangeDropdown = (event) => {
+      console.log(event.target, 'event.target');
       const selectElement = document.querySelector('#selectDrug');
+      console.log(selectElement, "selectElement");
       const output = selectElement.value;
+      console.log(selectElement.value, 'selectElement.value');
       const name = selectElement.name;
+      console.log(output, 'output');
       document.querySelector('.output').textContent = output;
+      console.log(output, 'output');
 
       setFormState({
         ...formState,
