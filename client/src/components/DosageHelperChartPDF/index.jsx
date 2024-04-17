@@ -49,7 +49,7 @@ function DosageHelperChartPDF() {
             const imgData = canvas.toDataURL('image/png');
             // generates a pdf using jdPDF
             const pdf = new jsPDF('p', 'mm', 'a4', true);
-            //determines dimensions
+            //determines dimensions          
             const pdfWidth = pdf.internal.pageSize.getWidth();
             const pdfHeight = pdf.internal.pageSize.getHeight();
             const imgWidth = canvas.width;
@@ -70,13 +70,19 @@ function DosageHelperChartPDF() {
             <>
 
 {/* Printable version of dosageHelper           */}
-                <section className="prescr-list my-2" ref={pdfRef}>
+                <section className="prescr-list my-2 mx-2 py-2 px-2" ref={pdfRef}>
+                    <h4>{onePatient.name} the {onePatient.animal_type}</h4>
+                    <h6>Client name: {oneClient?.username}</h6>
                     <table>
                         <thead>
                             <tr>
                                 <td></td>
                             {onePatient?.prescriptions?.map((item) => (
-                                <th key={item._id}>{item.drug.name} Strength:{item.drug.strength} Type: {item.drug.type}</th>
+                                <th key={item._id} >
+                                    <h4>{item.drug.name}</h4>
+                                    <p class='field-text'>Strength: <span class='subheading'>{item.drug.strength}</span></p>
+                                    <p class='field-text'>Type: <span class='subheading'>{item.drug.type}</span></p> 
+                                </th>
                             ))}
                             </tr>
                         </thead>
@@ -85,7 +91,9 @@ function DosageHelperChartPDF() {
                             {days.map((day) => (
 
                                 <tr key={day}>
-                                    <td>DAY ___________</td>
+                                    <td class='subheading'>DAY:
+                                        <div class='blank-width'></div>
+                                    </td>
                                     {onePatient?.prescriptions?.map((item) => (
                                     <td key={item._id}>
                                         <input className="checkbox" id="checked" type="checkbox" />
