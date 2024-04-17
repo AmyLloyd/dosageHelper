@@ -130,7 +130,7 @@ function PrescriptionList() {
                                 </td>
                                 <td>{item.quantity}</td>
                                 <td>{item.dose_frequency}</td>
-                                <td>{item.dosage_notes}</td>
+                                {/* <td>{item.dosage_notes}</td> */}
                                 <td>{item.instructions}</td>
                                 <td>{item.active ? (
                                     <>

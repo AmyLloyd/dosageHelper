@@ -109,28 +109,28 @@ function PrescriptionForm() {
       })
     }
 
-    const handleChangeArray = async (event) => {
-     try {
-      const data = [];
-      const input = event.target.children;
-      console.log(input, "input");
+  //   const handleChangeArray = async (event) => {
+  //    try {
+  //     const data = [];
+  //     const input = event.target.children;
+  //     console.log(input, "input");
 
-      for(var i=0; i < input.length; i++){
-        if (input[i].value) {
-          data.push(input[i].value)
-        }
-      }
-      console.log(data, 'data');
+  //     for(var i=0; i < input.length; i++){
+  //       if (input[i].value) {
+  //         data.push(input[i].value)
+  //       }
+  //     }
+  //     console.log(data, 'data');
 
-      setFormState({
-        ...formState,
-        dosage_notes: data
-      });
-      console.log(formState, 'formState');
-    } catch(e) {
-      console.log(e);
-    }
-  };
+  //     setFormState({
+  //       ...formState,
+  //       dosage_notes: data
+  //     });
+  //     console.log(formState, 'formState');
+  //   } catch(e) {
+  //     console.log(e);
+  //   }
+  // };
       
 
     const handleChangeInt = (event) => {
@@ -190,8 +190,8 @@ function PrescriptionForm() {
                 <input type="checkbox" value="pm"/>
                 <label htmlFor="pm">pm</label>
               </div>
-
-              <div className="flex-row space-between my-2" onChange={handleChangeArray}>
+{/* //onChange={addhandleChangeArray} */}
+              <div className="flex-row space-between my-2">
                 <label htmlFor="dosage_notes">Dosage notes: </label>
                 <label htmlFor="am">am</label><br/>
                 <input type="text" placeholder="am notes"/>
