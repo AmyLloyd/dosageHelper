@@ -18,14 +18,12 @@ function PrescriptionForm() {
         course_length:'',
         number_of_dosages: '', 
         time_of_dosages: [], 
-        dosage_notes: '', 
+        dosage_notes: [], 
         instructions: '',
         quantity:''
     });
 
     const [addPrescriptionToPatient, { error }] = useMutation(ADD_PRESCRIPTION_TO_PATIENT);
-
-    console.log(formState, "formState");
 
     const currentPatientId = state.currentPatient;
     // const currentDrugId = state.currentDrug;
@@ -111,6 +109,30 @@ function PrescriptionForm() {
       })
     }
 
+    const handleChangeArray = async (event) => {
+     try {
+      const data = [];
+      const input = event.target.children;
+      console.log(input, "input");
+
+      for(var i=0; i < input.length; i++){
+        if (input[i].value) {
+          data.push(input[i].value)
+        }
+      }
+      console.log(data, 'data');
+
+      setFormState({
+        ...formState,
+        dosage_notes: data
+      });
+      console.log(formState, 'formState');
+    } catch(e) {
+      console.log(e);
+    }
+  };
+      
+
     const handleChangeInt = (event) => {
       const numericValue = parseInt(event.target.value, 10);
       const { name } = event.target;
@@ -119,6 +141,7 @@ function PrescriptionForm() {
           ...formState,
           [name]: numericValue,
       });
+
   };
 
     return (
@@ -148,7 +171,7 @@ function PrescriptionForm() {
                 />
               </div>
               <div className="flex-row space-between my-2">
-                <label htmlFor="course_length">Course_length: </label>
+                <label htmlFor="course_length">Course length: </label>
                 <input 
                 placeholder="Enter a number of days"
                 name="course_length"
@@ -159,7 +182,7 @@ function PrescriptionForm() {
               </div>
 
               <div className="flex-row space-between my-2" id="selected" onChange={handleChangeCheckbox}>
-                <label htmlFor="time_of_dosages">Time_of_dosages: </label>
+                <label htmlFor="time_of_dosages">Time of dosages: </label>
                 <input type="checkbox" value="am"/>
                 <label htmlFor="am">am</label><br/>
                 <input type="checkbox" value="noon"/>
@@ -167,26 +190,18 @@ function PrescriptionForm() {
                 <input type="checkbox" value="pm"/>
                 <label htmlFor="pm">pm</label>
               </div>
-{/* 
-                placeholder="am / noon / pm"
-                name="time_of_dosages"
-                type="time_of_dosages"
-                id="time_of_dosages"
-                onChange={handleChange}
-                /> */}
-              
-              <div className="flex-row space-between my-2">
-                <label htmlFor="dosage_notes">dosage_notes: </label>
-                <input 
-                placeholder="Are there any special notes for particular doses?"
-                name="dosage_notes"
-                type="dosage_notes"
-                id="dosage_notes"
-                onChange={handleChangeVal}
-                />
+
+              <div className="flex-row space-between my-2" onChange={handleChangeArray}>
+                <label htmlFor="dosage_notes">Dosage notes: </label>
+                <label htmlFor="am">am</label><br/>
+                <input type="text" placeholder="am notes"/>
+                <label htmlFor="noon">noon</label>
+                <input type="text" placeholder="noon notes"/>
+                <label htmlFor="pm">pm</label>
+                <input type="text" placeholder="pm notes"/>
               </div>
               <div className="flex-row space-between my-2">
-                <label htmlFor="instructions"> instructions: </label>
+                <label htmlFor="instructions"> Instructions: </label>
                 <input 
                 placeholder="Overall instructions"
                 name="instructions"
