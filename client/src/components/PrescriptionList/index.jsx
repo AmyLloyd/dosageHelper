@@ -88,7 +88,6 @@ function PrescriptionList() {
                                 <th>DOSAGE TIMES</th>
                                 <th>QUANTITY</th>
                                 <th>DOSE FREQUENCY</th>
-                                <th>DOSAGE NOTES</th>
                                 <th>INSTRUCTIONS</th>
                                 <th>ACTIVE?</th>
                             </tr>
@@ -105,11 +104,13 @@ function PrescriptionList() {
                                 <td>
                                     <input className="checkbox" id="checked" type="checkbox" />
                                     <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
-                                    
+                                    {item.dosage_notes[0]?(<div className='note-text'>{item.dosage_notes[0]}</div>):(<></>)}
+
                                     {item.time_of_dosages[1]?(
                                         <>
                                             <input className="checkbox" id="checked" type="checkbox" />
-                                            <label htmlFor="agreement">{item.time_of_dosages[1]}</label> 
+                                            <label htmlFor="agreement">{item.time_of_dosages[1]}</label>
+                                            {item.dosage_notes[1]?(<div className='note-text'>{item.dosage_notes[1]}</div>):(<></>)} 
                                         </>
                                     ):(
                                         <>
@@ -120,7 +121,8 @@ function PrescriptionList() {
                                     {item.time_of_dosages[2]?(
                                         <>
                                             <input className="checkbox" id="checked" type="checkbox"/>
-                                            <label htmlFor="agreement">{item.time_of_dosages[2]}</label> 
+                                            <label htmlFor="agreement">{item.time_of_dosages[2]}</label>
+                                            {item.dosage_notes[2]?(<div className='note-text'>{item.dosage_notes[2]}</div>):(<></>)} 
                                         </>
                                     ):(
                                         <>
@@ -130,7 +132,6 @@ function PrescriptionList() {
                                 </td>
                                 <td>{item.quantity}</td>
                                 <td>{item.dose_frequency}</td>
-                                {/* <td>{item.dosage_notes}</td> */}
                                 <td>{item.instructions}</td>
                                 <td>{item.active ? (
                                     <>

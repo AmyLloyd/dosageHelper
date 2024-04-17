@@ -31,7 +31,7 @@ const typeDefs = `
         number_of_dosages: Int
         time_of_dosages: [String]
         dosage_checked_at: String
-        dosage_notes: String
+        dosage_notes: [String]
         active: Boolean
     }
 

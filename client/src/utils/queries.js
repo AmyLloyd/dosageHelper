@@ -75,6 +75,7 @@ query myClients {
                 course_length
                 number_of_dosages
                 dosage_checked_at
+                dosage_notes
                 time_of_dosages
                 drug{
                     _id
@@ -151,27 +152,3 @@ export const QUERY_PATIENT_BY_ID = gql `
         }
     }
 `;
-
-
-
-// query getAllClients{
-//     clients{
-//       _id
-//       username
-//       patients{
-//         _id
-//         name
-//         animal_type
-//       }
-//     }
-//   }
-
-// query getAllPatients{
-//     patients{
-//       _id
-//       name
-//       animal_type
-//       condition_description
-//     }
-//   }
-

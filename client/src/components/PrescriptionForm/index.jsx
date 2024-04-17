@@ -5,35 +5,28 @@ import { useMutation } from '@apollo/client';
 import { QUERY_ALL_DRUGS } from '../../utils/queries';
 import { ADD_PRESCRIPTION_TO_PATIENT } from '../../utils/mutations';
 
-// import DrugDropdown from '../DrugDropdown';
-
 function PrescriptionForm() {
     const [state, dispatch] = useVetContext();
-
     const { data } = useQuery(QUERY_ALL_DRUGS);
-
     const [formState, setFormState] = useState({ 
         drug_id:'',  
-        dose_frequency: '', 
-        course_length:'',
-        number_of_dosages: '', 
+        dose_frequency: 0, 
+        course_length:0,
+        number_of_dosages: 0, 
         time_of_dosages: [], 
         dosage_notes: [], 
         instructions: '',
-        quantity:''
+        quantity:0,
+        active:true,
+        created_at:new Date(),
     });
 
     const [addPrescriptionToPatient, { error }] = useMutation(ADD_PRESCRIPTION_TO_PATIENT);
-
-    const currentPatientId = state.currentPatient;
-    // const currentDrugId = state.currentDrug;
-    console.log(currentPatientId, "currentPatientId");
-   
+    const currentPatientId = state.currentPatient; 
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
-          console.log(formState.drug_id, "formState.drug_id");
             const { newPrescription } = await addPrescriptionToPatient({
                 variables: {
                     drug_id: formState.drug_id,
@@ -46,18 +39,7 @@ function PrescriptionForm() {
                     quantity: formState.number_of_dosages * (formState.course_length / formState.dose_frequency),
                     patient_id: currentPatientId
                     },
-
             });
-
-            console.log(newPrescription, "newPrescription");
-
-            // const mutationResponse = await addDrugToPrescription({
-            //   variables: {
-            //     drug_id: currentDrugId,
-            //     prescription_id: newPrescription._id
-            //   }
-              
-            // })
         } catch (e) {
             console.log(e);
         }
@@ -73,16 +55,10 @@ function PrescriptionForm() {
     };
 
     const handleChangeDropdown = (event) => {
-      console.log(event.target, 'event.target');
       const selectElement = document.querySelector('#selectDrug');
-      console.log(selectElement, "selectElement");
       const output = selectElement.value;
-      console.log(selectElement.value, 'selectElement.value');
       const name = selectElement.name;
-      console.log(output, 'output');
       document.querySelector('.output').textContent = output;
-      console.log(output, 'output');
-
       setFormState({
         ...formState,
         [name]: output,
@@ -90,7 +66,6 @@ function PrescriptionForm() {
     };
 
     const handleChangeCheckbox = (event) => {
-      console.log(event.target);
       const selected = [];
       const checkboxEl = document.querySelector('#selected');
       const input = checkboxEl.children;
@@ -100,7 +75,6 @@ function PrescriptionForm() {
           selected.push(input[i].value)
         } 
       }
-      console.log(selected.length, "selected.length");
 
       setFormState({
         ...formState,
@@ -109,39 +83,32 @@ function PrescriptionForm() {
       })
     }
 
-  //   const handleChangeArray = async (event) => {
-  //    try {
-  //     const data = [];
-  //     const input = event.target.children;
-  //     console.log(input, "input");
-
-  //     for(var i=0; i < input.length; i++){
-  //       if (input[i].value) {
-  //         data.push(input[i].value)
-  //       }
-  //     }
-  //     console.log(data, 'data');
-
-  //     setFormState({
-  //       ...formState,
-  //       dosage_notes: data
-  //     });
-  //     console.log(formState, 'formState');
-  //   } catch(e) {
-  //     console.log(e);
-  //   }
-  // };
+    const handleChangeArray = async (event) => {
+     try {
+      const data = [];
+      const inputEl = document.querySelector('#input');
+      const input = inputEl.children;
+      for(var i = 0; i < input.length; i++){
+        if(input[i].value){
+          data.push(input[i].value)
+        }
+      }     
+      setFormState({
+        ...formState,
+        dosage_notes: data
+      });
+    } catch(e) {
+      console.log(e);
+    }
+  };
       
-
     const handleChangeInt = (event) => {
       const numericValue = parseInt(event.target.value, 10);
       const { name } = event.target;
-
       setFormState({
           ...formState,
           [name]: numericValue,
       });
-
   };
 
     return (
@@ -190,8 +157,7 @@ function PrescriptionForm() {
                 <input type="checkbox" value="pm"/>
                 <label htmlFor="pm">pm</label>
               </div>
-{/* //onChange={addhandleChangeArray} */}
-              <div className="flex-row space-between my-2">
+              <div className="flex-row space-between my-2" onChange={handleChangeArray} id='input'>
                 <label htmlFor="dosage_notes">Dosage notes: </label>
                 <label htmlFor="am">am</label><br/>
                 <input type="text" placeholder="am notes"/>

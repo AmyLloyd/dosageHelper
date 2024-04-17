@@ -10,7 +10,7 @@ import { UPDATE_CLIENTS } from '../../utils/actions';
 function PatientForm() {
     const [state, dispatch] = useVetContext();
     const [formState, setFormState] = useState({ name: '', animal_type:'', condition_description: ''});
-    const [addPatientToClient, { error }] = useMutation( ADD_PATIENT_TO_CLIENT );
+    const [addPatientToClient, { error }] = useMutation( ADD_PATIENT_TO_CLIENT);
     
     const id = state.currentClient;
    
