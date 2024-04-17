@@ -136,7 +136,7 @@ function PrescriptionList() {
                                     <>
                                         <div className="center">
                                             <div>✅</div>                   
-                                            <button onClick={handleActivateBtn} value={item._id} className="material-symbols-outlined" >
+                                            <button onClick={handleDeactivateBtn} value={item._id} className="material-symbols-outlined" >
                                                 swap_horizontal_circle</button>                                       
                                         </div>
                                     </>
