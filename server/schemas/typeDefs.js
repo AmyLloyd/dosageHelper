@@ -97,9 +97,7 @@ const typeDefs = `
         toggleActivePrescription(prescription_id: ID!): Prescription
         toggleInactivePrescription(prescription_id: ID!): Prescription
         removeClient(client_id: ID!): Client 
-
         addDrug(name: String!, strength: String, type: String): Drug
-        removeDrug(drugId: ID!): Drug
     }
 
 `;
