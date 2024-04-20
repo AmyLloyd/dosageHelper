@@ -85,11 +85,11 @@ const resolvers = {
       }
     },
 
-    removeDrug: async (parent, { drugId }, context) => {
-      if(context.user) {
-        return Drug.findOneAndDelete({ _id: drugId });
-      }
-    },
+    // removeDrug: async (parent, { drugId }, context) => {
+    //   if(context.user) {
+    //     return Drug.findOneAndDelete({ _id: drugId });
+    //   }
+    // },
 
     addClientToVet: async (parent, {username, email, password}, context) => {
       if(context.user ) {
