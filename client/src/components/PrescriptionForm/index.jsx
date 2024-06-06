@@ -27,6 +27,8 @@ function PrescriptionForm() {
     const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
+          console.log(formState, "formState");
+          console.log(currentPatientId, "currentPatientId");
             const { newPrescription } = await addPrescriptionToPatient({
                 variables: {
                     drug_id: formState.drug_id,
@@ -39,7 +41,9 @@ function PrescriptionForm() {
                     quantity: formState.number_of_dosages * (formState.course_length / formState.dose_frequency),
                     patient_id: currentPatientId
                     },
+                   
             });
+            console.log(newPrescription, "newPrescription");
         } catch (e) {
             console.log(e);
         }
@@ -50,7 +54,7 @@ function PrescriptionForm() {
 
       setFormState({
         ...formState,
-        [name]: [value],
+        [name]: value,
       });
     };
 
@@ -148,6 +152,17 @@ function PrescriptionForm() {
                 />
               </div>
 
+              <div className="flex-row space-between my-2">
+                <label htmlFor="course_length">Number of dosages per day: </label>
+                <input 
+                placeholder="No. of times per day"
+                name="number_of_dosages"
+                type="number"
+                id="number_of_dosages"
+                onChange={handleChangeInt}
+                />
+              </div>
+
               <div className="flex-row space-between my-2" id="selected" onChange={handleChangeCheckbox}>
                 <label htmlFor="time_of_dosages">Time of dosages: </label>
                 <input type="checkbox" value="am"/>
@@ -171,7 +186,7 @@ function PrescriptionForm() {
                 <input 
                 placeholder="Overall instructions"
                 name="instructions"
-                type="instructions"
+                type="text"
                 id="instructions"
                 onChange={handleChangeVal}
                 />

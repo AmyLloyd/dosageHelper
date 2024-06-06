@@ -90,7 +90,7 @@ const typeDefs = `
         addClientToVet( username: String!, email: String!, password: String!): Vet
         addPatientToClient(name: String!, animal_type: String!, condition_description: String!, client_id: ID!): Client
 
-        addPrescriptionToPatient(drug_id: ID!, dose_frequency: Int!, instructions: String, quantity: Int, course_length: Int, prescriber: ID, number_of_dosages: Int, time_of_dosages: [String], dosage_notes: [String], patient_id: ID!): Patient
+        addPrescriptionToPatient(drug_id: ID!, dose_frequency: Int, instructions: String, quantity: Int, course_length: Int, prescriber: ID, number_of_dosages: Int, time_of_dosages: [String], dosage_notes: [String], patient_id: ID!): Patient
 
         addDrugToPrescription(drug_id: ID!, prescription_id: ID!): Prescription
         updatePrescription(prescription_id: ID!, drug_id: ID, dose_frequency: Int, instructions: String, course_length: Int, number_of_dosages: Int, time_of_dosages: Int, active: Boolean, dosage_notes: [String], dosage_checked_at: [String]): Prescription
