@@ -10,7 +10,10 @@ function Navbar() {
      
         const [openLinks, setOpenLinks] = useState(false);
 
-        
+        const logout = (event) => {
+          event.preventDefault();
+          Auth.logout();
+        };
 
         const toggleNavbar = () => {
           setOpenLinks(!openLinks);
@@ -25,7 +28,7 @@ function Navbar() {
                   <Link to="/Home"> + Home </Link>
                   <Link to="/Drug">+ Drug</Link>
                   <div>
-                  <a href="/" onClick={() => Auth.logout()}>Logout</a>
+                  <a href="/" onClick={logout}>Logout</a>
                   </div>
                 </div>
               </div>
@@ -33,7 +36,7 @@ function Navbar() {
                 <Link to="/Home">+ Home</Link>
                 <Link to="/Drug">+ Drug</Link>
                 <div>
-                  <a href="/" onClick={() => Auth.logout()}>Logout</a>
+                  <a href="/" onClick={logout}>Logout</a>
                 </div>
                 <button onClick={toggleNavbar}>
                 {/* <ReorderIcon /> */}

@@ -129,10 +129,8 @@ const resolvers = {
       }
     },
     addPrescriptionToPatient: async (parent, args, context) => {
-
       if(context.user) {
         try {
- 
           const prescription = await Prescription.create({
             drug: args.drug_id,
             dose_frequency: args.dose_frequency,
@@ -167,7 +165,6 @@ const resolvers = {
     addDrugToPrescription: async (parent, args, context) => {
       if(context.user) {
         try {
-
           const drug_id = await Drug.findById({_id: args.drug_id});
           console.log(drug_id, "drug_id");
           const prescription = await Prescription.findOneAndUpdate(
@@ -188,13 +185,13 @@ const resolvers = {
       const vet = await Vet.findOne({ email });
 
       if(!vet) {
-        throw AuthenticationError("Vet not found with the provided email");
+        throw AuthenticationError;
       }
 
       const correctPw = await vet.isCorrectPassword(password);
 
       if(!correctPw) {
-        throw AuthenticationError("Incorrect password");
+        throw AuthenticationError;
       }
 
       const token = signToken(vet);
@@ -273,7 +270,6 @@ const resolvers = {
         return { vet, password };
       }
       throw AuthenticationError;
-      ('You need to be logged in!');
     },
   },
 };
