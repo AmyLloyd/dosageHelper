@@ -14,8 +14,6 @@ function DrugList() {
 
     const { data } = useQuery(QUERY_ALL_DRUGS);
 
-    console.log(data, "data");
-
     // const [removeDrugMutation, { error }] = useMutation(REMOVE_DRUG);
 
     // //removeDrug

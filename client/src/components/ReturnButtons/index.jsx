@@ -4,8 +4,6 @@ import { useVetContext } from '../../utils/GlobalState';
 function ReturnButtons() {
     const [state, dispatch] = useVetContext();
 
-    console.log(state, 'state');
-
     return (
         <div>
             <button className='button my-2 mx-2'>

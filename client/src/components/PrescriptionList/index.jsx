@@ -4,7 +4,6 @@ import { useVetContext } from "../../utils/GlobalState";
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 import { TOGGLE_ACTIVE_PRESCRIPTION } from '../../utils/mutations';
@@ -12,12 +11,8 @@ import { TOGGLE_INACTIVE_PRESCRIPTION } from '../../utils/mutations';
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
-    console.log(state, "state");
-
     const { currentClient } = state;
-    console.log(currentClient, "currentClient");
     const { currentPatient } = state;
-    console.log(currentPatient, "currentPatient");
     const clients  = state.clients;
   
     let [oneClient, setOneClient] = useState();
@@ -26,25 +21,19 @@ function PrescriptionList() {
     useEffect(() => {
         if (clients.length) {
             const foundClient = clients.find((client) => client._id === currentClient);
-            setOneClient(foundClient);
-            console.log(foundClient);
-    
+            setOneClient(foundClient);    
             if (foundClient && foundClient.patients.length) {
                 const foundPatient = foundClient.patients.find((patient) => patient._id === currentPatient);
                 setOnePatient(foundPatient);
-                console.log(foundPatient);
             }
         }
     }, [clients, currentClient, currentPatient]);
-  
-    const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14"];
 
     const [toggleActivePrescription, { error }] = useMutation( TOGGLE_ACTIVE_PRESCRIPTION );
     const handleDeactivateBtn = async (event) => {
         event.preventDefault();
         try {
             const id = event.target.value;
-
             const mutationResponse = await toggleActivePrescription({
                 variables: {
                     prescriptionId: id
