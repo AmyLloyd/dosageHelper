@@ -25,16 +25,16 @@ function Navbar() {
               <div className="leftSide" id={openLinks ? "open" : "close"}>
                 <img src={Logo} />
                 <div className="hiddenLinks">
-                  <Link to="/Home"> + Home </Link>
-                  <Link to="/Drug">+ Drug</Link>
+                  <Link to="/Home"> + Clients </Link>
+                  <Link to="/Drug">+ Drugs</Link>
                   <div>
                   <a href="/" onClick={logout}>Logout</a>
                   </div>
                 </div>
               </div>
               <div className="rightSide">
-                <Link to="/Home">+ Home</Link>
-                <Link to="/Drug">+ Drug</Link>
+                <Link to="/Home">+ Clients</Link>
+                <Link to="/Drug">+ Drugs</Link>
                 <div>
                   <a href="/" onClick={logout}>Logout</a>
                 </div>

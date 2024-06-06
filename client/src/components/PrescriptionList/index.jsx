@@ -4,7 +4,6 @@ import { useVetContext } from "../../utils/GlobalState";
 import { Link } from 'react-router-dom';
 import { useMutation } from '@apollo/client';
 
-
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
 import { TOGGLE_ACTIVE_PRESCRIPTION } from '../../utils/mutations';
@@ -12,12 +11,8 @@ import { TOGGLE_INACTIVE_PRESCRIPTION } from '../../utils/mutations';
 
 function PrescriptionList() {
     const [state, dispatch] = useVetContext();
-    console.log(state, "state");
-
     const { currentClient } = state;
-    console.log(currentClient, "currentClient");
     const { currentPatient } = state;
-    console.log(currentPatient, "currentPatient");
     const clients  = state.clients;
   
     let [oneClient, setOneClient] = useState();
@@ -26,25 +21,19 @@ function PrescriptionList() {
     useEffect(() => {
         if (clients.length) {
             const foundClient = clients.find((client) => client._id === currentClient);
-            setOneClient(foundClient);
-            console.log(foundClient);
-    
+            setOneClient(foundClient);    
             if (foundClient && foundClient.patients.length) {
                 const foundPatient = foundClient.patients.find((patient) => patient._id === currentPatient);
                 setOnePatient(foundPatient);
-                console.log(foundPatient);
             }
         }
     }, [clients, currentClient, currentPatient]);
-  
-    const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14"];
 
     const [toggleActivePrescription, { error }] = useMutation( TOGGLE_ACTIVE_PRESCRIPTION );
     const handleDeactivateBtn = async (event) => {
         event.preventDefault();
         try {
             const id = event.target.value;
-
             const mutationResponse = await toggleActivePrescription({
                 variables: {
                     prescriptionId: id
@@ -82,13 +71,10 @@ function PrescriptionList() {
                             <tr>
                                 <th>PRESCRIPTION DATE</th>
                                 <th>DRUG</th>
-                                <th>DRUG STRENGTH</th>
-                                <th>DRUG TYPE</th>
-                                <th>COURSE LENGTH</th>
-                                <th>DOSAGE TIMES</th>
-                                <th>QUANTITY</th>
-                                <th>DOSE FREQUENCY</th>
                                 <th>INSTRUCTIONS</th>
+                                <th>COURSE LENGTH</th>
+                                <th>DOSAGE TAKEN</th>
+                                <th>QUANTITY</th>
                                 <th>ACTIVE?</th>
                             </tr>
                         </thead>
@@ -96,9 +82,10 @@ function PrescriptionList() {
                         {onePatient?.prescriptions?.map((item) => (
                             <tr key={item._id}>
                                 <td>{item.created_at}</td>
-                                <td>{item.drug.name}</td>
-                                <td>{item.drug.strength}</td>
-                                <td>{item.drug.type}</td>
+                                <td><span className="emphasis">{item.drug.name}</span><br/>
+                                {item.drug.strength}<br/>
+                                {item.drug.type}</td>
+                                <td>{item.instructions}</td>
                                 <td>{item.course_length} days</td>
 
                                 <td>
@@ -131,8 +118,7 @@ function PrescriptionList() {
                     
                                 </td>
                                 <td>{item.quantity}</td>
-                                <td>{item.dose_frequency}</td>
-                                <td>{item.instructions}</td>
+
                                 <td>{item.active ? (
                                     <>
                                         <div className="center">

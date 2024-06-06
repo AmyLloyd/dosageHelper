@@ -10,20 +10,7 @@ function DrugDropdown() {
     const [formState, setFormState] = useState({ 
         drug_id: '', 
     });
-
-    console.log(formState, "formState");
-
     const { data } = useQuery(QUERY_ALL_DRUGS);
-
-    // console.log(data, "data");
-
-    // const handleClick = (id) => {
-    //     dispatch({ 
-    //         type: UPDATE_CURRENT_DRUG,
-    //         currentDrug: id,
-    //     });
-    // };
-
     const handleChange = (event) => {
         const numericValue = parseInt(event.target.value, 10);
         const { name } = event.target;

@@ -1,22 +1,14 @@
-import { useState } from 'react';
 import DosageHelperChartPDF from '../components/DosageHelperChartPDF';
-import { Link } from 'react-router-dom';
 import { useVetContext } from '../utils/GlobalState';
 import ReturnButtons from '../components/ReturnButtons';
 
-
 function DosageHelperPDF() {
-    const [state, dispatch] = useVetContext();
-    console.log(state.currentClient, "state.currentClient");
-
+    // const [state, dispatch] = useVetContext();
     return (
         <div>
             <h2>dosageHelper Chart</h2>
-            <ReturnButtons />       
+            {/* <ReturnButtons />        */}
             <DosageHelperChartPDF />        
-
-        
-
         </div>
     )
 }

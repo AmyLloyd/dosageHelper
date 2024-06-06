@@ -12,7 +12,6 @@ function SignupForm(props) {
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        console.log(formState, "formState");
         try {
             const { data } = await signup({
               variables: { ...formState },

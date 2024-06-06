@@ -8,8 +8,6 @@ function PatientItem(item) {
         condition_description
     } = item;
 
-    console.log(item, 'item');
-
     return (
         <div className='card my-2 mx-2'>
             <Link to={`/patients/${_id}`}>

@@ -17,9 +17,7 @@ function DosageHelperChartPDF() {
     const [state, dispatch] = useVetContext();
 
     const { currentClient } = state;
-    console.log(currentClient, "currentClient");
     const { currentPatient } = state;
-    console.log(currentPatient, "currentPatient");
     const clients  = state.clients;
   
     let [oneClient, setOneClient] = useState();
@@ -28,13 +26,10 @@ function DosageHelperChartPDF() {
     useEffect(() => {
         if (clients.length) {
             const foundClient = clients.find((client) => client._id === currentClient);
-            setOneClient(foundClient);
-            console.log(foundClient);
-    
+            setOneClient(foundClient);    
             if (foundClient && foundClient.patients.length) {
                 const foundPatient = foundClient.patients.find((patient) => patient._id === currentPatient);
                 setOnePatient(foundPatient);
-                console.log(foundPatient);
             }
         }
     }, [clients, currentClient, currentPatient]);
@@ -80,8 +75,8 @@ function DosageHelperChartPDF() {
                             {onePatient?.prescriptions?.map((item) => (
                                 <th key={item._id} >
                                     <h4>{item.drug.name}</h4>
-                                    <p class='field-text'>Strength: <span class='subheading'>{item.drug.strength}</span></p>
-                                    <p class='field-text'>Type: <span class='subheading'>{item.drug.type}</span></p> 
+                                    <p className='field-text'>Strength: <span className='subheading'>{item.drug.strength}</span></p>
+                                    <p className='field-text'>Type: <span className='subheading'>{item.drug.type}</span></p> 
                                 </th>
                             ))}
                             </tr>
@@ -91,8 +86,8 @@ function DosageHelperChartPDF() {
                             {days.map((day) => (
 
                                 <tr key={day}>
-                                    <td class='subheading'>DAY:
-                                        <div class='blank-width'></div>
+                                    <td className='subheading'>DAY:
+                                        <div className='blank-width'></div>
                                     </td>
                                     {onePatient?.prescriptions?.map((item) => (
                                     <td key={item._id} className='cell-format'>
@@ -110,7 +105,6 @@ function DosageHelperChartPDF() {
                                         <>
                                         </>
                                     )}
-                                    {/* //itinary statements */}
                                     {item.time_of_dosages[2]?(
                                         <>
                                             <input className="checkbox" id="checked" type="checkbox"/>

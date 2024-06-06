@@ -298,15 +298,16 @@ input:focus {
   }
   
   table {
-    border-collapse: collapse;
-    width: 100%;
-    text-align:center;
+    border-collapse:collapse;
+    width:100%;
+  
   }
   
   th {
     background: var(--tertiary);
     padding: 10px;
     align-content:flex-start;
+    text-align:center;
   }
   
   th,
@@ -316,6 +317,7 @@ input:focus {
   
   td {
     background: var(--background2);
+    text-align:center;
   }
 
   .add-prescr {
@@ -355,4 +357,9 @@ input:focus {
 }
 .center {
   justify-content: space-around;
+}
+.emphasis {
+  font-weight:bolder;
+  color:var(--secondary);
+  font-size: larger;
 }

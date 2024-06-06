@@ -22,14 +22,12 @@ function PatientMenu() {
             // setCurrentClient(clients.find((client) => client._id === id));
             oneClient = clients.find((client) => client._id === id)
             setOneClient(oneClient);
-            console.log(oneClient);
         }
 
     }, [clients, id]);
     //Code available here for idb and caching in activity 22.26
 
     const handleClick = (id) => {
-        console.log(id, "id here")
         dispatch({
             type: UPDATE_CURRENT_PATIENT,
             currentPatient: id,

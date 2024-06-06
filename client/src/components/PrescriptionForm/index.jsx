@@ -1,13 +1,14 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useVetContext } from '../../utils/GlobalState';
 import { useQuery } from '@apollo/client';
 import { useMutation } from '@apollo/client';
 import { QUERY_ALL_DRUGS } from '../../utils/queries';
+import { QUERY_MY_CLIENTS } from '../../utils/queries';
 import { ADD_PRESCRIPTION_TO_PATIENT } from '../../utils/mutations';
+import { UPDATE_CLIENTS } from '../../utils/actions';
 
 function PrescriptionForm() {
-    const [state, dispatch] = useVetContext();
-    const { data } = useQuery(QUERY_ALL_DRUGS);
+  const [state, dispatch] = useVetContext();
     const [formState, setFormState] = useState({ 
         drug_id:'',  
         dose_frequency: 0, 
@@ -21,15 +22,26 @@ function PrescriptionForm() {
         created_at:new Date(),
     });
 
+    const { data: drugs } = useQuery(QUERY_ALL_DRUGS);
     const [addPrescriptionToPatient, { error }] = useMutation(ADD_PRESCRIPTION_TO_PATIENT);
     const currentPatientId = state.currentPatient; 
+    // const currentPatientId = useVetContext().state.currentPatient; 
+
+    const { data: clientData } = useQuery (QUERY_MY_CLIENTS);
+
+    useEffect(() => {
+      if(clientData) {
+        dispatch({
+          type: UPDATE_CLIENTS,
+          clients: clientData.myClients.clients
+        });
+      }
+    }, [clientData, dispatch])
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
-        try {
-          console.log(formState, "formState");
-          console.log(currentPatientId, "currentPatientId");
-            const { newPrescription } = await addPrescriptionToPatient({
+        try {         
+            const mutationResponse = await addPrescriptionToPatient({
                 variables: {
                     drug_id: formState.drug_id,
                     dose_frequency: formState.dose_frequency,
@@ -38,12 +50,10 @@ function PrescriptionForm() {
                     time_of_dosages: formState.time_of_dosages,
                     dosage_notes: formState.dosage_notes,
                     instructions: formState.instructions,
-                    quantity: formState.number_of_dosages * (formState.course_length / formState.dose_frequency),
+                    quantity: formState.number_of_dosages,
                     patient_id: currentPatientId
-                    },
-                   
+                    },     
             });
-            console.log(newPrescription, "newPrescription");
         } catch (e) {
             console.log(e);
         }
@@ -51,7 +61,6 @@ function PrescriptionForm() {
 
     const handleChangeVal = (event) => {
       const { name, value } = event.target;
-
       setFormState({
         ...formState,
         [name]: value,
@@ -73,13 +82,11 @@ function PrescriptionForm() {
       const selected = [];
       const checkboxEl = document.querySelector('#selected');
       const input = checkboxEl.children;
-
       for (var i=0; i < input.length; i++){
         if (input[i].checked){
           selected.push(input[i].value)
         } 
       }
-
       setFormState({
         ...formState,
         time_of_dosages: selected,
@@ -122,7 +129,7 @@ function PrescriptionForm() {
               <div> 
                   <label> Choose a drug 
                           <select id="selectDrug" name="drug_id" placeholder="Search..." onChange={handleChangeDropdown} >
-                          {data?.drugs.map((item) => (
+                          {drugs?.drugs.map((item) => (
                               <option key={item._id} name="drug_id" value={item._id}>{item.name} {item.strength} {item.type}</option>
                           ))}
                           </select>

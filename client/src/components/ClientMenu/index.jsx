@@ -26,9 +26,7 @@ function ClientMenu() {
         if(clientData) {
             dispatch({
                 type: UPDATE_CLIENTS,
-
                 clients: clientData.myClients.clients
-
             });
         }
     }, [clientData, dispatch]);

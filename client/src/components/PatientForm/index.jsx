@@ -6,7 +6,6 @@ import { QUERY_MY_CLIENTS } from '../../utils/queries';
 import { useQuery } from '@apollo/client';
 import { UPDATE_CLIENTS } from '../../utils/actions';
 
-
 function PatientForm() {
     const [state, dispatch] = useVetContext();
     const [formState, setFormState] = useState({ name: '', animal_type:'', condition_description: ''});
@@ -18,14 +17,11 @@ function PatientForm() {
 
     const { data: clientData } = useQuery (QUERY_MY_CLIENTS);
 
-
     useEffect(() => {
         if(clientData) {
             dispatch({
                 type: UPDATE_CLIENTS,
-
                 clients: clientData.myClients.clients
-
             });
         }
     }, [clientData, dispatch]);
@@ -41,7 +37,6 @@ function PatientForm() {
                     client_id: id
                     },
             });
-            await updatePage();
         } catch (e) {
             console.log(e);
         }
