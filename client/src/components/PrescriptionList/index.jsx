@@ -82,13 +82,10 @@ function PrescriptionList() {
                             <tr>
                                 <th>PRESCRIPTION DATE</th>
                                 <th>DRUG</th>
-                                <th>DRUG STRENGTH</th>
-                                <th>DRUG TYPE</th>
-                                <th>COURSE LENGTH</th>
-                                <th>DOSAGE TIMES</th>
-                                <th>QUANTITY</th>
-                                <th>DOSE FREQUENCY</th>
                                 <th>INSTRUCTIONS</th>
+                                <th>COURSE LENGTH</th>
+                                <th>DOSAGE TAKEN</th>
+                                <th>QUANTITY</th>
                                 <th>ACTIVE?</th>
                             </tr>
                         </thead>
@@ -96,9 +93,10 @@ function PrescriptionList() {
                         {onePatient?.prescriptions?.map((item) => (
                             <tr key={item._id}>
                                 <td>{item.created_at}</td>
-                                <td>{item.drug.name}</td>
-                                <td>{item.drug.strength}</td>
-                                <td>{item.drug.type}</td>
+                                <td><span className="emphasis">{item.drug.name}</span><br/>
+                                {item.drug.strength}<br/>
+                                {item.drug.type}</td>
+                                <td>{item.instructions}</td>
                                 <td>{item.course_length} days</td>
 
                                 <td>
@@ -131,8 +129,7 @@ function PrescriptionList() {
                     
                                 </td>
                                 <td>{item.quantity}</td>
-                                <td>{item.dose_frequency}</td>
-                                <td>{item.instructions}</td>
+
                                 <td>{item.active ? (
                                     <>
                                         <div className="center">

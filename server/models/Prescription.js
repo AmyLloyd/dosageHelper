@@ -16,6 +16,15 @@ const prescriptionSchema = new Schema(
       type: Schema.Types.ObjectId,
       ref: 'Drug'
     },
+    dose_frequency: {
+      type: Number,
+      required: true,
+      min: [1, 'Value must be greater than 0'],
+    },
+    instructions: {
+      type: String,
+      required: false,
+    },
     quantity: {
       type: Number,
       required: false,

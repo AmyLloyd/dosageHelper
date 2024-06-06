@@ -44,7 +44,6 @@ function DrugList() {
             <table>
                 <thead>
                     <tr>
-                        <th>DRUG ID</th>
                         <th>DRUG NAME </th>
                         <th>DRUG STRENGTH</th>
                         <th>DRUG TYPE</th>
@@ -53,7 +52,6 @@ function DrugList() {
                 <tbody>
                 {data?.drugs.map((item) => (
                     <tr key={item._id}>
-                        <td>{item._id}</td>
                         <td>{item.name}</td>        
                         <td>{item.strength}</td>
                         <td>{item.type}</td>  

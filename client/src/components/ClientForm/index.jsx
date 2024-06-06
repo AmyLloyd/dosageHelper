@@ -3,7 +3,6 @@ import { useMutation } from '@apollo/client';
 import { ADD_CLIENT_TO_VET } from '../../utils/mutations';
 import { QUERY_MY_CLIENTS } from '../../utils/queries';
 
-
 function ClientForm() {
     const [formState, setFormState] = useState({ username: '', email:'', password: ''});
     const [addClientToVet, { error }] = useMutation(ADD_CLIENT_TO_VET, { refetchQueries: [
