@@ -7,7 +7,7 @@ function DosageHelperPDF() {
     return (
         <div>
             <h2>dosageHelper Chart</h2>
-            <ReturnButtons />       
+            {/* <ReturnButtons />        */}
             <DosageHelperChartPDF />        
         </div>
     )
