@@ -144,9 +144,6 @@ function PrescriptionList() {
                 </section>
 
                 <div className="container space-between flex-row">
-                    <button className='my-2 flex-item'>
-                        <Link to="/Prescription"> Add new prescription </Link>
-                    </button>
                     {/* Button for to go to printable PDF */}
                     <button className='my-2 flex-item'>
                         <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
