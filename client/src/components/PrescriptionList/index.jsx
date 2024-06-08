@@ -65,6 +65,13 @@ function PrescriptionList() {
             <>
                 <h2>{onePatient?.name}'s prescription history</h2>
 
+                <div className="container space-between flex-row">
+                    {/* Button for to go to printable PDF */}
+                    <button className='my-2 flex-item'>
+                        <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
+                    </button>
+                </div>
+
                 <section className="prescr-list my-2">
                     <table>
                         <thead>
@@ -72,8 +79,8 @@ function PrescriptionList() {
                                 <th>START DATE</th>
                                 <th>DRUG</th>
                                 <th>INSTRUCTIONS</th>
-                                <th>COURSE LENGTH</th>
-                                <th>DOSAGE TIME</th>
+                                <th>COURSE</th>
+                                <th>TIME</th>
                                 <th>QUANTITY</th>
                                 <th>ACTIVE</th>
                             </tr>
@@ -143,12 +150,7 @@ function PrescriptionList() {
                     </table>
                 </section>
 
-                <div className="container space-between flex-row">
-                    {/* Button for to go to printable PDF */}
-                    <button className='my-2 flex-item'>
-                        <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
-                    </button>
-                </div>
+
 
             </> 
 

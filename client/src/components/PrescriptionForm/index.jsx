@@ -179,14 +179,16 @@ function PrescriptionForm() {
                 <input type="checkbox" value="pm"/>
                 <label htmlFor="pm">pm</label>
               </div>
-              <div className="flex-row space-between my-2" onChange={handleChangeArray} id='input'>
+              <div className="my-2" onChange={handleChangeArray} id='input'>
                 <label htmlFor="dosage_notes">Dosage notes: </label>
-                <label htmlFor="am">am</label><br/>
-                <input type="text" placeholder="am notes"/>
-                <label htmlFor="noon">noon</label>
-                <input type="text" placeholder="noon notes"/>
-                <label htmlFor="pm">pm</label>
-                <input type="text" placeholder="pm notes"/>
+                <div>
+                  <label htmlFor="am">am</label><br/>
+                  <input type="text" placeholder="am notes"/><br/>
+                  <label htmlFor="noon">noon</label><br/>
+                  <input type="text" placeholder="noon notes"/><br/>
+                  <label htmlFor="pm">pm</label><br/>
+                  <input type="text" placeholder="pm notes"/><br/>
+                </div>
               </div>
               <div className="flex-row space-between my-2">
                 <label htmlFor="instructions"> Instructions: </label>
