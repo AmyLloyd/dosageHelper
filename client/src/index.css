@@ -8,6 +8,7 @@
   --shadow: #272f32;
   --spacing-one: calc(1rem * 0.5);
   --spacing-two: calc(1rem);
+  --spacing-three: calc(1rem *1.5);
   --background1: #684c85;
   --background2: rgb(246, 241, 241);
   --text: whitesmoke;
@@ -169,14 +170,39 @@ input:focus {
 }
 
 .container {
-  /* width: 95%; */
-  max-width: 1200px;
+  max-width: 70%;
+  min-width: 60%;
   /* margin-left: auto;
   margin-right: auto; */
 }
+
+.sidebar {
+min-width: 30%;
+justify-content: center;
+}
+
+.flex-row 
+.space-between {
+  justify-content: space-between;
+}
+
+.flex-end {
+  justify-content: flex-end;
+}
+
+.flex-start {
+  justify-content: flex-start;
+}
+
+/* .container {
+  /* width: 95%; */
+  /* max-width: 1200px; */
+  /* margin-left: auto;
+  margin-right: auto; */
+/* } */ */
 .container-form {
-  width: 500px;
-  min-width: 350px;
+  /* width: 500px; */
+  min-width: 250px;
 }
 
 .background-br {
@@ -189,19 +215,6 @@ input:focus {
 
 .center-a {
   align-items: center;
-}
-.flex-row {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-}
-
-.flex-item {
-  display: flex;
-}
-
-.space-between {
-  justify-content: space-between;
 }
 
 .flex-end {
@@ -216,6 +229,11 @@ input:focus {
 .mx-2 {
   margin-right: var(--spacing-two);
   margin-left: var(--spacing-two);
+}
+
+.mx-3 {
+  margin-right: var(--spacing-three);
+  margin-left: var(--spacing-three);
 }
 
 .my-1 {

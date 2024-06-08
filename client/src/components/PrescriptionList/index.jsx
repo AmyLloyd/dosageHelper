@@ -69,13 +69,13 @@ function PrescriptionList() {
                     <table>
                         <thead>
                             <tr>
-                                <th>PRESCRIPTION DATE</th>
+                                <th>START DATE</th>
                                 <th>DRUG</th>
                                 <th>INSTRUCTIONS</th>
                                 <th>COURSE LENGTH</th>
-                                <th>DOSAGE TAKEN</th>
+                                <th>DOSAGE TIME</th>
                                 <th>QUANTITY</th>
-                                <th>ACTIVE?</th>
+                                <th>ACTIVE</th>
                             </tr>
                         </thead>
                         <tbody>
