@@ -30,7 +30,7 @@ function DrugForm() {
     };
 
     return (
-        <div className = "container my-1">
+        <div className = "container-form">
            <h2>Add a new drug</h2>
            <form onSubmit={handleFormSubmit}>
               <div className="flex-row space-between my-2">

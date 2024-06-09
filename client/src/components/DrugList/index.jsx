@@ -36,10 +36,10 @@ function DrugList() {
     // };
 
     return (
-        <div>
+        <div className='container-list'>
             <h2>Drug data </h2>
-            <div className='container'>
-            <table>
+            <div>
+            <table >
                 <thead>
                     <tr>
                         <th>DRUG NAME </th>

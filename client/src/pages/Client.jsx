@@ -4,7 +4,6 @@ import PatientForm from "../components/PatientForm";
 const Client = () => {
     return (
         <div className='center-a'>
-           {/* <h2 className='center'>Patients List</h2>          */}
             <div className='flex-row center'>
                 <div className="container">   
                     <PatientMenu />
@@ -14,10 +13,7 @@ const Client = () => {
                 </div>
             </div>
         </div>
-
     )
 }
-
-
 export default Client;
 

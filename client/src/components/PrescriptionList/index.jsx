@@ -62,10 +62,10 @@ function PrescriptionList() {
     return (
         <>
             {currentPatient && oneClient && oneClient.patients ? (
-            <>
+            <div className="container-list space-between flex-row">
                 <h2>{onePatient?.name}'s prescription history</h2>
 
-                <div className="container space-between flex-row">
+                <div className="container-list space-between flex-row">
                     {/* Button for to go to printable PDF */}
                     <button className='my-2 flex-item'>
                         <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
@@ -152,7 +152,7 @@ function PrescriptionList() {
 
 
 
-            </> 
+            </div> 
 
             ) : (
               <span> Error... no prescriptions found.</span>  

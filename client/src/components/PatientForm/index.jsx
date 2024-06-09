@@ -51,7 +51,7 @@ function PatientForm() {
     };
 
     return (
-        <div className = "background-br py-2 px-2">
+        <div className = "container-form background-br">
            <h2>Add a Patient</h2>
            <form onSubmit={handleFormSubmit}>
               <div className="my-2">

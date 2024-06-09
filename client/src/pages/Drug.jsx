@@ -2,17 +2,17 @@ import NewDrugForm from '../components/NewDrugForm';
 import DrugList from '../components/DrugList';
 
 function Drug() {
-    
     return (
-            <div>
-                <div className='center px-2 py-2'>
+        <div className='center-a'>
+            <div className='flex-row center'>
+                <div className="container">   
                     <DrugList />
                 </div>
-                <div className='flex-row center'>
-                        <NewDrugForm />
+                <div className='sidebar'>
+                    <NewDrugForm />
                 </div>
             </div>
+        </div>
     )
 }
-
 export default Drug;

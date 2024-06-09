@@ -2,7 +2,6 @@ import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_DRUG } from '../../utils/mutations';
 
-
 function NewDrugForm() {
     const [formState, setFormState] = useState({ name: '', strength:'', type: ''});
     const [addDrug, { error }] = useMutation(ADD_DRUG);
@@ -31,7 +30,7 @@ function NewDrugForm() {
     };
 
     return (
-        <div className = "container-form background-br mx-2 my-2 px-2 py-2">
+        <div className = "container-form background-br">
           <h2>Add new drug</h2>
            <form onSubmit={handleFormSubmit}>
               <div className="flex-row space-between my-2">

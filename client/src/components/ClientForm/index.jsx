@@ -33,7 +33,7 @@ function ClientForm() {
     };
 
     return (
-        <div className = "my-1 background-br py-2 px-2">
+        <div className = "container-form background-br">
            <h2>Add a Client</h2>
            <form onSubmit={handleFormSubmit}>
               <div className="my-2">

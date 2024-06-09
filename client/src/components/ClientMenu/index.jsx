@@ -58,20 +58,11 @@ function ClientMenu() {
     if(!clients.length) {
         return <h4> No clients yet</h4>;
     }
-
-
-
     return (
-  
-
-         <div className='py-2 px-2'>
-
-
+         <div className='container-list'>
             <h2> Clients </h2>
                     <div>
-
                         {clients.map((item) => (
-                          
                                 <div className='wide-card flex-row'
                                 key={item._id}>
                                     <div className="flex-item">{item.username}      </div>
