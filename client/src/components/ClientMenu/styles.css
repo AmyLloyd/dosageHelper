@@ -1,16 +1,5 @@
-
-.container {
-    max-width: 70%;
-    min-width: 66%;
-    /* margin-left: auto;
-    margin-right: auto; */
-  }
-
-.sidebar {
-  min-width: 25%;
-  justify-content: center;
-}
-  
+/* 
+ 
   .flex-row {
     display: flex;
     flex-wrap: wrap;
@@ -36,7 +25,10 @@
     border: none;
     outline: none;
     cursor: pointer;
-    margin: 3px;
+    margin-left: 0px;
+    margin-right: 3px;
+    margin-top: 3px;
+    margin-bottom: 3px;
     background-color: var(--secondary);
   }
   
@@ -76,4 +68,4 @@
   
   h6 {
     font-size: 1rem;
-  }
+  } */

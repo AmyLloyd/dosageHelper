@@ -6,16 +6,13 @@ import ClientForm from '../components/ClientForm';
 function Home() {
     
     return (
-        <div className='center-a'>
-            {/* <h2 className='center underline'>Welcome Vet!</h2> */}
-            <div className='flex-row center'>
-                <div className='container'>
+        <div className='row'>
+                <div className='column left'>   
                     <ClientMenu />
                 </div>
-                <div className='sidebar'>
+                <div className='column side'>
                     <ClientForm />
                 </div>
-            </div>
         </div>
     )
 }

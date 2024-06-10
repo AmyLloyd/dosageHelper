@@ -9,6 +9,7 @@ import React from 'react';
 import html2canvas from 'html2canvas';
 import jsPDF from 'jspdf';
 
+import './styles.css';
 
 import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 // import { UPDATE_PRESCRIPTION } from '../../utils/mutations';
@@ -59,75 +60,79 @@ function DosageHelperChartPDF() {
     };
 
     return (
-        <>
-            <button className="btn btn-primary button" type="submit" onClick={downloadPDF}>Download dosageHelper</button>
-            {currentPatient && oneClient && oneClient.patients ? (
-            <>
+        <div className="py-2 px-2">
+            
+            <h2>dosageHelper Chart
+                <button className="mx-3" type="submit" onClick={downloadPDF}>Download dosageHelper</button>
+            </h2>
+                {currentPatient && oneClient && oneClient.patients ? (
+                <>
+  
 
-{/* Printable version of dosageHelper           */}
-                <section className="prescr-list my-2 mx-2 py-2 px-2" ref={pdfRef}>
-                    <h4>{onePatient.name} the {onePatient.animal_type}</h4>
-                    <h6>Client name: {oneClient?.username}</h6>
-                    <table>
-                        <thead>
-                            <tr>
-                                <td></td>
-                            {onePatient?.prescriptions?.map((item) => (
-                                <th key={item._id} >
-                                    <h4>{item.drug.name}</h4>
-                                    <p className='field-text'>Strength: <span className='subheading'>{item.drug.strength}</span></p>
-                                    <p className='field-text'>Type: <span className='subheading'>{item.drug.type}</span></p> 
-                                </th>
-                            ))}
-                            </tr>
-                        </thead>
-                
-                        <tbody>
-                            {days.map((day) => (
-
-                                <tr key={day}>
-                                    <td className='subheading'>DAY:
-                                        <div className='blank-width'></div>
-                                    </td>
-                                    {onePatient?.prescriptions?.map((item) => (
-                                    <td key={item._id} className='cell-format'>
-                                        <input className="checkbox" id="checked" type="checkbox" />
-                                        <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
-                                        {item.dosage_notes[0]?(<div className='note-text'>{item.dosage_notes[0]}</div>):(<></>)}
-
-                                    {item.time_of_dosages[1]?(
-                                            <>
-                                                <input className="checkbox" id="checked" type="checkbox" />
-                                                <label htmlFor="agreement">{item.time_of_dosages[1]}</label> 
-                                                {item.dosage_notes[1]?(<div className='note-text'>{item.dosage_notes[1]}</div>):(<></>)} 
-                                            </>
-                                    ):(
-                                        <>
-                                        </>
-                                    )}
-                                    {item.time_of_dosages[2]?(
-                                        <>
-                                            <input className="checkbox" id="checked" type="checkbox"/>
-                                            <label htmlFor="agreement">{item.time_of_dosages[2]}</label> 
-                                            {item.dosage_notes[2]?(<div className='note-text'>{item.dosage_notes[2]}</div>):(<></>)} 
-                                        </>
-                                    ):(
-                                        <>
-                                        </>
-                                    )}
-                                    </td>
-                                    ))}
+    {/* Printable version of dosageHelper           */}
+                    <section className="prescr-list my-2 mx-2 py-2 px-2" ref={pdfRef}>
+                        <h4>{onePatient.name} the {onePatient.animal_type}</h4>
+                        <h6>Client name: {oneClient?.username}</h6>
+                        <table>
+                            <thead>
+                                <tr>
+                                    <td></td>
+                                {onePatient?.prescriptions?.map((item) => (
+                                    <th key={item._id} >
+                                        <h4>{item.drug.name}</h4>
+                                        <p className='field-text'>Strength: <span className='subheading'>{item.drug.strength}</span></p>
+                                        <p className='field-text'>Type: <span className='subheading'>{item.drug.type}</span></p> 
+                                    </th>
+                                ))}
                                 </tr>
-                            ))}
-                        </tbody>
-                    </table>
-                </section>
-            </> 
+                            </thead>
+                    
+                            <tbody>
+                                {days.map((day) => (
 
-            ) : (
-              <span> Error... no prescriptions found.</span>  
-            )}
-        </>
+                                    <tr key={day}>
+                                        <td className='subheading'>DAY:
+                                            <div className='blank-width'></div>
+                                        </td>
+                                        {onePatient?.prescriptions?.map((item) => (
+                                        <td key={item._id} className='cell-format'>
+                                            <input className="checkbox" id="checked" type="checkbox" />
+                                            <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
+                                            {item.dosage_notes[0]?(<div className='note-text'>{item.dosage_notes[0]}</div>):(<></>)}
+
+                                        {item.time_of_dosages[1]?(
+                                                <>
+                                                    <input className="checkbox" id="checked" type="checkbox" />
+                                                    <label htmlFor="agreement">{item.time_of_dosages[1]}</label> 
+                                                    {item.dosage_notes[1]?(<div className='note-text'>{item.dosage_notes[1]}</div>):(<></>)} 
+                                                </>
+                                        ):(
+                                            <>
+                                            </>
+                                        )}
+                                        {item.time_of_dosages[2]?(
+                                            <>
+                                                <input className="checkbox" id="checked" type="checkbox"/>
+                                                <label htmlFor="agreement">{item.time_of_dosages[2]}</label> 
+                                                {item.dosage_notes[2]?(<div className='note-text'>{item.dosage_notes[2]}</div>):(<></>)} 
+                                            </>
+                                        ):(
+                                            <>
+                                            </>
+                                        )}
+                                        </td>
+                                        ))}
+                                    </tr>
+                                ))}
+                            </tbody>
+                        </table>
+                    </section>
+                </> 
+
+                ) : (
+                <span> Error... no prescriptions found.</span>  
+                )}
+            </div>
     )
 }
 

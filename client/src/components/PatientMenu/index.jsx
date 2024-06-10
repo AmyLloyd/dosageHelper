@@ -35,8 +35,8 @@ function PatientMenu() {
     };
 
     return (
-
         <>
+            <div className="container-list">
             {Auth.loggedIn() ? (
                 <div className='center'>
                     {state.currentClient && clients ? (
@@ -47,7 +47,7 @@ function PatientMenu() {
                             <div className='flex-row'>
                                
                             {oneClient?.patients?.map((item) => (
-                                <div key={item._id} className='card my-2 mx-2'>
+                                <div key={item._id} className='card mx-1 my-1'>
                                 
                                         <h4>{item.name}</h4>
                                         <p><span className='field-text' >Animal type:</span>    {item.animal_type}</p>
@@ -69,9 +69,9 @@ function PatientMenu() {
                     ) : null}
                 </div>
   
-            ):(<h1>You need to be logged in</h1>)
+            ):(<h2>You need to be logged in</h2>)
             }
-
+            </div>
         </>
     );
 };

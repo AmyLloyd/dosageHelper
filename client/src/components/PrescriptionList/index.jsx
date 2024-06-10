@@ -62,20 +62,27 @@ function PrescriptionList() {
     return (
         <>
             {currentPatient && oneClient && oneClient.patients ? (
-            <>
+            <div>
                 <h2>{onePatient?.name}'s prescription history</h2>
+
+                <div className="container-list">
+                    {/* Button for to go to printable PDF */}
+                    <button className='my-2 flex-item'>
+                        <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
+                    </button>
+                </div>
 
                 <section className="prescr-list my-2">
                     <table>
                         <thead>
                             <tr>
-                                <th>PRESCRIPTION DATE</th>
+                                <th>START DATE</th>
                                 <th>DRUG</th>
                                 <th>INSTRUCTIONS</th>
-                                <th>COURSE LENGTH</th>
-                                <th>DOSAGE TAKEN</th>
+                                <th>COURSE</th>
+                                <th>TIME</th>
                                 <th>QUANTITY</th>
-                                <th>ACTIVE?</th>
+                                <th>ACTIVE</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -143,14 +150,9 @@ function PrescriptionList() {
                     </table>
                 </section>
 
-                <div className="container space-between flex-row">
-                    {/* Button for to go to printable PDF */}
-                    <button className='my-2 flex-item'>
-                        <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
-                    </button>
-                </div>
 
-            </> 
+
+            </div> 
 
             ) : (
               <span> Error... no prescriptions found.</span>  

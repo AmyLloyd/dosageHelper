@@ -51,51 +51,53 @@ function PatientForm() {
     };
 
     return (
-        <div className = "background-br py-2 px-2">
-           <h2>Add a Patient</h2>
+        <div className = "container-form background-br">
+           <h5>Add a Patient</h5>
            <form onSubmit={handleFormSubmit}>
-              <div className="my-2">
-                <label htmlFor="name">Name</label>
-                <div>
-                    <input 
-                    placeholder="name"
-                    name="name"
-                    type="name"
-                    id="name"
-                    onChange={handleChange}
-                    />
+            <div className="flex-container">
+                <div className="my-2">
+                    <label htmlFor="name">Name</label>
+                    <div>
+                        <input 
+                        placeholder="name"
+                        name="name"
+                        type="name"
+                        id="name"
+                        onChange={handleChange}
+                        />
+                    </div>
                 </div>
-              </div>
-              <div className="my-2">
-                <label htmlFor="animal_type">Animal Type</label>
-                <div>
-                    <input 
-                    placeholder="animal type"
-                    name="animal_type"
-                    type="animal_type"
-                    id="animal_type"
-                    onChange={handleChange}
-                    />
+                <div className="my-2">
+                    <label htmlFor="animal_type">Animal Type</label>
+                    <div>
+                        <input 
+                        placeholder="animal type"
+                        name="animal_type"
+                        type="animal_type"
+                        id="animal_type"
+                        onChange={handleChange}
+                        />
+                    </div>
                 </div>
-              </div>
-              <div className="my-2">
-                <label htmlFor="condition_description">Condition Description: </label>
-                <div>
-                    <input 
-                    placeholder="condition description"
-                    name="condition_description"
-                    type="condition_description"
-                    id="condition_description"
-                    onChange={handleChange}
-                    />
-                </div>
+                <div className="my-2">
+                    <label htmlFor="condition_description">Condition Description: </label>
+                    <div>
+                        <input 
+                        placeholder="condition description"
+                        name="condition_description"
+                        type="condition_description"
+                        id="condition_description"
+                        onChange={handleChange}
+                        />
+                    </div>
 
-              </div>
-              {error ? (
-                <div>
-                <p className="error-text">Please check new patient credentials and try again.</p>
                 </div>
-              ) : null}
+                {error ? (
+                    <div>
+                    <p className="error-text">Please check new patient credentials and try again.</p>
+                    </div>
+                ) : null}
+            </div>
               <div className="flex-row flex-end">
                 <button type="submit">Submit</button>
               </div>

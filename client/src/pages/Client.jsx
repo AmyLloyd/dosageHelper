@@ -1,23 +1,18 @@
 import PatientMenu from "../components/PatientMenu";
 import PatientForm from "../components/PatientForm";
 
-const Client = () => {
+function Client () {
     return (
-        <div className='center-a'>
-           {/* <h2 className='center'>Patients List</h2>          */}
-            <div className='flex-row center'>
-                <div className="container">   
+        <div className='row'>
+                <div className='column left'>   
                     <PatientMenu />
                 </div>
-                <div className='sidebar'>
+                <div className='column side'>
                     <PatientForm />
                 </div>
-            </div>
         </div>
-
     )
 }
-
 
 export default Client;
 
