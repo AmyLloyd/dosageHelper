@@ -124,7 +124,7 @@ function PrescriptionForm() {
 
     return (
         <div className = "container-form background-br max-width">
-           <h2>Add a Prescription</h2>
+           <h5>Add a Prescription</h5>
            <form onSubmit={handleFormSubmit}>
               <div> 
                   <label> Choose a drug 
@@ -134,9 +134,9 @@ function PrescriptionForm() {
                           ))}
                           </select>
                   </label>
-                  <p>The chosen drug is: 
+                  {/* <div className="">The chosen drug is: 
                     <span className="output"></span>
-                  </p>
+                  </div> */}
               </div>
               <div className="flex-row space-between my-2">
                 <label htmlFor="dose_frequency">Dose frequency:</label>

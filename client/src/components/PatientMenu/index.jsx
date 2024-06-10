@@ -69,7 +69,7 @@ function PatientMenu() {
                     ) : null}
                 </div>
   
-            ):(<h1>You need to be logged in</h1>)
+            ):(<h2>You need to be logged in</h2>)
             }
             </div>
         </>

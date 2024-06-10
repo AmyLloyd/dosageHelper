@@ -34,7 +34,7 @@ function ClientForm() {
 
     return (
         <div className = "container-form background-br">
-           <h2>Add a Client</h2>
+           <h5>Add a Client</h5>
            <form onSubmit={handleFormSubmit}>
             <div className="flex-container">
               <div className="my-2">

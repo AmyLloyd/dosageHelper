@@ -31,8 +31,9 @@ function NewDrugForm() {
 
     return (
         <div className = "container-form background-br">
-          <h2>Add new drug</h2>
+          <h5>Add new drug</h5>
            <form onSubmit={handleFormSubmit}>
+            <div className="flex-container">
               <div className="my-2">
                 <label htmlFor="name">Name: </label>
                 <div>
@@ -74,6 +75,7 @@ function NewDrugForm() {
                 <p className="error-text">Please check new drug details before trying again.</p>
                 </div>
               ) : null}
+            </div>
               <div className="flex-row flex-end">
                 <button type="submit">Submit</button>
               </div>
