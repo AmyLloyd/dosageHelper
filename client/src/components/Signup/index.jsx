@@ -32,7 +32,8 @@ function SignupForm(props) {
     };
 
     return (
-            <div className='wrapper container-a'>
+        
+              <div className='wrapper'>
                 <form action="" onSubmit={handleFormSubmit}>
                     <h1>Sign Up!</h1>
                     <div className="input-box">
@@ -73,6 +74,9 @@ function SignupForm(props) {
                     
                 </form>
             </div>
+
+   
+          
     );
 }
 

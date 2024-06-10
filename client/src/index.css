@@ -42,8 +42,9 @@ body {
   display: flex;
   width: 100%;
   justify-content: center;
-  align-items: center;
-  background: url('/images/dark_bg2.png') center/cover no-repeat;
+  align-items: flex-start;
+  background: url('/images/bg2_no_dog.png') center/cover no-repeat;
+  min-height: 100vh;
 }
 
 code {
