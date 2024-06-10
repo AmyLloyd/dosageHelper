@@ -1,16 +1,5 @@
 
-.container {
-    max-width: 70%;
-    min-width: 66%;
-    /* margin-left: auto;
-    margin-right: auto; */
-  }
-
-.sidebar {
-  min-width: 25%;
-  justify-content: center;
-}
-  
+ 
   .flex-row {
     display: flex;
     flex-wrap: wrap;

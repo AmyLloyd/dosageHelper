@@ -33,35 +33,41 @@ function NewDrugForm() {
         <div className = "container-form background-br">
           <h2>Add new drug</h2>
            <form onSubmit={handleFormSubmit}>
-              <div className="flex-row space-between my-2">
+              <div className="my-2">
                 <label htmlFor="name">Name: </label>
-                <input 
-                placeholder="name"
-                name="name"
-                type="name"
-                id="name"
-                onChange={handleChange}
-                />
+                <div>
+                  <input 
+                  placeholder="name"
+                  name="name"
+                  type="name"
+                  id="name"
+                  onChange={handleChange}
+                  />
+                </div>
               </div>
-              <div className="flex-row space-between my-2">
+              <div className="my-2">
                 <label htmlFor="strength">Strength: </label>
-                <input 
-                placeholder="strength"
-                name="strength"
-                type="strength"
-                id="strength"
-                onChange={handleChange}
-                />
+                <div>
+                  <input 
+                  placeholder="strength"
+                  name="strength"
+                  type="strength"
+                  id="strength"
+                  onChange={handleChange}
+                  />
+                </div>
               </div>
-              <div className="flex-row space-between my-2">
+              <div className="my-2">
                 <label htmlFor="type">Type: </label>
-                <input 
-                placeholder="type"
-                name="type"
-                type="type"
-                id="type"
-                onChange={handleChange}
-                />
+                <div>
+                  <input 
+                  placeholder="type"
+                  name="type"
+                  type="type"
+                  id="type"
+                  onChange={handleChange}
+                  />
+                </div>
               </div>
               {error ? (
                 <div>

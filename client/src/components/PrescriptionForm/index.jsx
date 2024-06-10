@@ -123,7 +123,7 @@ function PrescriptionForm() {
   };
 
     return (
-        <div className = "container-form background-br">
+        <div className = "container-form background-br max-width">
            <h2>Add a Prescription</h2>
            <form onSubmit={handleFormSubmit}>
               <div> 

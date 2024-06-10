@@ -3,15 +3,13 @@ import DrugList from '../components/DrugList';
 
 function Drug() {
     return (
-        <div className='center-a'>
-            <div className='flex-row center'>
-                <div className="container">   
+        <div className='row'>
+                <div className='column left'>   
                     <DrugList />
                 </div>
-                <div className='sidebar'>
+                <div className='column side'>
                     <NewDrugForm />
                 </div>
-            </div>
         </div>
     )
 }

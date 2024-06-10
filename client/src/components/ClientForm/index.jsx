@@ -36,6 +36,7 @@ function ClientForm() {
         <div className = "container-form background-br">
            <h2>Add a Client</h2>
            <form onSubmit={handleFormSubmit}>
+            <div className="flex-container">
               <div className="my-2">
                 <label htmlFor="username">Username</label>
                 <div>
@@ -47,7 +48,6 @@ function ClientForm() {
                   onChange={handleChange}
                   />
                 </div>
-
               </div>
               <div className="my-2">
                 <label htmlFor="email">Email address </label>
@@ -60,7 +60,6 @@ function ClientForm() {
                   onChange={handleChange}
                   />
                 </div>
-
               </div>
               <div className="my-2">
                 <label htmlFor="password">Password</label>
@@ -73,15 +72,15 @@ function ClientForm() {
                 onChange={handleChange}
                 />
                 </div>
-
               </div>
+            </div>
               {error ? (
                 <div>
                 <p className="error-text">Please check new client credentials and try again.</p>
                 </div>
               ) : null}
               <div>
-                <button type="submit">Submit</button>
+                <button type="submit" className="center-a">Submit</button>
               </div>
             </form>
         </div>

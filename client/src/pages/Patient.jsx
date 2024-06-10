@@ -3,16 +3,14 @@ import PrescriptionForm from "../components/PrescriptionForm";
 
 function Patient() {
     return (
-        <div className='center-a'>
-         <div className='flex-row center'>
-             <div className="container">   
+         <div className='row'>
+             <div className='column left'>   
                  <PrescriptionList />
              </div>
-             <div className='sidebar'>
+             <div className='column side'>
                  <PrescriptionForm />
              </div>
          </div>
-     </div>
     )
 }
 export default Patient;
