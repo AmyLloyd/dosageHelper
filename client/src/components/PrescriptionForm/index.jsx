@@ -122,11 +122,12 @@ function PrescriptionForm() {
   };
 
     return (
-        <div className="flex-item">
+        <div>
           <div className = "container-form background-br max-width">
            <h5>Add a Prescription</h5>
            <form onSubmit={handleFormSubmit}>
-              <div> 
+            <div className="flex-container">
+            <div className="flex-row space-between my-2"> 
                   <label> Choose a drug 
                           <select id="selectDrug" name="drug_id" placeholder="Search..." onChange={handleChangeDropdown} >
                           {drugs?.drugs.map((item) => (
@@ -203,6 +204,8 @@ function PrescriptionForm() {
                 onChange={handleChangeVal}
                 />
               </div>
+            </div>
+              
               {error ? (
                 <div>
                 <p className="error-text">Please check new prescription details and try again.</p>

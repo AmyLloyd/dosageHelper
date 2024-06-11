@@ -19,6 +19,7 @@ function ClientForm() {
                     password: formState.password
                     },
             });
+            setFormState({ username: '', email: '', password: '' });
         } catch (e) {
             console.log(e);
         }
@@ -45,6 +46,7 @@ function ClientForm() {
                   placeholder="username"
                   name="username"
                   type="username"
+                  value={formState.username}
                   id="username"
                   onChange={handleChange}
                   />
@@ -57,6 +59,7 @@ function ClientForm() {
                   placeholder="newclient@text.com"
                   name="email"
                   type="email"
+                  value={formState.email}
                   id="email"
                   onChange={handleChange}
                   />
@@ -69,6 +72,7 @@ function ClientForm() {
                 placeholder="*****"
                 name="password"
                 type="password"
+                value={formState.password}
                 id="pwd"
                 onChange={handleChange}
                 />
