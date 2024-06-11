@@ -16,24 +16,32 @@ import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 
 function DosageHelperChartPDF() {
     const [state, dispatch] = useVetContext();
-
     const { currentClient } = state;
     const { currentPatient } = state;
     const clients  = state.clients;
-  
+
     let [oneClient, setOneClient] = useState();
+    console.log(oneClient, 'oneClient');
     let [onePatient, setOnePatient] = useState();
+    console.log(onePatient, 'onePatient');
+    let [activePrescriptions, setActivePrescriptions] = useState([]);
+    console.log(activePrescriptions, 'activePrescriptions');
 
     useEffect(() => {
         if (clients.length) {
+            console.log('useEffect working');
             const foundClient = clients.find((client) => client._id === currentClient);
             setOneClient(foundClient);    
             if (foundClient && foundClient.patients.length) {
                 const foundPatient = foundClient.patients.find((patient) => patient._id === currentPatient);
                 setOnePatient(foundPatient);
+                if (foundPatient && foundPatient.prescriptions.length) {
+                    const foundPrescriptions = foundPatient.prescriptions.filter((prescriptions) => prescriptions.active === true);
+                    setActivePrescriptions(foundPrescriptions);
+                }
             }
         }
-    }, [clients, currentClient, currentPatient]);
+    }, []);
   
     const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14"];
 
@@ -64,20 +72,21 @@ function DosageHelperChartPDF() {
             
             <h2>dosageHelper Chart
                 <button className="mx-3" type="submit" onClick={downloadPDF}>Download dosageHelper</button>
+        
             </h2>
-                {currentPatient && oneClient && oneClient.patients ? (
+                {currentPatient && oneClient && oneClient.patients && activePrescriptions ? (
                 <>
   
 
     {/* Printable version of dosageHelper           */}
-                    <section className="prescr-list my-2 mx-2 py-2 px-2" ref={pdfRef}>
+                    <section className="prescr-list overflow-hidden my-2 mx-2 py-2 px-2" ref={pdfRef}>
                         <h4>{onePatient.name} the {onePatient.animal_type}</h4>
                         <h6>Client name: {oneClient?.username}</h6>
                         <table>
                             <thead>
                                 <tr>
                                     <td></td>
-                                {onePatient?.prescriptions?.map((item) => (
+                                {activePrescriptions.map((item) => (
                                     <th key={item._id} >
                                         <h4>{item.drug.name}</h4>
                                         <p className='field-text'>Strength: <span className='subheading'>{item.drug.strength}</span></p>
@@ -94,7 +103,7 @@ function DosageHelperChartPDF() {
                                         <td className='subheading'>DAY:
                                             <div className='blank-width'></div>
                                         </td>
-                                        {onePatient?.prescriptions?.map((item) => (
+                                        {activePrescriptions.map((item) => (
                                         <td key={item._id} className='cell-format'>
                                             <input className="checkbox" id="checked" type="checkbox" />
                                             <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
