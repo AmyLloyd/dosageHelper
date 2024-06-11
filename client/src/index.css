@@ -340,10 +340,6 @@ input:focus {
     background-color:rgb(239, 233, 233);
   }
 
-  .overflow-scroll {
-    overflow:scroll;
-  }
-
   .overflow-hidden {
     overflow:hidden;
   }
