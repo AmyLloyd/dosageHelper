@@ -1,10 +1,11 @@
 import { useState } from 'react';
 import { useMutation } from '@apollo/client';
 import { ADD_DRUG } from '../../utils/mutations';
+import { QUERY_ALL_DRUGS } from '../../utils/queries';
 
 function NewDrugForm() {
     const [formState, setFormState] = useState({ name: '', strength:'', type: ''});
-    const [addDrug, { error }] = useMutation(ADD_DRUG);
+    const [addDrug, { error }] = useMutation(ADD_DRUG, {refetchQueries: [ QUERY_ALL_DRUGS, 'drugs' ]});
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
