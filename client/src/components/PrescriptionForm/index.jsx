@@ -122,7 +122,7 @@ function PrescriptionForm() {
   };
 
     return (
-        <div className="">
+        <div className="flex-item">
           <div className = "container-form background-br max-width">
            <h5>Add a Prescription</h5>
            <form onSubmit={handleFormSubmit}>

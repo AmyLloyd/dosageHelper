@@ -192,7 +192,6 @@ input:focus {
 .column.side {
   flex: 0;
   min-height: 100vh;
-  margin:auto;
 }
 
 .column.left {
