@@ -37,6 +37,7 @@ function PatientForm() {
                     client_id: id
                     },
             });
+            setFormState({ name: '', animal_type: '', condition_description: '' });
         } catch (e) {
             console.log(e);
         }
@@ -51,7 +52,7 @@ function PatientForm() {
     };
 
     return (
-        <div className = "container-form background-br">
+        <div className = "container-form background-br mx-2">
            <h5>Add a Patient</h5>
            <form onSubmit={handleFormSubmit}>
             <div className="flex-container">
@@ -62,6 +63,7 @@ function PatientForm() {
                         placeholder="name"
                         name="name"
                         type="name"
+                        value={formState.name}
                         id="name"
                         onChange={handleChange}
                         />
@@ -74,6 +76,7 @@ function PatientForm() {
                         placeholder="animal type"
                         name="animal_type"
                         type="animal_type"
+                        value={formState.animal_type}
                         id="animal_type"
                         onChange={handleChange}
                         />
@@ -86,6 +89,7 @@ function PatientForm() {
                         placeholder="condition description"
                         name="condition_description"
                         type="condition_description"
+                        value={formState.condition_description}
                         id="condition_description"
                         onChange={handleChange}
                         />

@@ -18,8 +18,6 @@ function PatientMenu() {
     useEffect(() => {
 
         if (clients.length) {
-
-            // setCurrentClient(clients.find((client) => client._id === id));
             oneClient = clients.find((client) => client._id === id)
             setOneClient(oneClient);
         }
@@ -39,12 +37,12 @@ function PatientMenu() {
             <div className="container-list">
             {Auth.loggedIn() ? (
                 <div className='center'>
-                    {state.currentClient && clients ? (
+                    {state.currentClient && clients && oneClient?.patients.length ? (
                         <div>
                             
                             <h2>{oneClient?.username}'s animals</h2>
 
-                            <div className='flex-row'>
+                            <div className='flex-container'>
                                
                             {oneClient?.patients?.map((item) => (
                                 <div key={item._id} className='card mx-1 my-1'>
@@ -66,7 +64,10 @@ function PatientMenu() {
                             ))}
                             </div>
                         </div>
-                    ) : null}
+                    ) : (
+                        <h2>No patients found</h2>
+                    )
+                    }
                 </div>
   
             ):(<h2>You need to be logged in</h2>)

@@ -61,18 +61,21 @@ function PrescriptionList() {
 
     return (
         <>
-            {currentPatient && oneClient && oneClient.patients ? (
+            {currentPatient && oneClient && oneClient.patients && onePatient.prescriptions.length ? (
             <div>
-                <h2>{onePatient?.name}'s prescription history</h2>
-
-                <div className="container-list">
+                <div className="flex-container">
+                <h2 className="flex-item">{onePatient?.name}'s prescriptions</h2>
+                <div className="container-list flex-item">
                     {/* Button for to go to printable PDF */}
                     <button className='my-2 flex-item'>
-                        <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
+                        <Link to={'/dosageHelperPDF'}>
+                            Print Dosage Helper<br/><span className='button-text'>6 prescription max</span></Link>
                     </button>
                 </div>
+                </div>
+                
 
-                <section className="prescr-list my-2">
+                <section className="prescr-list my-2 overflow-scroll">
                     <table>
                         <thead>
                             <tr>
@@ -97,13 +100,13 @@ function PrescriptionList() {
 
                                 <td>
                                     <input className="checkbox" id="checked" type="checkbox" />
-                                    <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
+                                    <label htmlFor="agreement" className="dark">{item.time_of_dosages[0]} </label>
                                     {item.dosage_notes[0]?(<div className='note-text'>{item.dosage_notes[0]}</div>):(<></>)}
 
                                     {item.time_of_dosages[1]?(
                                         <>
                                             <input className="checkbox" id="checked" type="checkbox" />
-                                            <label htmlFor="agreement">{item.time_of_dosages[1]}</label>
+                                            <label htmlFor="agreement" className="dark">{item.time_of_dosages[1]}</label>
                                             {item.dosage_notes[1]?(<div className='note-text'>{item.dosage_notes[1]}</div>):(<></>)} 
                                         </>
                                     ):(
@@ -115,7 +118,7 @@ function PrescriptionList() {
                                     {item.time_of_dosages[2]?(
                                         <>
                                             <input className="checkbox" id="checked" type="checkbox"/>
-                                            <label htmlFor="agreement">{item.time_of_dosages[2]}</label>
+                                            <label htmlFor="agreement" className="dark">{item.time_of_dosages[2]}</label>
                                             {item.dosage_notes[2]?(<div className='note-text'>{item.dosage_notes[2]}</div>):(<></>)} 
                                         </>
                                     ):(
@@ -155,7 +158,7 @@ function PrescriptionList() {
             </div> 
 
             ) : (
-              <span> Error... no prescriptions found.</span>  
+              <h2> No prescriptions found</h2>  
             )}
         </>
     )

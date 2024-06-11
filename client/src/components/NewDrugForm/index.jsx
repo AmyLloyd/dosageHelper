@@ -5,7 +5,7 @@ import { QUERY_ALL_DRUGS } from '../../utils/queries';
 
 function NewDrugForm() {
     const [formState, setFormState] = useState({ name: '', strength:'', type: ''});
-    const [addDrug, { error }] = useMutation(ADD_DRUG, {refetchQueries: [ QUERY_ALL_DRUGS, 'drugs' ]});
+    const [addDrug, { error }] = useMutation(ADD_DRUG, { refetchQueries: [ QUERY_ALL_DRUGS, 'drugs' ]} );
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -17,6 +17,7 @@ function NewDrugForm() {
                     type: formState.type
                     },
             });
+            setFormState({ name: '', strength: '', type: '' });
         } catch (e) {
             console.log(e);
         }
@@ -31,7 +32,7 @@ function NewDrugForm() {
     };
 
     return (
-        <div className = "container-form background-br">
+        <div className = "container-form background-br mx-2">
           <h5>Add new drug</h5>
            <form onSubmit={handleFormSubmit}>
             <div className="flex-container">
@@ -42,6 +43,7 @@ function NewDrugForm() {
                   placeholder="name"
                   name="name"
                   type="name"
+                  value={formState.name}
                   id="name"
                   onChange={handleChange}
                   />
@@ -54,6 +56,7 @@ function NewDrugForm() {
                   placeholder="strength"
                   name="strength"
                   type="strength"
+                  value={formState.strength}
                   id="strength"
                   onChange={handleChange}
                   />
@@ -66,6 +69,7 @@ function NewDrugForm() {
                   placeholder="type"
                   name="type"
                   type="type"
+                  value={formState.type}
                   id="type"
                   onChange={handleChange}
                   />
@@ -78,7 +82,7 @@ function NewDrugForm() {
               ) : null}
             </div>
               <div className="flex-row flex-end">
-                <button type="submit">Submit</button>
+                <button type="submit" value="submit">Submit</button>
               </div>
             </form>
         </div>
