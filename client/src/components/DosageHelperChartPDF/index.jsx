@@ -105,14 +105,18 @@ function DosageHelperChartPDF() {
                                         </td>
                                         {activePrescriptions.map((item) => (
                                         <td key={item._id} className='cell-format'>
-                                            <input className="checkbox" id="checked" type="checkbox" />
-                                            <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
+                                            <div>
+                                                <input className="checkbox" id="checked" type="checkbox" />
+                                                <label htmlFor="agreement" className="dark">{item.time_of_dosages[0]} </label>
+                                            </div>
                                             {item.dosage_notes[0]?(<div className='note-text'>{item.dosage_notes[0]}</div>):(<></>)}
 
                                         {item.time_of_dosages[1]?(
                                                 <>
-                                                    <input className="checkbox" id="checked" type="checkbox" />
-                                                    <label htmlFor="agreement">{item.time_of_dosages[1]}</label> 
+                                                    <div>
+                                                        <input className="checkbox" id="checked" type="checkbox" />
+                                                        <label htmlFor="agreement" className="dark">{item.time_of_dosages[1]}</label> 
+                                                    </div>
                                                     {item.dosage_notes[1]?(<div className='note-text'>{item.dosage_notes[1]}</div>):(<></>)} 
                                                 </>
                                         ):(
@@ -121,8 +125,10 @@ function DosageHelperChartPDF() {
                                         )}
                                         {item.time_of_dosages[2]?(
                                             <>
-                                                <input className="checkbox" id="checked" type="checkbox"/>
-                                                <label htmlFor="agreement">{item.time_of_dosages[2]}</label> 
+                                                <div>
+                                                    <input className="checkbox" id="checked" type="checkbox"/>
+                                                    <label htmlFor="agreement" className="dark">{item.time_of_dosages[2]}</label> 
+                                                </div>
                                                 {item.dosage_notes[2]?(<div className='note-text'>{item.dosage_notes[2]}</div>):(<></>)} 
                                             </>
                                         ):(

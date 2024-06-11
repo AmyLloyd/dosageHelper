@@ -12,6 +12,7 @@
   --background1: #684c85;
   --background2: rgb(246, 241, 241);
   --text: whitesmoke;
+  --error: black;
   }
 
 * {
@@ -113,9 +114,14 @@ label {
   font-size: 1.1rem;
 }
 
+.dark {
+  color: var(--dark);
+}
+
 .note-text {
   font-size:medium;
   font-style: italic;
+  color:var(--secondary);
 }
 
 .cell-format {

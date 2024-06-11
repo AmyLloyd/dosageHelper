@@ -97,13 +97,13 @@ function PrescriptionList() {
 
                                 <td>
                                     <input className="checkbox" id="checked" type="checkbox" />
-                                    <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
+                                    <label htmlFor="agreement" className="dark">{item.time_of_dosages[0]} </label>
                                     {item.dosage_notes[0]?(<div className='note-text'>{item.dosage_notes[0]}</div>):(<></>)}
 
                                     {item.time_of_dosages[1]?(
                                         <>
                                             <input className="checkbox" id="checked" type="checkbox" />
-                                            <label htmlFor="agreement">{item.time_of_dosages[1]}</label>
+                                            <label htmlFor="agreement" className="dark">{item.time_of_dosages[1]}</label>
                                             {item.dosage_notes[1]?(<div className='note-text'>{item.dosage_notes[1]}</div>):(<></>)} 
                                         </>
                                     ):(
@@ -115,7 +115,7 @@ function PrescriptionList() {
                                     {item.time_of_dosages[2]?(
                                         <>
                                             <input className="checkbox" id="checked" type="checkbox"/>
-                                            <label htmlFor="agreement">{item.time_of_dosages[2]}</label>
+                                            <label htmlFor="agreement" className="dark">{item.time_of_dosages[2]}</label>
                                             {item.dosage_notes[2]?(<div className='note-text'>{item.dosage_notes[2]}</div>):(<></>)} 
                                         </>
                                     ):(
