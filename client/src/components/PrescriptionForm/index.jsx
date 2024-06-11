@@ -130,38 +130,44 @@ function PrescriptionForm() {
                   <label> Choose a drug 
                           <select id="selectDrug" name="drug_id" placeholder="Search..." onChange={handleChangeDropdown} >
                           {drugs?.drugs.map((item) => (
-                              <option key={item._id} name="drug_id" value={item._id}>{item.name} {item.strength} {item.type}</option>
+                              <option key={item._id} name="drug_id" placeholder="Drug name" value={item._id}>{item.name} {item.strength} {item.type}</option>
                           ))}
                           </select>
                   </label>
               </div>
               <div className="flex-row space-between my-2">
-                <label htmlFor="dose_frequency">Dose frequency:</label>
+                <label htmlFor="dose_frequency">Dose frequency (1-7 days):</label>
                 <input 
-                placeholder="Take every __ days"
+                placeholder=""
                 name="dose_frequency"
                 type="number"
                 id="dose_frequency"
+                min="1"
+                max="7"
                 onChange={handleChangeInt}
                 />
               </div>
               <div className="flex-row space-between my-2">
-                <label htmlFor="course_length">Course length: </label>
+                <label htmlFor="course_length">Course length (1-93 days): </label>
                 <input 
-                placeholder="Enter a number of days"
+                placeholder=""
                 name="course_length"
                 type="number"
                 id="course_length"
+                min="1"
+                max="93"
                 onChange={handleChangeInt}
                 />
               </div>
 
               <div className="flex-row space-between my-2">
-                <label htmlFor="course_length">Number of dosages per day: </label>
+                <label htmlFor="course_length">Doses per day (1-3):</label>
                 <input 
-                placeholder="No. of times per day"
+                placeholder=""
                 name="number_of_dosages"
                 type="number"
+                min="1"
+                max="3"
                 id="number_of_dosages"
                 onChange={handleChangeInt}
                 />
@@ -203,7 +209,7 @@ function PrescriptionForm() {
                 </div>
               ) : null}
               <div className="flex-row flex-end">
-                <button type="submit">Submit</button>
+                <button type="submit" value="submit">Submit</button>
               </div>
             </form>
           </div>

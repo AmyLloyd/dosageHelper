@@ -5,7 +5,7 @@ import { QUERY_ALL_DRUGS } from '../../utils/queries';
 
 function NewDrugForm() {
     const [formState, setFormState] = useState({ name: '', strength:'', type: ''});
-    const [addDrug, { error }] = useMutation(ADD_DRUG, {refetchQueries: [ QUERY_ALL_DRUGS, 'drugs' ]});
+    const [addDrug, { error }] = useMutation(ADD_DRUG, { refetchQueries: [ QUERY_ALL_DRUGS, 'drugs' ]} );
 
     const handleFormSubmit = async (event) => {
         event.preventDefault();
@@ -78,7 +78,7 @@ function NewDrugForm() {
               ) : null}
             </div>
               <div className="flex-row flex-end">
-                <button type="submit">Submit</button>
+                <button type="submit" value="submit">Submit</button>
               </div>
             </form>
         </div>

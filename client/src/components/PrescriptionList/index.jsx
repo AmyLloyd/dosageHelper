@@ -155,7 +155,7 @@ function PrescriptionList() {
             </div> 
 
             ) : (
-              <span> Error... no prescriptions found.</span>  
+              <h2> Error... no prescriptions found.</h2>  
             )}
         </>
     )
