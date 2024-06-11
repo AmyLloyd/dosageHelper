@@ -192,7 +192,7 @@ input:focus {
 }
 
 .column {
-  padding: 10px;
+  padding: var(--spacing-two);
 }
 
 .column.side {
@@ -210,7 +210,7 @@ input:focus {
 
 .container-form {
   min-width:fit-content;
-  padding: var(--spacing-three);
+  padding: var(--spacing-two);
 }
 
 .space-between {
@@ -443,7 +443,7 @@ input:focus {
     width: 100%;
   }
   .column.side {
-    width: 80%
+    width: 100%
   }
 }
 

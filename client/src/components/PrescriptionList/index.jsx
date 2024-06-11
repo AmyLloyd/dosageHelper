@@ -61,9 +61,9 @@ function PrescriptionList() {
 
     return (
         <>
-            {currentPatient && oneClient && oneClient.patients ? (
+            {currentPatient && oneClient && oneClient.patients && onePatient.prescriptions.length ? (
             <div>
-                <h2>{onePatient?.name}'s prescription history</h2>
+                <h2>{onePatient?.name}'s prescriptions</h2>
 
                 <div className="container-list">
                     {/* Button for to go to printable PDF */}
@@ -155,7 +155,7 @@ function PrescriptionList() {
             </div> 
 
             ) : (
-              <h2> Error... no prescriptions found.</h2>  
+              <h2> No prescriptions found</h2>  
             )}
         </>
     )

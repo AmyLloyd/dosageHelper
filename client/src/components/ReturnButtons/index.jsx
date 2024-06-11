@@ -7,7 +7,7 @@ function ReturnButtons() {
     return (
         <div>
             <button className='button my-2 mx-2'>
-                <Link to={`/patients/:${state.currentPatient}`}>Return to Prescription History</Link> 
+                <Link to={`/patients/:${state.currentPatient}`}>Return to Prescriptions</Link> 
             </button>
             <button className='button my-2 mx-2'>
                 <Link to={`/clients/${state.currentClient}`}>Return to the patient list</Link>

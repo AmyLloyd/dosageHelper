@@ -52,7 +52,7 @@ function PatientForm() {
     };
 
     return (
-        <div className = "container-form background-br">
+        <div className = "container-form background-br mx-2">
            <h5>Add a Patient</h5>
            <form onSubmit={handleFormSubmit}>
             <div className="flex-container">
