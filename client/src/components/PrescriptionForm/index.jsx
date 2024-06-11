@@ -23,7 +23,9 @@ function PrescriptionForm() {
     });
 
     const { data: drugs } = useQuery(QUERY_ALL_DRUGS);
-    const [addPrescriptionToPatient, { error }] = useMutation(ADD_PRESCRIPTION_TO_PATIENT);
+    const [addPrescriptionToPatient, { error }] = useMutation(ADD_PRESCRIPTION_TO_PATIENT,  { refetchQueries: [
+      QUERY_MY_CLIENTS, 'myClients']}
+    );
     const currentPatientId = state.currentPatient; 
     // const currentPatientId = useVetContext().state.currentPatient; 
 

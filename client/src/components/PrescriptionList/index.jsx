@@ -63,16 +63,19 @@ function PrescriptionList() {
         <>
             {currentPatient && oneClient && oneClient.patients && onePatient.prescriptions.length ? (
             <div>
-                <h2>{onePatient?.name}'s prescriptions</h2>
-
-                <div className="container-list">
+                <div className="flex-container">
+                <h2 className="flex-item">{onePatient?.name}'s prescriptions</h2>
+                <div className="container-list flex-item">
                     {/* Button for to go to printable PDF */}
                     <button className='my-2 flex-item'>
-                        <Link to={'/dosageHelperPDF'}> Print Dosage Helper for client </Link>
+                        <Link to={'/dosageHelperPDF'}>
+                            Print Dosage Helper<br/><span className='button-text'>6 prescription max</span></Link>
                     </button>
                 </div>
+                </div>
+                
 
-                <section className="prescr-list my-2">
+                <section className="prescr-list my-2 overflow-scroll">
                     <table>
                         <thead>
                             <tr>
