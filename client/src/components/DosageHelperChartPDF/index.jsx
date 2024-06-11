@@ -32,15 +32,12 @@ function DosageHelperChartPDF() {
             console.log('useEffect working');
             const foundClient = clients.find((client) => client._id === currentClient);
             setOneClient(foundClient);    
-            console.log(oneClient, 'oneClient');
             if (foundClient && foundClient.patients.length) {
                 const foundPatient = foundClient.patients.find((patient) => patient._id === currentPatient);
                 setOnePatient(foundPatient);
-                console.log('onePatient', onePatient);
                 if (foundPatient && foundPatient.prescriptions.length) {
-                    const foundPrescriptions = foundPatient.prescriptions.map((prescriptions) => prescriptions.active === true);
+                    const foundPrescriptions = foundPatient.prescriptions.filter((prescriptions) => prescriptions.active === true);
                     setActivePrescriptions(foundPrescriptions);
-                    console.log('active prescriptions', activePrescriptions);
                 }
             }
         }
@@ -77,7 +74,7 @@ function DosageHelperChartPDF() {
                 <button className="mx-3" type="submit" onClick={downloadPDF}>Download dosageHelper</button>
         
             </h2>
-                {currentPatient && oneClient && oneClient.patients ? (
+                {currentPatient && oneClient && oneClient.patients && activePrescriptions ? (
                 <>
   
 
@@ -85,19 +82,11 @@ function DosageHelperChartPDF() {
                     <section className="prescr-list my-2 mx-2 py-2 px-2" ref={pdfRef}>
                         <h4>{onePatient.name} the {onePatient.animal_type}</h4>
                         <h6>Client name: {oneClient?.username}</h6>
-                        
-                            {/* {activePrescriptions?.map((item) => (
-                            <ul key={item._id}>Active prescriptions:
-                                <li>{item._id}</li>
-                                <li>{item.drug.name}</li>
-
-                            </ul>
-                            ))} */}
                         <table>
                             <thead>
                                 <tr>
                                     <td></td>
-                                {onePatient?.prescriptions?.map((item) => (
+                                {activePrescriptions.map((item) => (
                                     <th key={item._id} >
                                         <h4>{item.drug.name}</h4>
                                         <p className='field-text'>Strength: <span className='subheading'>{item.drug.strength}</span></p>
@@ -114,7 +103,7 @@ function DosageHelperChartPDF() {
                                         <td className='subheading'>DAY:
                                             <div className='blank-width'></div>
                                         </td>
-                                        {onePatient?.prescriptions?.map((item) => (
+                                        {activePrescriptions.map((item) => (
                                         <td key={item._id} className='cell-format'>
                                             <input className="checkbox" id="checked" type="checkbox" />
                                             <label htmlFor="agreement">{item.time_of_dosages[0]} </label>
