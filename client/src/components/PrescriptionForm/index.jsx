@@ -71,7 +71,6 @@ function PrescriptionForm() {
       const selectElement = document.querySelector('#selectDrug');
       const output = selectElement.value;
       const name = selectElement.name;
-      document.querySelector('.output').textContent = output;
       setFormState({
         ...formState,
         [name]: output,
@@ -123,7 +122,8 @@ function PrescriptionForm() {
   };
 
     return (
-        <div className = "container-form background-br max-width">
+        <div className="">
+          <div className = "container-form background-br max-width">
            <h5>Add a Prescription</h5>
            <form onSubmit={handleFormSubmit}>
               <div> 
@@ -134,9 +134,6 @@ function PrescriptionForm() {
                           ))}
                           </select>
                   </label>
-                  {/* <div className="">The chosen drug is: 
-                    <span className="output"></span>
-                  </div> */}
               </div>
               <div className="flex-row space-between my-2">
                 <label htmlFor="dose_frequency">Dose frequency:</label>
@@ -209,7 +206,9 @@ function PrescriptionForm() {
                 <button type="submit">Submit</button>
               </div>
             </form>
+          </div>
         </div>
+        
     );
 }
 

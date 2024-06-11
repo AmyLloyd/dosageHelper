@@ -79,7 +79,7 @@ function DosageHelperChartPDF() {
   
 
     {/* Printable version of dosageHelper           */}
-                    <section className="prescr-list my-2 mx-2 py-2 px-2" ref={pdfRef}>
+                    <section className="prescr-list overflow-hidden my-2 mx-2 py-2 px-2" ref={pdfRef}>
                         <h4>{onePatient.name} the {onePatient.animal_type}</h4>
                         <h6>Client name: {oneClient?.username}</h6>
                         <table>
