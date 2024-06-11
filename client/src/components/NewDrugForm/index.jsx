@@ -17,6 +17,7 @@ function NewDrugForm() {
                     type: formState.type
                     },
             });
+            setFormState({ name: '', strength: '', type: '' });
         } catch (e) {
             console.log(e);
         }
@@ -42,6 +43,7 @@ function NewDrugForm() {
                   placeholder="name"
                   name="name"
                   type="name"
+                  value={formState.name}
                   id="name"
                   onChange={handleChange}
                   />
@@ -54,6 +56,7 @@ function NewDrugForm() {
                   placeholder="strength"
                   name="strength"
                   type="strength"
+                  value={formState.strength}
                   id="strength"
                   onChange={handleChange}
                   />
@@ -66,6 +69,7 @@ function NewDrugForm() {
                   placeholder="type"
                   name="type"
                   type="type"
+                  value={formState.type}
                   id="type"
                   onChange={handleChange}
                   />
