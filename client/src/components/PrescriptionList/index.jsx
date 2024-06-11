@@ -72,7 +72,7 @@ function PrescriptionList() {
                     </button>
                 </div>
 
-                <section className="prescr-list overflow-scroll my-2">
+                <section className="prescr-list my-2">
                     <table>
                         <thead>
                             <tr>
