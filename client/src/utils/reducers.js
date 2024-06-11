@@ -3,7 +3,7 @@ UPDATE_PATIENTS,
 UPDATE_CURRENT_PATIENT,
 UPDATE_CLIENTS,
 UPDATE_CURRENT_CLIENT,
-UPDATE_CURRENT_DRUG
+UPDATE_CURRENT_DRUG,
 
 //DOSAGE_CHECKED
 } from "./actions";
@@ -13,6 +13,7 @@ UPDATE_CURRENT_DRUG
 export const reducer = (state, action) => {
   switch (action.type) {
     // Returns a copy of state with an update products array. We use the action.products property and spread it's contents into the new array.
+   
     case UPDATE_PATIENTS:
       return {
         ...state,
@@ -110,3 +111,4 @@ export const reducer = (state, action) => {
 //       return state;
 //   }
 // };
+

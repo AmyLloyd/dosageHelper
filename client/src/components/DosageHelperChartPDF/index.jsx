@@ -16,24 +16,35 @@ import { QUERY_PATIENT_BY_ID } from '../../utils/queries';
 
 function DosageHelperChartPDF() {
     const [state, dispatch] = useVetContext();
-
     const { currentClient } = state;
     const { currentPatient } = state;
     const clients  = state.clients;
-  
+
     let [oneClient, setOneClient] = useState();
+    console.log(oneClient, 'oneClient');
     let [onePatient, setOnePatient] = useState();
+    console.log(onePatient, 'onePatient');
+    let [activePrescriptions, setActivePrescriptions] = useState([]);
+    console.log(activePrescriptions, 'activePrescriptions');
 
     useEffect(() => {
         if (clients.length) {
+            console.log('useEffect working');
             const foundClient = clients.find((client) => client._id === currentClient);
             setOneClient(foundClient);    
+            console.log(oneClient, 'oneClient');
             if (foundClient && foundClient.patients.length) {
                 const foundPatient = foundClient.patients.find((patient) => patient._id === currentPatient);
                 setOnePatient(foundPatient);
+                console.log('onePatient', onePatient);
+                if (foundPatient && foundPatient.prescriptions.length) {
+                    const foundPrescriptions = foundPatient.prescriptions.map((prescriptions) => prescriptions.active === true);
+                    setActivePrescriptions(foundPrescriptions);
+                    console.log('active prescriptions', activePrescriptions);
+                }
             }
         }
-    }, [clients, currentClient, currentPatient]);
+    }, []);
   
     const days = ["1", "2", "3", "4", "5", "6,", "7", "8", "9", "10", "11", "12", "13", "14"];
 
@@ -64,6 +75,7 @@ function DosageHelperChartPDF() {
             
             <h2>dosageHelper Chart
                 <button className="mx-3" type="submit" onClick={downloadPDF}>Download dosageHelper</button>
+        
             </h2>
                 {currentPatient && oneClient && oneClient.patients ? (
                 <>
@@ -73,6 +85,14 @@ function DosageHelperChartPDF() {
                     <section className="prescr-list my-2 mx-2 py-2 px-2" ref={pdfRef}>
                         <h4>{onePatient.name} the {onePatient.animal_type}</h4>
                         <h6>Client name: {oneClient?.username}</h6>
+                        
+                            {/* {activePrescriptions?.map((item) => (
+                            <ul key={item._id}>Active prescriptions:
+                                <li>{item._id}</li>
+                                <li>{item.drug.name}</li>
+
+                            </ul>
+                            ))} */}
                         <table>
                             <thead>
                                 <tr>
